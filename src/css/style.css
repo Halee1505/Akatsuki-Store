@@ -130,7 +130,9 @@ label{
     padding-bottom: 10px;
     background-color: #fff;
 }
-
+.title{
+    margin-top:80px;
+}
 .title__advertisement__left {
     width: 50%;
     height: 100%;

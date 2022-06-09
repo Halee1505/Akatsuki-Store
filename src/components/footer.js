@@ -1,7 +1,28 @@
-
+import { useState } from "react";
 export default function Footer() {
+    const [visible, setVisible] = useState(false)
+
+    const toggleVisible = () => {
+        const scrolled = document.documentElement.scrollTop;
+        if (scrolled > 300) {
+            setVisible(true)
+        }
+        else if (scrolled <= 300) {
+            setVisible(false)
+        }
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+            /* you can also use 'auto' behaviour
+               in place of 'smooth' */
+        });
+    };
+    window.addEventListener('scroll', toggleVisible);
     return (
-        
+
         <div className="footer container-fluid" id="contact">
             <div className="container">
                 <div className="py-5">
@@ -56,8 +77,10 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <a href="#a" className="up"><i className="fa-solid fa-arrow-up fa-2x"></i></a>
+
+                <div id="top-up" className="up" onClick={scrollToTop} style={{display: visible ? 'flex' : 'none'}} ><i className="fa-solid fa-arrow-up fa-2x"></i></div>
+
         </div>
-        
+
     )
 }

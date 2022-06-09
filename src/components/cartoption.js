@@ -10,7 +10,6 @@ export default function CartOption() {
                     <table className="table">
                         <thead>
                             <tr>
-                                <th scope="col">Name</th>
                             </tr>
                         </thead>
                         <tbody>

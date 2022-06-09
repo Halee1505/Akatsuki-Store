@@ -12,7 +12,7 @@ function SignOut() {
 }
 export default function User() {
     return (
-        <div className="container-fluid">
+        <div className="container-fluid title">
             <div className="container">
                 <div className="row d-flex justify-content-between mb-2 mt-2 align-items-center">
                     <div className="card card-body col-md-4" style={{ width: "8rem" }}>

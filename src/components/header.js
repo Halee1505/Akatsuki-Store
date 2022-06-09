@@ -1,16 +1,23 @@
 import { Link } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import React from 'react'
-import {useState} from 'react'
+import { useState } from 'react'
 // let loged = sessionStorage.getItem("login")
 let loged = Cookies.get("email")
 export default function Header() {
     const [popup, setPopup] = useState(false)
-    console.log(popup)
+    const scrollToTop = (x) => {
+        window.scrollTo({
+            top: x,
+            behavior: 'smooth'
+            /* you can also use 'auto' behaviour
+               in place of 'smooth' */
+        });
+    };
     return (
         <React.Fragment>
             <div className="header desktop">
-                <Link to="/"><img src="src/logo.png" className="header__logo" alt="logo" /></Link>
+                <Link to="/"><img src="src/logo.png" className="header__logo" id='header__logo' alt="logo" /></Link>
                 <div className="header__function">
                     <div className="header__function__item hover_underline"><a href="/#newProduct">HOME</a>
                         <div className="underline"></div>
@@ -40,7 +47,7 @@ export default function Header() {
                             <>
                                 <Link to="/user"><i className="fa-solid fa-user fa-2x header__user__item"></i></Link>
                                 <Link to="/cart"><i className="fa-solid fa-cart-shopping fa-2x header__user__item"></i></Link>
-                                <i className="fa-regular fa-heart fa-2x header__user__item"></i>
+                                <Link to="/wish-list"><i className="fa-regular fa-heart fa-2x header__user__item"></i></Link>
                             </>
                             :
                             <ul className="nav d-flex align-items-end">
@@ -52,16 +59,16 @@ export default function Header() {
                     }
                 </div>
             </div>
-            <div className='mobile'>
+            <div className='mobile fixed-top'>
                 <nav className="navbar navbar-light bg-white">
                     <Link to="/"><img src="src/logo.png" className="header__logo" alt="logo" /></Link>
-                    <button type="button" className="btn btn-outline-dark" onClick={()=>{setPopup(true)}}>
+                    <button type="button" className="btn btn-outline-dark" onClick={() => { setPopup(true) }}>
                         <i className="fa-solid fa-bars"></i>
                     </button>
 
 
-                    <div className={popup?"navbar__overlay navbar__active":"navbar__overlay"}  onClick={()=>{setPopup(false)}}>
-                        <div className={popup?"navbar__overlay__list navbar__active":"navbar__overlay__list"}>
+                    <div className={popup ? "navbar__overlay navbar__active" : "navbar__overlay"} onClick={() => { setPopup(false) }}>
+                        <div className={popup ? "navbar__overlay__list navbar__active" : "navbar__overlay__list"}>
                             <i className="fa-solid fa-xmark rounded-circle border border-dark" ></i>
                             {
                                 loged ?
@@ -69,7 +76,7 @@ export default function Header() {
                                     <div className='navbar__icon'>
                                         <Link to="/user"><i className="fa-solid fa-user fa-2x header__user__item"></i></Link>
                                         <Link to="/cart"><i className="fa-solid fa-cart-shopping fa-2x header__user__item"></i></Link>
-                                        <i className="fa-regular fa-heart fa-2x header__user__item"></i>
+                                        <Link to="/wish-list"><i className="fa-regular fa-heart fa-2x header__user__item"></i></Link>
                                     </div>
                                     :
                                     <div className="navbar__icon">
@@ -80,14 +87,14 @@ export default function Header() {
                             }
                             <hr className="my-4" />
 
-                            <img src="src/logo.png" className="header__logo" alt="logo" />
+                            <img src="src/logo.png" className="header__logo" id='header__logo' alt="logo" />
 
                             <ul>
-                                <li className="navbar__overlay__list__item"><a href="/#newProduct" className="navbar__overlay__list__item__link">HOME</a></li>
-                                <li className="navbar__overlay__list__item"><a href="/#newProduct" className="navbar__overlay__list__item__link">NEW PRODUCT</a></li>
-                                <li className="navbar__overlay__list__item"><a href="/#news" className="navbar__overlay__list__item__link">ADVERTIDEMENT</a></li>
-                                <li className="navbar__overlay__list__item"><a href="/#special" className="navbar__overlay__list__item__link">SPECIAL</a></li>
-                                <li className="navbar__overlay__list__item"><a href="/#contact" className="navbar__overlay__list__item__link">CONTACT</a></li>
+                                <li className="navbar__overlay__list__item"><Link onClick={()=>scrollToTop(0)} to="/" className="navbar__overlay__list__item__link">HOME</Link></li>
+                                <li className="navbar__overlay__list__item"><Link onClick={()=>scrollToTop(1870)} to="/" className="navbar__overlay__list__item__link">NEW PRODUCT</Link></li>
+                                <li className="navbar__overlay__list__item"><Link onClick={()=>scrollToTop(5400)} to="/" className="navbar__overlay__list__item__link">ADVERTIDEMENT</Link></li>
+                                <li className="navbar__overlay__list__item"><Link onClick={()=>scrollToTop(5900)} to="/" className="navbar__overlay__list__item__link">SPECIAL</Link></li>
+                                <li className="navbar__overlay__list__item"><Link onClick={()=>scrollToTop(10000)} to="/"  className="navbar__overlay__list__item__link">CONTACT</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -95,5 +102,7 @@ export default function Header() {
                 </nav>
             </div>
         </React.Fragment>
+        
     )
+    
 }

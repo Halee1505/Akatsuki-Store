@@ -11,7 +11,7 @@ export default function CartPage() {
     return (
         <React.Fragment>
             <Header />
-            <div className="container">
+            <div className="container title">
                 <div className="row">
                     <div className="col-md-4">
                         <CartOption />
