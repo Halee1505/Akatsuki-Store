@@ -61,7 +61,7 @@ export default function Header() {
             </div>
             <div className='mobile fixed-top'>
                 <nav className="navbar navbar-light bg-white">
-                    <Link to="/"><img src="src/logo.png" className="header__logo" alt="logo" /></Link>
+                    <Link to="/login"><img src="src/logo.png" className="header__logo" alt="logo" /></Link>
                     <button type="button" className="btn btn-outline-dark" onClick={() => { setPopup(true) }}>
                         <i className="fa-solid fa-bars"></i>
                     </button>
