@@ -18,7 +18,7 @@ export default function Login() {
         }
         // console.log(email, password);
         // Cookies.set("email", email)
-        window.location.href = "/homepage"
+        window.location.href = "/"
         // axios.post("http://localhost/", {
         //     email: email,
         //     password: password
