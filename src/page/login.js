@@ -63,9 +63,9 @@ export default function Login() {
                                 </div>
                             </form>
                             <div className="text-center">
-                                <Link to="/forgotpassword"><small className="text-muted fw-light">Forgot password?</small></Link>
+                                <Link to="/forgot-password"><small className="text-muted fw-light">Forgot password?</small></Link>
                             </div>
-                            <hr class="my-2" />
+                            <hr className="my-2" />
                             <div className="text-center mt-2 mb-2">
                                 <small className="text-muted fw-light">Or</small>
                             </div>

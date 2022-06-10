@@ -10,8 +10,6 @@ export default function Header() {
         window.scrollTo({
             top: x,
             behavior: 'smooth'
-            /* you can also use 'auto' behaviour
-               in place of 'smooth' */
         });
     };
     return (
@@ -19,19 +17,19 @@ export default function Header() {
             <div className="header desktop">
                 <Link to="/"><img src="src/logo.png" className="header__logo" id='header__logo' alt="logo" /></Link>
                 <div className="header__function">
-                    <div className="header__function__item hover_underline"><a href="/#newProduct">HOME</a>
+                    <div className="header__function__item hover_underline"><Link to="/" onClick={()=>scrollToTop(0)} >HOME</Link>
                         <div className="underline"></div>
                     </div>
-                    <div className="header__function__item hover_underline"><a href="/#newProduct">NEW PRODUCT</a>
+                    <div className="header__function__item hover_underline"><Link to="/" onClick={()=>scrollToTop(960)}>NEW PRODUCT</Link>
                         <div className="underline"></div>
                     </div>
-                    <div className="header__function__item hover_underline"><a href="/#news">ADVERTIDEMENT</a>
+                    <div className="header__function__item hover_underline"><Link to="/" onClick={()=>scrollToTop(2600)}>ADVERTIDEMENT</Link>
                         <div className="underline"></div>
                     </div>
-                    <div className="header__function__item hover_underline"><a href="/#special">SPECIAL</a>
+                    <div className="header__function__item hover_underline"><Link to="/" onClick={()=>scrollToTop(2100)}>SPECIAL</Link>
                         <div className="underline"></div>
                     </div>
-                    <div className="header__function__item hover_underline"><a href="/#contact">CONTACT</a>
+                    <div className="header__function__item hover_underline"><Link to="/" onClick={()=>scrollToTop(3500)}>CONTACT</Link>
                         <div className="underline"></div>
                     </div>
                 </div>
@@ -62,14 +60,18 @@ export default function Header() {
             <div className='mobile fixed-top'>
                 <nav className="navbar navbar-light bg-white">
                     <Link to="/"><img src="src/logo.png" className="header__logo" alt="logo" /></Link>
+                    <div className="header__name__overlay">
+                    <img className='header__name' src="src/store.png" alt="" />
+
+                    </div>
                     <button type="button" className="btn btn-outline-dark" onClick={() => { setPopup(true) }}>
-                        <i className="fa-solid fa-bars"></i>
+                        <i className="fa-solid fa-bars" style={{color:"#000000"}}></i>
                     </button>
 
 
-                    <div className={popup ? "navbar__overlay navbar__active" : "navbar__overlay"} onClick={() => { setPopup(false) }}>
+                    <div className={popup ? "navbar__overlay navbar__active" : "navbar__overlay"}>
                         <div className={popup ? "navbar__overlay__list navbar__active" : "navbar__overlay__list"}>
-                            <i className="fa-solid fa-xmark rounded-circle border border-dark" ></i>
+                            <i onClick={() => { setPopup(false) }} className="fa-solid fa-xmark rounded-circle border border-dark"  style={{color:"#000000"}}></i>
                             {
                                 loged ?
 
@@ -90,11 +92,11 @@ export default function Header() {
                             <img src="src/logo.png" className="header__logo" id='header__logo' alt="logo" />
 
                             <ul>
-                                <li className="navbar__overlay__list__item"><Link onClick={()=>scrollToTop(0)} to="/" className="navbar__overlay__list__item__link">HOME</Link></li>
-                                <li className="navbar__overlay__list__item"><Link onClick={()=>scrollToTop(1870)} to="/" className="navbar__overlay__list__item__link">NEW PRODUCT</Link></li>
-                                <li className="navbar__overlay__list__item"><Link onClick={()=>scrollToTop(5400)} to="/" className="navbar__overlay__list__item__link">ADVERTIDEMENT</Link></li>
-                                <li className="navbar__overlay__list__item"><Link onClick={()=>scrollToTop(5900)} to="/" className="navbar__overlay__list__item__link">SPECIAL</Link></li>
-                                <li className="navbar__overlay__list__item"><Link onClick={()=>scrollToTop(10000)} to="/"  className="navbar__overlay__list__item__link">CONTACT</Link></li>
+                                <li className="navbar__overlay__list__item" onClick={()=>{setPopup(false)}}><Link onClick={()=>scrollToTop(0)} to="/" className="navbar__overlay__list__item__link">HOME</Link></li>
+                                <li className="navbar__overlay__list__item" onClick={()=>{setPopup(false)}}><Link onClick={()=>scrollToTop(320)} to="/" className="navbar__overlay__list__item__link">NEW PRODUCT</Link></li>
+                                <li className="navbar__overlay__list__item" onClick={()=>{setPopup(false)}}><Link onClick={()=>scrollToTop(5200)} to="/" className="navbar__overlay__list__item__link">ADVERTIDEMENT</Link></li>
+                                <li className="navbar__overlay__list__item" onClick={()=>{setPopup(false)}}><Link onClick={()=>scrollToTop(3900)} to="/" className="navbar__overlay__list__item__link">SPECIAL</Link></li>
+                                <li className="navbar__overlay__list__item" onClick={()=>{setPopup(false)}}><Link onClick={()=>scrollToTop(8000)} to="/"  className="navbar__overlay__list__item__link">CONTACT</Link></li>
                             </ul>
                         </div>
                     </div>

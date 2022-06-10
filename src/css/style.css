@@ -26,9 +26,7 @@ label{
     background-repeat: no-repeat;
 
 }
-.desktop{
-    display: block !important;
-}
+
 .mobile {
     display: none !important;
 }
@@ -62,7 +60,8 @@ label{
 .header__function__item a{
     text-decoration: none;
     color: #000;
-    font-size: 25px;
+    white-space: nowrap;
+    font-size: 1.5vw;
 }
 .header__function__item a:hover{
     text-decoration: none;
@@ -130,9 +129,7 @@ label{
     padding-bottom: 10px;
     background-color: #fff;
 }
-.title{
-    margin-top:80px;
-}
+
 .title__advertisement__left {
     width: 50%;
     height: 100%;
@@ -200,7 +197,6 @@ label{
 
 .newProduct__title__right {
     float: right;
-    width: 40%;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -276,8 +272,6 @@ label{
     width: 90%;
     margin-left: 5%;
     margin-top: 100px;
-    height: 400px;
-    background-color: aquamarine;
 }
 
 .specialItem {

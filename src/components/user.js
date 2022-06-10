@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 function ArrayDecl(from, to) {
-    let a = new Array()
+    let a = new Array(to-from+1)
     for (var i = from; i <= to; i++) {
         a.push(i)
     }
