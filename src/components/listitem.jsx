@@ -1,11 +1,22 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import axios from "axios"
+
 export default function ListItem() {
+    const [clothes, setClothes] = useState([])
     const [count, setCount] = useState(1)
     const [quantity, setQuantity] = useState(10)
     const [fn, setFn] = useState("mota")
     function handleClickFn() {
         setFn(fn === "mota" ? "danhgia" : "mota")
     }
+    useEffect(() => {
+        axios.get("http://localhost/api/clothes/read.php")
+            .then(res => {
+                setClothes(res.data)
+            }
+            )
+    }, [])
     return (
         <div className="bg-white title">
         <div className="newProduct__title">
@@ -41,22 +52,32 @@ export default function ListItem() {
             </div>
         </div>
         <div className="newProduct__content">
-                 <div className="row d-flex justify-content-around mb-2 mt-2 align-items-center">
                      {
-                        new Array(5).fill(0).map((item, index) => {
+                        clothes.map((item, index) => {
                             return (
-                                <div className="card" style={{width:"14rem"}}>
-                                    <img className="card-img-top" src="..." alt="Card image cap"/>
-                                        <div className="card-body">
-                                            <h5 className="card-title">Card title</h5>
-                                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" className="btn btn-primary">Go somewhere</a>
-                                        </div>
-                                </div>
+                                <Link to={`/itemdetail/${index}`} className="items text-decoration-none" key={index}>
+                                    {
+                                        index !== 0 ? <hr className="mobile my-4" /> : ""
+                                    }
+                                    <div className="items__img">
+                                    </div>
+                                    <p className="newProduct__content__item__title">
+                                        {item.name}
+                                    </p>
+                                    <div className="newProduct__content__item__rate">
+                                        <i className="fas fa-star"></i>
+                                        <i className="fas fa-star"></i>
+                                        <i className="fas fa-star"></i>
+                                        <i className="fas fa-star"></i>
+                                        <i className="fas fa-star"></i>
+                                    </div>
+                                    <p className="newProduct__content__item__price">
+                                        {item.price}
+                                    </p>
+                                </Link>
                             )
                         })
                     }
-                </div>
         </div>
     </div>
         // <div className="container-fluid title">

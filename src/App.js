@@ -9,6 +9,12 @@ import UserPage from './page/userpage';
 import WishlistPage from './page/wishlistpage';
 import ForgotPassword from './page/forgotpassword';
 
+
+
+// adminpage
+import AddClothesPage from './adminpage/addclothespage';
+import GetClothesPage from './adminpage/getclothespage';
+
 import "./css/style.css";
 import "./css/responsivestyle.css";
 import {
@@ -32,6 +38,9 @@ function App() {
     <Route path="/user" element={<UserPage />}/>
     <Route path="/wish-list" element={<WishlistPage />}/>
     <Route path="/forgot-password" element={<ForgotPassword />}/>
+    <Route path="/admin/add-clothes" element={<AddClothesPage />}/>
+    <Route path="/admin/manage-clothes" element={<GetClothesPage />}/>
+    
 
     </Routes>
     </BrowserRouter>

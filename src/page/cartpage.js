@@ -5,7 +5,7 @@ import CartOption from "../components/cartoption";
 import CartFooter from "../components/cartfooter";
 import React from "react";
 import { useContext } from "react";
-import CartContext from "../context/context";
+import CartContext from "../context/cartcontext";
 export default function CartPage() {
     const CartState = useContext(CartContext);
     return (

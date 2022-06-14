@@ -26,7 +26,7 @@ export default function Cart() {
                                     <th scope="row">1</th>
                                     <th scope="row">1</th>
                                     <th scope="row">1</th>
-                                    <th scope="row"><a href="#" className="badge badge-danger">Delete</a></th>
+                                    <th scope="row"><div className="badge badge-danger">Delete</div></th>
                                 </tr>
 
                             </tbody>

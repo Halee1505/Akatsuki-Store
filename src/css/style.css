@@ -16,6 +16,9 @@ label{
     width: 100%;
     height: 100px;
     background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
 }
 .img-border{
@@ -32,17 +35,15 @@ label{
 }
 
 .header__logo {
-    height: 90px;
-    margin-top: 5px;
+    height: 3.5vw;
     margin-left: 30px;
-    margin-right: 100px;
-    float: left;
+
 }
 
 .header__function {
     display: flex;
     height: 100px;
-    width: 50%;
+    width: 50vw;
     justify-content: space-between;
     align-items: center;
     float: left;
@@ -84,7 +85,7 @@ label{
 }
 
 .header__user {
-    width: 26%;
+    width: 25vw;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -93,9 +94,8 @@ label{
 }
 
 .header__user__search {
-    margin-top: 30px;
     height: 32px;
-    width: 200px;
+    width: 11vw;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
@@ -117,14 +117,13 @@ label{
 
 .header__user__item {
     color: rgb(57, 57, 57) !important;
-    margin-top: 30px;
     cursor: pointer;
 }
 
 .title__advertisement {
     margin-top: 10px;
     width: 100%;
-    height: 800px;
+    height: 50vw;
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: #fff;
@@ -198,13 +197,14 @@ label{
 .newProduct__title__right {
     float: right;
     height: 100%;
+    width: 30vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .newProduct__item {
-    font-size: 1.2rem;
+    font-size: 1.2vw;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -229,8 +229,8 @@ label{
 }
 
 .newProduct__content__item__img {
-    width: 100%;
-    height: calc(300px / 3 * 4);
+    width: 15vw;
+    height: 20vw;
     background-color: aquamarine;
 }
 
@@ -299,8 +299,8 @@ label{
 }
 
 .specialItem__item__img {
-    width: 100px;
-    height: 100px;
+    width: 7vw;
+    height: 7vw;
     background-color: aquamarine;
 }
 
@@ -316,7 +316,7 @@ label{
     margin-top: 100px;
     margin-left: 10%;
     width: 80%;
-    height: 400px;
+    height: 27vw;
     background-color: aquamarine;
 }
 
@@ -357,7 +357,7 @@ label{
 
 .instagram__img {
     width: 18%;
-    height: 300px;
+    height: 20vw;
     background-color: aquamarine;
 }
 
@@ -392,7 +392,56 @@ label{
     text-decoration: none;
     
 }
+.fa-2x{
+    font-size: 2vw;
+}
 .fa-arrow-up{
     color: #ccc;
 
 }
+.items__img{
+    width: 15vw;
+    height: 20vw;
+    background-color: aquamarine;
+    box-sizing: content-box;
+}
+.items{
+    width: max-content;
+}
+
+
+
+/* admin */
+
+.preview-img{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid rgb(0, 0, 0);
+    border-color: rgb(0, 0, 0) transparent rgb(0, 0, 0) transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

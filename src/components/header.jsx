@@ -23,7 +23,7 @@ export default function Header() {
                     <div className="header__function__item hover_underline"><Link to="/" onClick={()=>scrollToTop(960)}>NEW PRODUCT</Link>
                         <div className="underline"></div>
                     </div>
-                    <div className="header__function__item hover_underline"><Link to="/" onClick={()=>scrollToTop(2600)}>ADVERTIDEMENT</Link>
+                    <div className="header__function__item hover_underline"><Link to="/" onClick={()=>scrollToTop(2600)}>ADVERTISEMENT</Link>
                         <div className="underline"></div>
                     </div>
                     <div className="header__function__item hover_underline"><Link to="/" onClick={()=>scrollToTop(2100)}>SPECIAL</Link>
@@ -94,7 +94,7 @@ export default function Header() {
                             <ul>
                                 <li className="navbar__overlay__list__item" onClick={()=>{setPopup(false)}}><Link onClick={()=>scrollToTop(0)} to="/" className="navbar__overlay__list__item__link">HOME</Link></li>
                                 <li className="navbar__overlay__list__item" onClick={()=>{setPopup(false)}}><Link onClick={()=>scrollToTop(320)} to="/" className="navbar__overlay__list__item__link">NEW PRODUCT</Link></li>
-                                <li className="navbar__overlay__list__item" onClick={()=>{setPopup(false)}}><Link onClick={()=>scrollToTop(5200)} to="/" className="navbar__overlay__list__item__link">ADVERTIDEMENT</Link></li>
+                                <li className="navbar__overlay__list__item" onClick={()=>{setPopup(false)}}><Link onClick={()=>scrollToTop(5200)} to="/" className="navbar__overlay__list__item__link">ADVERTISEMENT</Link></li>
                                 <li className="navbar__overlay__list__item" onClick={()=>{setPopup(false)}}><Link onClick={()=>scrollToTop(3900)} to="/" className="navbar__overlay__list__item__link">SPECIAL</Link></li>
                                 <li className="navbar__overlay__list__item" onClick={()=>{setPopup(false)}}><Link onClick={()=>scrollToTop(8000)} to="/"  className="navbar__overlay__list__item__link">CONTACT</Link></li>
                             </ul>
