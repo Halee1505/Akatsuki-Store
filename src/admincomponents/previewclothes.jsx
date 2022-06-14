@@ -35,7 +35,7 @@ export default function PreviewClothes() {
 
             <div className="card-body" style={{ width: "17vw" }}>
                 <h5 className="card-title">Name: {AddClothes.name}</h5>
-                <p className="card-text">Price: {AddClothes.price === "" ? 0 : AddClothes.price}.000 vnd</p>
+                <p className="card-text">Price: {AddClothes.price === "" ? 0 : AddClothes.price}vnd</p>
                 <p className="card-text">Type: {AddClothes.type}</p>
                 <p className="card-text">Gender: {AddClothes.sex}</p>
                 <p className="card-text">Size:</p>

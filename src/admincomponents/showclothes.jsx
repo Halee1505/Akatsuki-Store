@@ -1,5 +1,4 @@
 export default function ShowClothes({ clothes }) {
-    console.log(clothes)
     return (
         <div className="card d-flex flex-column align-items-center" style={{ width: "18vw" }}>
             {

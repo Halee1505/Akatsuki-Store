@@ -319,6 +319,11 @@ label{
     height: 27vw;
     background-color: aquamarine;
 }
+.discount-admin {
+    width: 100%;
+    height: 25vw;
+    background-color: aquamarine;
+}
 
 .Guarantee {
     margin-top: 100px;
@@ -444,4 +449,18 @@ label{
       transform: rotate(360deg);
     }
   }
-  
+.upload{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;
+    color: rgb(0, 0, 0);background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    cursor: pointer;
+}
+.upload:hover{
+    opacity: 1;
+}

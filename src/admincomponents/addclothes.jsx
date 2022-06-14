@@ -20,10 +20,8 @@ export default function AddClothes() {
             description: AddClothes.description
             
        }
-       console.log(clothes)
-    //    console.log(JSON.parse(clothes.color))
        Axios.post("http://localhost/api/clothes/create.php", clothes).then(res => {
-              window.location.href = "/admin/manage-clothes"
+              window.location.href = "/admin"
        })
     }
     return (

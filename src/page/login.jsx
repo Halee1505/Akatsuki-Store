@@ -3,32 +3,37 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import Cookies from "js-cookie"
+import { useContext } from "react"
+import UserContext from "../context/usercontext"
 
 export default function Login() {
+    const User = useContext(UserContext);
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [remember, setRemember] = useState(false)
-    function handleSubmit(e) {
-        e.preventDefault();
-        if (remember) {
-            Cookies.set("email", email, { expires: 1 })
+    function handleSubmit() {
+        const user = {
+            username: email,
+            password: password
         }
-        else {
-            Cookies.set("email", email)
-        }
-        // console.log(email, password);
-        // Cookies.set("email", email)
-        window.location.href = "/"
-        // axios.post("http://localhost/", {
-        //     email: email,
-        //     password: password
-        // })
-        //     .then(res => {
-        //         console.log(res.data)
-        //     }).catch(err => {
-        //         console.log(err)
-        //     }
-        //     )
+        axios.post("http://localhost/api/customer/login.php", JSON.stringify(user))
+        .then(res => {
+            if(res.status === 200){
+                if (remember) {
+                    Cookies.set("email",res.data['cid'], { expires: 1 })
+                }
+                else {
+                    Cookies.set("email", res.data['cid'])
+                }
+                window.location.href = "/"
+                // console.log(res.data['cid'])
+
+            }
+
+        })
+        .catch(err => {
+            alert("Wrong email or password")
+        })
     }
     return (
         <div className="container">
@@ -37,14 +42,14 @@ export default function Login() {
                     <div className="card border-0 shadow rounded-3 my-5">
                         <div className="card-body p-4 p-sm-5">
                             <h5 className="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
-                            <form onSubmit={(e) => { handleSubmit(e) }}>
+                            <div>
                                 <div className="form-floating mb-3">
-                                    <input type="email" className="form-control" id="email" placeholder="name@example.com"
+                                    <input type="email" name="username" className="form-control" id="email" placeholder="name@example.com"
                                         onChange={(e) => { setEmail(email => e.target.value) }} />
                                     <label htmlFor="email">Email address</label>
                                 </div>
                                 <div className="form-floating mb-3">
-                                    <input type="password" className="form-control" id="password" placeholder="Password"
+                                    <input type="password" name="password" className="form-control" id="password" placeholder="Password"
                                         onChange={(e) => { setPassword(pass => e.target.value) }} />
                                     <label htmlFor="password">Password</label>
                                 </div>
@@ -56,12 +61,12 @@ export default function Login() {
                                     </label>
                                 </div>
                                 <div className="d-flex justify-content-between">
-                                    <button className="btn btn-secondary btn-login text-uppercase fw-bold" type="submit">Sign
+                                    <button className="btn btn-secondary btn-login text-uppercase fw-bold" type="button" onClick={handleSubmit}>Sign
                                         in</button>
                                     <Link to="/signup"><button className="btn btn-light btn-login text-uppercase fw-bold" type="button">Sign
                                         up</button></Link>
                                 </div>
-                            </form>
+                            </div>
                             <div className="text-center">
                                 <Link to="/forgot-password"><small className="text-muted fw-light">Forgot password?</small></Link>
                             </div>
@@ -70,7 +75,7 @@ export default function Login() {
                                 <small className="text-muted fw-light">Or</small>
                             </div>
                             <div className="d-flex justify-content-center ">
-                                <button className="btn btn-outline-danger" onClick={()=>{window.location.href="/homepage"}}>Start without login</button>
+                                <button className="btn btn-outline-danger" onClick={() => { window.location.href = "/homepage" }}>Start without login</button>
                             </div>
                         </div>
                     </div>
