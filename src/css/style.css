@@ -5,12 +5,20 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 body {
     background: linear-gradient(180deg, rgba(242, 242, 242, 1) 0%, rgba(255, 255, 255, 1) 100%);
     margin: 0px;
 }
-label{
+
+label {
     margin: 0px !important;
+}
+.row{
+    margin: auto 0px;
 }
 .header {
     width: 100%;
@@ -21,11 +29,13 @@ label{
     align-items: center;
 
 }
-.img-border{
+
+.img-border {
     width: 100%;
     height: 300px;
     background-clip: content-box;
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
     background-repeat: no-repeat;
 
 }
@@ -58,13 +68,15 @@ label{
     flex-direction: column;
     align-items: center;
 }
-.header__function__item a{
+
+.header__function__item a {
     text-decoration: none;
     color: #000;
     white-space: nowrap;
     font-size: 1.5vw;
 }
-.header__function__item a:hover{
+
+.header__function__item a:hover {
     text-decoration: none;
     color: #000;
 }
@@ -102,9 +114,9 @@ label{
 }
 
 .header__user__search__input {
-    margin-right: 10px;                                                                                                                                                     
+    margin-right: 10px;
     border: 0px solid #ccc;
-    border-bottom: 0.5px solid  #ccc;
+    border-bottom: 0.5px solid #ccc;
     height: 35px;
     padding: 0px 10px;
     transition: width 0.3s ease-out;
@@ -140,7 +152,11 @@ label{
 }
 
 .title__advertisement__item {
-    background-color: aquamarine;
+    background-color: rgb(255, 255, 255);
+    border: 1px #000000 solid;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     height: 98%;
     width: 98%;
 }
@@ -159,7 +175,11 @@ label{
 .title__advertisement__items {
     height: 48%;
     width: 48%;
-    background-color: aquamarine;
+    background-color: rgb(255, 255, 255);
+    border: 1px #000000 solid;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 
 }
 
@@ -235,7 +255,7 @@ label{
 }
 
 .newProduct__content__item__title {
-    width: 100%;
+    width: 13vw;
     /* font-size: 18px; */
     font-family: 'monserrat', sans-serif;
     text-align: center;
@@ -264,7 +284,7 @@ label{
 
 .fa-star {
     height: 20px;
-    color: #ffd724;
+
 
 }
 
@@ -317,12 +337,21 @@ label{
     margin-left: 10%;
     width: 80%;
     height: 27vw;
-    background-color: aquamarine;
+    background-color: rgb(255, 255, 255);
+    border: 1px #000000 solid;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
+
 .discount-admin {
     width: 100%;
     height: 25vw;
-    background-color: aquamarine;
+    background-color: rgb(255, 255, 255);
+    border: 1px #000000 solid;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .Guarantee {
@@ -378,12 +407,13 @@ label{
     color: #000000;
     margin: 0px 5px 0px 5px;
 }
-.up{
+
+.up {
     position: fixed;
     right: 50px;
     bottom: 50px;
     border-radius: 5px;
-    border: 2px  solid #ccc;
+    border: 2px solid #ccc;
     z-index: 10;
     height: 50px;
     width: 50px;
@@ -391,26 +421,31 @@ label{
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    
+
 }
-.up:hover{
+
+.up:hover {
     text-decoration: none;
-    
+
 }
-.fa-2x{
+
+.fa-2x {
     font-size: 2vw;
 }
-.fa-arrow-up{
+
+.fa-arrow-up {
     color: #ccc;
 
 }
-.items__img{
+
+.items__img {
     width: 15vw;
     height: 20vw;
     background-color: aquamarine;
     box-sizing: content-box;
 }
-.items{
+
+.items {
     width: max-content;
 }
 
@@ -418,19 +453,19 @@ label{
 
 /* admin */
 
-.preview-img{
-    width: 100%;
-    height: 100%;
+.preview-img {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
+
 .lds-dual-ring {
     display: inline-block;
     width: 80px;
     height: 80px;
-  }
-  .lds-dual-ring:after {
+}
+
+.lds-dual-ring:after {
     content: " ";
     display: block;
     width: 64px;
@@ -440,27 +475,85 @@ label{
     border: 6px solid rgb(0, 0, 0);
     border-color: rgb(0, 0, 0) transparent rgb(0, 0, 0) transparent;
     animation: lds-dual-ring 1.2s linear infinite;
-  }
-  @keyframes lds-dual-ring {
+}
+
+@keyframes lds-dual-ring {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-.upload{
+}
+
+.upload {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 5vw;
-    color: rgb(0, 0, 0);background-color: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     cursor: pointer;
 }
-.upload:hover{
+.uploading {
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    align-items: center;
+    font-size: 7vw;
+    cursor: pointer;
+    z-index: 100;
+    position: absolute;
+    top: 20vw;
+    left:45%;
+}
+
+.upload:hover {
     opacity: 1;
+}
+
+.itemHover {
+    width: 100%;
+    height: 99%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 2vw;
+    background-color: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    cursor: pointer;
+}
+.itemHover:hover {
+    opacity: 1;
+}
+.icon{
+    color: rgb(255, 255, 255);
+    margin-bottom: 3vw;
+    transform: translateY(5vw);
+}
+.itemHover:hover .cart{
+    transform: translateY(0vw);
+}
+.itemHover:hover .pay{
+    transform: translateY(0vw);
+}
+.itemHover:hover .heart{
+    transform: translateY(0vw);
+}
+.cart{
+    transition: transform 0.3s ease-in-out;
+}
+.pay{
+    margin-left: 1vw;
+    margin-right: 1vw;
+    transition: transform 0.5s ease-in-out;
+}
+.heart{
+    transition: transform 0.7s ease-in-out;
 }

@@ -30,14 +30,13 @@ export default function GetClothes({ props }) {
                                     <option value="Accessories">Accessories</option>
                                 </select>
                             </div>
-
                         </div>
                     </div>
                     <div className="d-flex justify-content-around flex-wrap">
                         {props.length !== 0 ?
                             (type === "" ? props : props.filter(it => type === it.type)).map((item, index) => {
                                 return (
-                                    <Link to={`/itemdetail/${index}`} className="items text-decoration-none" key={index}>
+                                    <Link to={`/admin/update-clothes/${item.id}`} className="items text-decoration-none" key={index}>
                                         {
                                             index !== 0 ? <hr className="mobile my-4" /> : ""
                                         }

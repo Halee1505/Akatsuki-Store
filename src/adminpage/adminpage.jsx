@@ -3,13 +3,10 @@ import AddClothesPage from './addclothespage';
 import GetClothesPage from './getclothespage';
 import ShowUserPage from './showuserpage';
 import UpdateAdvertisement from './updateadvertisement';
+import { useLocation } from 'react-router-dom';
 
-import { useContext } from 'react';
-import AdminOptionContext from '../context/adminoptioncontext';
 export default function AdminPage() {
-    const Option = useContext(AdminOptionContext);
-    console.log(Option.AdminOption);
-
+    const history = useLocation().pathname.split("/")[2];
     return (
         <div className="container-fluid">
             <div className="row">
@@ -23,11 +20,11 @@ export default function AdminPage() {
                 </div>
                 <div className="col-md-10">
                     {
-                        Option.AdminOption === "ShowAllItems" ? <GetClothesPage />
+                        history === "manage-clothes" ? <GetClothesPage />
                             :
-                            Option.AdminOption === "AddItem" ? <AddClothesPage />
-                                : Option.AdminOption === "ShowUsers" ? <ShowUserPage />
-                                    : Option.AdminOption === "advertisement" ? <UpdateAdvertisement />
+                            history === "add-clothes" ? <AddClothesPage />
+                                : history === "manage-users" ? <ShowUserPage />
+                                    : history === "manage-advertisement" ? <UpdateAdvertisement />
                                     : null
                     }
                 </div>

@@ -1,106 +1,79 @@
-import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import axios from "axios"
+import { useEffect, useState } from "react";
+import axios from "axios";
+import ClothesCard from "./clothescard";
 
 export default function ListItem() {
-    const [clothes, setClothes] = useState([])
-    const [count, setCount] = useState(1)
-    const [quantity, setQuantity] = useState(10)
-    const [fn, setFn] = useState("mota")
-    function handleClickFn() {
-        setFn(fn === "mota" ? "danhgia" : "mota")
-    }
-    useEffect(() => {
-        axios.get("http://localhost/api/clothes/read.php")
-            .then(res => {
-                setClothes(res.data)
-            }
-            )
-    }, [])
-    return (
-        <div className="bg-white title">
-        <div className="newProduct__title">
-            <div className="newProduct__title__left">
-                <div className="header__logoText">NEW PRODUCT</div>
-            </div>
-            <div className="newProduct__title__right desktop">
-                <div className="newProduct__item hover_underline">All <div className="underline"></div>
-                </div>
-                <div className="newProduct__item hover_underline">Men's <div className="underline"></div>
-                </div>
-                <div className="newProduct__item hover_underline">Wommen's <div className="underline"></div>
-                </div>
-                <div className="newProduct__item hover_underline">Kid's <div className="underline"></div>
-                </div>
-                <div className="newProduct__item hover_underline">Accessories <div className="underline"></div>
-                </div>
-                <div className="newProduct__item hover_underline">Cosmetics <div className="underline"></div>
-                </div>
-            </div>
-            <div className="newProduct__title__right mobile ">
-                <div className="input-group mt-3">
-                    <select className="custom-select" defaultValue="">
-                        <option value="">All</option>
-                        <option value="1">Men's</option>
-                        <option value="2">Wommen's</option>
-                        <option value="3">Kid's</option>
-                        <option value="4">Accessories</option>
-                        <option value="5">Cosmetics</option>
-                    </select>
-                </div>
+  const [clothes, setClothes] = useState([]);
+  const [type, setType] = useState("");
 
-            </div>
+  useEffect(() => {
+    axios.get("http://localhost/api/clothes/read.php").then((res) => {
+      setClothes(res.data);
+    });
+  }, []);
+  return (
+    <div className="bg-white title">
+      <div className="newProduct__title">
+        <div className="newProduct__title__left">
+          <div className="header__logoText">NEW PRODUCT</div>
         </div>
-        <div className="newProduct__content">
-                     {
-                        clothes.map((item, index) => {
-                            return (
-                                <Link to={`/itemdetail/${index}`} className="items text-decoration-none" key={index}>
-                                    {
-                                        index !== 0 ? <hr className="mobile my-4" /> : ""
-                                    }
-                                    <div className="items__img">
-                                    </div>
-                                    <p className="newProduct__content__item__title">
-                                        {item.name}
-                                    </p>
-                                    <div className="newProduct__content__item__rate">
-                                        <i className="fas fa-star"></i>
-                                        <i className="fas fa-star"></i>
-                                        <i className="fas fa-star"></i>
-                                        <i className="fas fa-star"></i>
-                                        <i className="fas fa-star"></i>
-                                    </div>
-                                    <p className="newProduct__content__item__price">
-                                        {item.price}
-                                    </p>
-                                </Link>
-                            )
-                        })
-                    }
+        <div className="newProduct__title__right desktop">
+          <div
+            className="newProduct__item hover_underline"
+            onClick={() => {
+              setType("");
+            }}
+          >
+            All <div className="underline"></div>
+          </div>
+          <div
+            className="newProduct__item hover_underline"
+            onClick={() => {
+              setType("Shoes");
+            }}
+          >
+            Shoes <div className="underline"></div>
+          </div>
+          <div
+            className="newProduct__item hover_underline"
+            onClick={() => {
+              setType("Clothes");
+            }}
+          >
+            Clothes <div className="underline"></div>
+          </div>
+          <div
+            className="newProduct__item hover_underline"
+            onClick={() => {
+              setType("Accessories");
+            }}
+          >
+            Accessories <div className="underline"></div>
+          </div>
         </div>
+        <div className="newProduct__title__right mobile ">
+          <div
+            className="input-group mt-3"
+            onChange={(e) => setType(e.target.value)}
+          >
+            <select className="custom-select" defaultValue="">
+              <option value="">All</option>
+              <option value="Shoes">Shoes</option>
+              <option value="Clothes">Clothes</option>
+              <option value="Accessories">Accessories</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div className="newProduct__content">
+        {(type === "" ? clothes : clothes.filter((it) => type === it.type)).map(
+          (item, index) => {
+            return (
+              <ClothesCard item={item} index={index} />
+            );
+          }
+        )}
+      </div>
     </div>
-        // <div className="container-fluid title">
-        //     <div className="container">
-                
-        //         <div className="row d-flex justify-content-between mb-2 mt-2 align-items-center">
-        //             {
-        //                 new Array(5).fill(0).map((item, index) => {
-        //                     return (
-        //                         <div className="card" style={{width:"14rem"}}>
-        //                             <img className="card-img-top" src="..." alt="Card image cap"/>
-        //                                 <div className="card-body">
-        //                                     <h5 className="card-title">Card title</h5>
-        //                                     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        //                                     <a href="#" className="btn btn-primary">Go somewhere</a>
-        //                                 </div>
-        //                         </div>
-        //                     )
-        //                 })
-        //             }
-        //         </div>
-        //     </div>
-        // </div>
-
-    )
+  );
 }

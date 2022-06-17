@@ -8,14 +8,16 @@ import CartPage from './page/cartpage';
 import UserPage from './page/userpage';
 import WishlistPage from './page/wishlistpage';
 import ForgotPassword from './page/forgotpassword';
-import InstagramAPI from './components/instagramapi';
+import AdminUserPage from './adminpage/adminuserpage';
+import UpdateClothes from './admincomponents/updateclothes';
+// import InstagramAPI from './components/instagramapi';
 
 
 
 // adminpage
 import AdminPage from './adminpage/adminpage';
-import AddClothesPage from './adminpage/addclothespage';
-import GetClothesPage from './adminpage/getclothespage';
+// import AddClothesPage from './adminpage/addclothespage';
+// import GetClothesPage from './adminpage/getclothespage';
 
 import "./css/style.css";
 import "./css/responsivestyle.css";
@@ -27,6 +29,7 @@ import {
 import CartState from './context/cartstate';
 import AdminOptionState from './context/adminoptionstate';
 import UserState from './context/userstate';
+import AddClothesState from './context/addclothesstate';
 function App() {
   return (
     <BrowserRouter>
@@ -42,11 +45,9 @@ function App() {
           <Route path="/user" element={<UserPage />} />
           <Route path="/wish-list" element={<WishlistPage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/admin" element={<AdminOptionState><AdminPage /></AdminOptionState>} />
-          <Route path="/admin/add-clothes" element={<AddClothesPage />} />
-          <Route path="/admin/manage-clothes" element={<GetClothesPage />} />
-
-
+          <Route path="/admin/user" element={<AdminUserPage />} />
+          <Route path="/admin/update-clothes/*" element={<AddClothesState><UpdateClothes/></AddClothesState>} />
+          <Route path="/admin/*" element={<AdminOptionState><AdminPage /></AdminOptionState>} />
         </Routes>
       </UserState>
     </BrowserRouter>

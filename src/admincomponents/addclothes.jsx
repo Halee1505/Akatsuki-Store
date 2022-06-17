@@ -21,7 +21,7 @@ export default function AddClothes() {
             
        }
        Axios.post("http://localhost/api/clothes/create.php", clothes).then(res => {
-              window.location.href = "/admin"
+              window.location.href = "/admin/manage-clothes"
        })
     }
     return (
