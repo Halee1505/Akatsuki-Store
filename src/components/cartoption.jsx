@@ -14,15 +14,15 @@ export default function CartOption() {
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row" className={CartState.CartOption==="donmua"?"bg-secondary text-white":""} 
-                                    onClick={()=>{CartState.setCartOption("donmua")}}>
-                                    Đơn mua
-                                </th>
-                            </tr>
-                            <tr>
                                 <th scope="row"  className={CartState.CartOption==="giohang"?"bg-secondary text-white":""}
                                      onClick={()=>{CartState.setCartOption("giohang")}}>
                                     Giỏ hàng
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="row" className={CartState.CartOption==="donmua"?"bg-secondary text-white":""} 
+                                    onClick={()=>{CartState.setCartOption("donmua")}}>
+                                    Đơn mua
                                 </th>
                             </tr>
                         </tbody>

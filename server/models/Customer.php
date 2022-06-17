@@ -23,7 +23,7 @@
     }
 
     public function read() {
-      $query = 'SELECT c.cid, c.fullname, c.username, c.password, c.avatar, c.dob, c.gender, c.wishlist,c.date_created, c.phone, c.isBanned, a.street, a.district, a.city
+      $query = 'SELECT c.cid, c.fullname, c.username, c.password, c.avatar, c.dob, c.gender, c.wishlist,c.cart,c.date_created, c.phone, c.isBanned, a.street, a.district, a.city
               FROM ' . $this->table . ' c
               LEFT JOIN customer_address a ON c.cid = a.cid';
 
@@ -34,7 +34,7 @@
     }
 
     public function read_single() {
-      $query = 'SELECT c.cid, c.fullname, c.username, c.password, c.avatar, c.dob, c.wishlist,c.gender, c.date_created, c.phone, c.isBanned, a.street, a.district, a.city
+      $query = 'SELECT c.cid, c.fullname, c.username, c.password, c.avatar, c.dob, c.wishlist,c.cart,c.gender, c.date_created, c.phone, c.isBanned, a.street, a.district, a.city
               FROM ' . $this->table . ' c
               LEFT JOIN customer_address a ON c.cid = a.cid
               WHERE c.cid = ?
@@ -55,6 +55,7 @@
         $this->avatar = $row['avatar'];
         $this->dob = $row['dob'];
         $this->gender = $row['gender'];
+        $this->cart = $row['cart'];
         $this->wishlist = $row['wishlist'];
         $this->isBanned = $row['isBanned'];
         $this->phone = $row['phone'];
@@ -165,6 +166,36 @@
         $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(':wishlist',$this->wishlist);
+        $stmt->bindParam(':cid', $this->cid);
+
+
+        if ($stmt->execute()) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+    public function update_cart() {
+      $query = 'SELECT * FROM ' . $this->table . ' WHERE cid = :cid';
+      $stmt = $this->conn->prepare($query);
+      $stmt->bindParam(":cid", $this->cid);
+      $stmt->execute();
+
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      if ($row !== false) {
+        $query = 'UPDATE ' . $this->table . ' 
+              SET
+                cart = :cart
+              WHERE 
+                cid = :cid';
+
+        
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(':cart',$this->cart);
         $stmt->bindParam(':cid', $this->cid);
 
 

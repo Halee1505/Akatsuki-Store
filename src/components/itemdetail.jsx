@@ -1,4 +1,4 @@
-import { useState, useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import userContext from "../context/usercontext";
 import { useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -48,9 +48,10 @@ export default function ItemDetail() {
     setFn(fn === "mota" ? "danhgia" : "mota");
   }
 
-
-  // add wishlist 
-  let isInWishList = UserContext.userWishlist.findIndex((item) => item.id === clothes_id);
+  // add wishlist
+  let isInWishList = UserContext.userWishlist.findIndex(
+    (item) => item.id === clothes_id
+  );
   function addToWishList() {
     let wishlist = UserContext.userWishlist;
     if (UserContext.userWishlist.length !== 0) {
@@ -77,7 +78,45 @@ export default function ItemDetail() {
   }
 
   // upload cart
-  
+  console.log(Clothes);
+  console.log(count);
+  console.log(countcolor);
+  console.log(countsize);
+  console.log(UserContext.userCart)
+  function addToCart() {
+    let cartItem = {
+      clothes: Clothes[0],
+      count: count,
+      countcolor: "color" + countcolor,
+      countsize: "classifycolor" + countcolor + "-" + countsize,
+      indexColor: countcolor,
+    };
+    let isInCart = UserContext.userCart.findIndex(
+      (item) =>
+        item.clothes.id === Clothes[0].id &&
+        item.countsize === cartItem.countsize &&
+        item.countcolor === cartItem.countcolor
+    );
+    let addCart = UserContext.userCart;
+    if (UserContext.userCart.length !== 0) {
+      if (isInCart !== -1) {
+        addCart[isInCart].count += cartItem.count;
+      } else {
+        addCart.push(cartItem);
+      }
+    } else {
+      addCart.push(cartItem);
+    }
+    const data = {
+      cart: JSON.stringify(addCart),
+    };
+    axios
+      .put("http://localhost/api/customer/update_cart.php?cid=" + loged, data)
+      .then((res) => {
+        alert("Thêm vào giỏ thành công");
+        UserContext.setClickBtn(!UserContext.clickBtn);
+      });
+  }
 
   return (
     <div className="container-fluid title">
@@ -111,9 +150,6 @@ export default function ItemDetail() {
                           className={
                             index === 0 ? "active btn btn-dark" : "btn btn-dark"
                           }
-                          onClick={() => {
-                            setCountColor(index);
-                          }}
                         ></button>
                       );
                     })}
@@ -151,6 +187,36 @@ export default function ItemDetail() {
                 <p className="card-text">Type: {item.type}</p>
                 <p className="card-text">Gender: {item.gender}</p>
                 <div>
+                  <div className="form-group row">
+                    <label
+                      htmlFor="username"
+                      className="col-sm-2 col-form-label"
+                    >
+                      Color:{" "}
+                    </label>
+                    {item.color.map((color, index) => {
+                      return (
+                        <button
+                          key={index}
+                          type="button"
+                          // data-target="#carouselExampleIndicators"
+                          // data-slide-to={index}
+                          style={{
+                            height: "1.4vw",
+                            width: "1.4vw",
+                            backgroundColor: color["color" + index],
+                            marginRight: "1.5vw",
+                          }}
+                          className={
+                            index === 0 ? "active btn btn-dark" : "btn btn-dark"
+                          }
+                          onClick={() => {
+                            setCountColor(index);
+                          }}
+                        ></button>
+                      );
+                    })}
+                  </div>
                   <div className="form-group row">
                     <label
                       htmlFor="username"
@@ -277,7 +343,11 @@ export default function ItemDetail() {
                         Add to wishlist
                       </button>
                     )}
-                    <button type="button" className="btn btn-outline-dark mr-4">
+                    <button
+                      type="button"
+                      className="btn btn-outline-dark mr-4"
+                      onClick={addToCart}
+                    >
                       Add to cart
                     </button>
                     <button type="button" className="btn btn-dark">

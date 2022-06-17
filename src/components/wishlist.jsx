@@ -1,31 +1,27 @@
 import Cookies from "js-cookie";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
+import userContext from "../context/usercontext";
 import axios from "axios";
 import {Link} from "react-router-dom";
 let loged = Cookies.get("email");
 
 export default function Wishlist() {
-  const [clickBtn, setClickBtn] = useState(false);
-
-  const [user, setUser] = useState(null);
-  const [userWishlist, setUserWishlist] = useState([]);
+  const UserContext = useContext(userContext);
   useEffect(() => {
     axios
       .get("http://localhost/api/customer/read_single.php?cid=" + loged)
       .then((res) => {
-        setUser(res.data);
-        setUserWishlist(
+        UserContext.setUserWishlist(
           res.data.wishlist !== null ? JSON.parse(res.data.wishlist) : []
         );
       });
-  }, [clickBtn]);
-  console.log(user);
-  console.log(userWishlist);
+  }, [UserContext.clickBtn]);
+  console.log(UserContext.userWishlist);
 
   function removeItem(clothes_id) {
-    let isInWishList = userWishlist.findIndex((item) =>item.id == clothes_id);
-    let wishlist = userWishlist;
-    if (userWishlist.length !== 0) {
+    let isInWishList = UserContext.userWishlist.findIndex((item) =>item.id == clothes_id);
+    let wishlist = UserContext.userWishlist;
+    if (UserContext.userWishlist.length !== 0) {
       if (isInWishList !== -1) {
         wishlist.splice(isInWishList, 1);
       }
@@ -40,7 +36,7 @@ export default function Wishlist() {
       )
       .then((res) => {
         console.log(res.data);
-        setClickBtn(!clickBtn);
+        UserContext.setClickBtn(!UserContext.clickBtn);
       });
   }
 
@@ -67,7 +63,7 @@ export default function Wishlist() {
                 </tr>
               </thead>
               <tbody>
-                {userWishlist.map((item, index) => {
+                {UserContext.userWishlist.map((item, index) => {
                   return (
                     <tr>
                       <th scope="row" className="text-center">
