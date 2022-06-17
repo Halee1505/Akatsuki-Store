@@ -16,6 +16,9 @@ export default function Header() {
         UserContext.setUserWishlist(
           res.data.wishlist !== null ? JSON.parse(res.data.wishlist) : []
         );
+        UserContext.setUserCart(
+          res.data.cart !== null ? JSON.parse(res.data.cart) : []
+        );
       });
   }, [UserContext.clickBtn]);
   
@@ -111,7 +114,7 @@ export default function Header() {
                         justifyContent: "center",
                         alignItems: "center",
                     }}
-                  >{UserContext.userWishlist.length}</strong>
+                  >{UserContext.userCart.length}</strong>
                 </i>
               </Link>
               <Link to="/wish-list">

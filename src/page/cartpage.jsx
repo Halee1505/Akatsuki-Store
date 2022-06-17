@@ -4,31 +4,32 @@ import Bill from "../components/bill";
 import CartOption from "../components/cartoption";
 import CartFooter from "../components/cartfooter";
 import React from "react";
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import CartContext from "../context/cartcontext";
 export default function CartPage() {
     const CartState = useContext(CartContext);
+    const [totalPrice, setTotalPrice] = useState(0);
     return (
         <React.Fragment>
             <Header />
             <div className="container title">
                 <div className="row">
-                    <div className="col-md-4">
+                    <div className="col-md-3">
                         <CartOption />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-9">
                         {
                             CartState.CartOption === "donmua" ?
                                 <Bill />
                                 : CartState.CartOption === "giohang" ?
-                                    <Cart />
+                                    <Cart onChangeTotal={total=>setTotalPrice(total)} />
                                     : null
                         }
                     </div>
                 </div>
                 {
                     CartState.CartOption === "giohang" ?
-                        <CartFooter />
+                        <CartFooter totalPrice={totalPrice} />
                         : null
                 }
             </div>

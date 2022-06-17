@@ -5,6 +5,7 @@ export default function UserState({ children }) {
     const [user, setUser] = useState({});
     const [wishlistCount, setWishlistCount] = useState(0);
     const [userWishlist, setUserWishlist] = useState([]);
+    const [userCart, setUserCart] = useState([]);
     const [clickBtn, setClickBtn] = useState(false);
 
   return (
@@ -16,6 +17,8 @@ export default function UserState({ children }) {
             setWishlistCount,
             userWishlist,
             setUserWishlist,
+            userCart,
+            setUserCart,
             clickBtn,
             setClickBtn,
         }}
