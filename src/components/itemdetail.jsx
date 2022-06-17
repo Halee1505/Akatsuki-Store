@@ -80,7 +80,7 @@ export default function ItemDetail() {
   
 
   return (
-    <div className="container-fluid title">
+    <div className="container-fluid">
       <div className="container">
         {Clothes.map((item, index) => {
           return (
@@ -143,7 +143,7 @@ export default function ItemDetail() {
                   </div>
                 </div>
               </div>
-              <div className=" card card-body col-md-7 mt-4 mb-4">
+              <div className=" card card-body col-md-7">
                 <h5 className="card-title">Tên sản phẩm: {item.name}</h5>
                 <p className="card-title">
                   <strong>Giá: {item.price}vnd</strong>

@@ -36,6 +36,13 @@ export default function Header() {
             alt="logo"
           />
         </Link>
+        <Link to="/">
+          <div className="header__name__overlay">
+            <img className="header__name" src="src/store.png" alt="" />
+          </div>
+        </Link>
+
+        
         <div className="header__function">
           <div className="header__function__item hover_underline">
             <Link to="/" onClick={() => scrollTo("title__advertisement")}>

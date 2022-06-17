@@ -144,11 +144,12 @@ export default function Title() {
             <div className="header__logoText">NEW PRODUCT</div>
           </div>
 
-          <div className="newProduct__title__right justify-content-end">
+          <div className="newProduct__title__right">
             <Link to="items">
               <button className="btn">View all</button>
             </Link>
           </div>
+          
         </div>
         <div className="newProduct__content">
           {Clothes.map((item, index) => {

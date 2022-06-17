@@ -27,6 +27,7 @@ label {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 5%;
 
 }
 
@@ -45,18 +46,43 @@ label {
 }
 
 .header__logo {
-    height: 3.5vw;
-    margin-left: 30px;
+    height: 4vw;
+}
 
+.header__name__overlay{
+    width: 15vw;
+    height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.header__name{
+    height: 1.8vw;
+}
+
+.footer__logo {
+    height: 4vw;
+}
+
+.footer__name{
+    height: 2vw;
+}
+
+.footer__logoVsName{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 20px;
 }
 
 .header__function {
     display: flex;
     height: 100px;
-    width: 50vw;
+    width: 40vw;
     justify-content: space-between;
     align-items: center;
     float: left;
+    margin-right: 5vw;
 }
 
 .header__function__item {
@@ -73,7 +99,7 @@ label {
     text-decoration: none;
     color: #000;
     white-space: nowrap;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
 }
 
 .header__function__item a:hover {
@@ -102,24 +128,27 @@ label {
     justify-content: space-around;
     align-items: center;
     float: right;
-    margin-right: 20px;
 }
 
 .header__user__search {
-    height: 32px;
-    width: 11vw;
+    /* height: 1.5vw; */
+    width: 12vw;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-end;
 }
 
 .header__user__search__input {
     margin-right: 10px;
+    font-size: 1.2vw;
     border: 0px solid #ccc;
     border-bottom: 0.5px solid #ccc;
-    height: 35px;
+    /* height: 35px; */
+    width: 12vw;
     padding: 0px 10px;
     transition: width 0.3s ease-out;
+    align-self: center;
+
 }
 
 
@@ -127,9 +156,17 @@ label {
     outline: none !important;
 }
 
+.btn-lg{
+    font-size: 1.3vw;
+}
+
 .header__user__item {
     color: rgb(57, 57, 57) !important;
     cursor: pointer;
+}
+
+.title{
+    margin: 0 5%;
 }
 
 .title__advertisement {
@@ -193,7 +230,13 @@ label {
     width: 80%;
     margin-left: 10%;
     height: 70px;
+    margin-bottom: 30px;
+    padding-top: 50px;
 }
+
+/* .newProduct__title__wrap{
+    margin: 30px 0;
+} */
 
 .newProduct__title__left {
     float: left;
@@ -201,7 +244,6 @@ label {
 }
 
 .newProduct__title__left {
-    margin-left: 30px;
     width: max-content;
     height: 100%;
     cursor: pointer;
@@ -215,12 +257,30 @@ label {
 }
 
 .newProduct__title__right {
-    float: right;
+    padding-left: 30px;
     height: 100%;
     width: 30vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.newProduct__title__right .btn{
+    background-color:rgb(15, 159, 231);
+    color:rgb(255, 255, 255);
+    font-size: 20px;
+}
+
+.newProduct__title__right .btn:hover{
+    opacity: 0.7;
+}
+
+.newProduct__container{
+    border: 3px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: rgb(249, 249, 249);
 }
 
 .newProduct__item {
@@ -230,9 +290,13 @@ label {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .newProduct__content {
+    border-top: 1px solid #000;
+    padding-top: 30px;
+    padding-bottom: 30px;
     width: 70%;
     margin-left: 15%;
     height: max-content;
@@ -249,9 +313,14 @@ label {
 }
 
 .newProduct__content__item__img {
-    width: 15vw;
-    height: 20vw;
+    width: 12vw;
+    height: 12vw;
     background-color: aquamarine;
+    transition: transform .2s ease-in-out;
+}
+
+.newProduct__content__item__img:hover {
+    transform: scale(1.2);
 }
 
 .newProduct__content__item__title {
@@ -262,11 +331,18 @@ label {
     color: #111111;
     margin: 0px;
     margin-top: 10px;
+    
+}
+
+.newProduct__priceVsStar{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    margin: 15px 0;
 }
 
 .newProduct__content__item__price {
     margin: 0px;
-    margin-bottom: 20px;
     width: 100%;
     /* font-size: 22px; */
     font-weight: 600;
@@ -284,8 +360,6 @@ label {
 
 .fa-star {
     height: 20px;
-
-
 }
 
 .carousel {
@@ -329,7 +403,7 @@ label {
     height: 80px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .discount {
@@ -365,6 +439,7 @@ label {
 .Guarantee__item {
     width: max-content;
     display: flex;
+    margin: 0 10px;
 }
 
 .fa-solid {
@@ -397,6 +472,7 @@ label {
 
 .footer {
     margin-top: 50px;
+    background-color: white;
 }
 
 .col-6 {

@@ -25,10 +25,11 @@ export default function Footer() {
 
         <div className="footer container-fluid" id="contact">
             <div className="container">
+                
                 <div className="py-5">
                     <div className="row">
                         <div className="col-md-4">
-                            <h5>Akatsuki</h5>
+                            <h5>About us</h5>
                             <ul className="nav flex-column">
                                 <li className="nav-item mb-2"><a href="#Lorem" className="nav-link p-0 text-muted">Lorem ipsum dolor sit
                                     amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt cilisis.</a>
@@ -60,12 +61,21 @@ export default function Footer() {
                                     <input id="newsletter1" type="text" className="form-control" placeholder="Email address" />
                                     <button className="btn btn-danger" type="button">Subscribe</button>
                                 </div>
+                                <div className="footer__logoVsName">
+                                    <img
+                                        src="src/logo.png"
+                                        className="footer__logo"
+                                        id="footer__logo"
+                                        alt="logo"
+                                    />          
+                                    <img className="footer__name" src="src/store.png" alt="" />
+                                </div>
                             </form>
                         </div>
                     </div>
 
                     <div className="d-flex justify-content-between py-4 my-4 border-top">
-                        <p>&copy; 2021 Company, Inc. All rights reserved.</p>
+                        <p>&copy; 2022 Company, Inc. All rights reserved.</p>
                         <ul className="list-unstyled d-flex">
                             <li className="ms-3"><a className="link-dark" href="#a"><i className="fa-brands fa-twitter fa-2x"></i>
                             </a></li>
