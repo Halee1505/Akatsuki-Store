@@ -17,9 +17,11 @@ body {
 label {
     margin: 0px !important;
 }
-.row{
+
+.row {
     margin: auto 0px;
 }
+
 .header {
     width: 100%;
     height: 100px;
@@ -266,7 +268,7 @@ label {
 
 .newProduct__content__item__price {
     margin: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     width: 100%;
     /* font-size: 22px; */
     font-weight: 600;
@@ -500,6 +502,7 @@ label {
     transition: opacity 0.5s ease-in-out;
     cursor: pointer;
 }
+
 .uploading {
     display: flex;
     justify-content: center;
@@ -510,7 +513,7 @@ label {
     z-index: 100;
     position: absolute;
     top: 20vw;
-    left:45%;
+    left: 45%;
 }
 
 .upload:hover {
@@ -529,31 +532,23 @@ label {
     transition: opacity 0.5s ease-in-out;
     cursor: pointer;
 }
+
 .itemHover:hover {
     opacity: 1;
 }
-.icon{
-    color: rgb(255, 255, 255);
-    margin-bottom: 3vw;
-    transform: translateY(5vw);
+
+.icon {
+    position: absolute;
+    margin-top: -2.5vw;
+    margin-left: 12.5vw;
+    font-size: 1.8vw;
+
 }
-.itemHover:hover .cart{
-    transform: translateY(0vw);
+
+.wish {
+    color: #ff0000;
 }
-.itemHover:hover .pay{
-    transform: translateY(0vw);
-}
-.itemHover:hover .heart{
-    transform: translateY(0vw);
-}
-.cart{
-    transition: transform 0.3s ease-in-out;
-}
-.pay{
-    margin-left: 1vw;
-    margin-right: 1vw;
-    transition: transform 0.5s ease-in-out;
-}
-.heart{
-    transition: transform 0.7s ease-in-out;
+
+.notwish {
+    color: #000000;
 }

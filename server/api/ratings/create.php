@@ -23,6 +23,13 @@
   $ratings->star = $data->star;
   $ratings->comment = $data->comment;
 
+  // http_response_code(200);
+  // echo json_encode(
+  //         array('clothes_id' => $ratings->clothes_id,
+  //               'user_id' => $ratings->user_id,
+  //               'star' => $ratings->star,
+  //               'comment' => $ratings->comment)
+  //       );
   // Create ratings
   $result = $ratings->create();
 

@@ -23,9 +23,8 @@
     }
 
     public function read() {
-      $query = 'SELECT c.cid, c.fullname, c.username, c.password, c.avatar, c.dob, c.gender, c.wishlist,c.cart,c.date_created, c.phone, c.isBanned, a.street, a.district, a.city
-              FROM ' . $this->table . ' c
-              LEFT JOIN customer_address a ON c.cid = a.cid';
+      $query = 'SELECT *
+              FROM ' . $this->table;
 
       $stmt = $this->conn->prepare($query);
       $stmt->execute();
@@ -34,10 +33,9 @@
     }
 
     public function read_single() {
-      $query = 'SELECT c.cid, c.fullname, c.username, c.password, c.avatar, c.dob, c.wishlist,c.cart,c.gender, c.date_created, c.phone, c.isBanned, a.street, a.district, a.city
-              FROM ' . $this->table . ' c
-              LEFT JOIN customer_address a ON c.cid = a.cid
-              WHERE c.cid = ?
+      $query = 'SELECT *
+              FROM ' . $this->table . ' 
+              WHERE cid = ?
               LIMIT 0,1';
       
       $stmt = $this->conn->prepare($query);
@@ -45,6 +43,7 @@
       $stmt->execute();
 
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      
       if ($row === false) {
         return false;
       } else {
@@ -55,7 +54,6 @@
         $this->avatar = $row['avatar'];
         $this->dob = $row['dob'];
         $this->gender = $row['gender'];
-        $this->cart = $row['cart'];
         $this->wishlist = $row['wishlist'];
         $this->isBanned = $row['isBanned'];
         $this->phone = $row['phone'];
@@ -63,7 +61,7 @@
         $this->street = $row['street'];
         $this->district = $row['district'];
         $this->city = $row['city'];
-        return true;
+        return $stmt;
       }
     }
 
@@ -118,7 +116,10 @@
                 gender   = :gender,
                 phone    = :phone,
                 wishlist = :wishlist,
-                isBanned = :isBanned
+                isBanned = :isBanned,
+                street  = :street,
+                district  = :district,
+                city  = :city
               WHERE 
                 cid = :cid';
         // $query = 'UPDATE ' . $this->table . ' 
@@ -136,6 +137,9 @@
         $stmt->bindParam(':phone',$this->phone);
         $stmt->bindParam(':wishlist',$this->wishlist);
         $stmt->bindParam(':isBanned', $this->isBanned);
+        $stmt->bindParam(':district', $this->district);
+        $stmt->bindParam(':city', $this->city);
+        $stmt->bindParam(':street', $this->street);
         $stmt->bindParam(':cid', $this->cid);
 
 
@@ -178,36 +182,7 @@
         return false;
       }
     }
-    public function update_cart() {
-      $query = 'SELECT * FROM ' . $this->table . ' WHERE cid = :cid';
-      $stmt = $this->conn->prepare($query);
-      $stmt->bindParam(":cid", $this->cid);
-      $stmt->execute();
-
-      $row = $stmt->fetch(PDO::FETCH_ASSOC);
-      if ($row !== false) {
-        $query = 'UPDATE ' . $this->table . ' 
-              SET
-                cart = :cart
-              WHERE 
-                cid = :cid';
-
-        
-        $stmt = $this->conn->prepare($query);
-
-        $stmt->bindParam(':cart',$this->cart);
-        $stmt->bindParam(':cid', $this->cid);
-
-
-        if ($stmt->execute()) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    }
+    
 
     public function login() {
       $query = 'SELECT * FROM ' . $this->table . ' WHERE username = :username';

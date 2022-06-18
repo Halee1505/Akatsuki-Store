@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import React from "react";
-import { useState, useContext,useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import userContext from "../context/usercontext";
 import axios from "axios";
 // let loged = sessionStorage.getItem("login")
@@ -16,12 +16,17 @@ export default function Header() {
         UserContext.setUserWishlist(
           res.data.wishlist !== null ? JSON.parse(res.data.wishlist) : []
         );
-        UserContext.setUserCart(
-          res.data.cart !== null ? JSON.parse(res.data.cart) : []
-        );
       });
   }, [UserContext.clickBtn]);
-  
+
+  useEffect(() => {
+    axios
+      .get("http://localhost/api/cart/read_single.php?user_id=" + loged)
+      .then((res) => {
+        UserContext.setUserCart(res.data);
+      });
+  }, [UserContext.clickBtn]);
+
   const scrollTo = (className) => {
     document.getElementsByClassName(className)[0].scrollIntoView({
       alignToTop: true,
@@ -91,46 +96,51 @@ export default function Header() {
               </Link>
               <Link to="/cart">
                 <i className="fa-solid fa-cart-shopping fa-2x header__user__item">
-                <strong 
+                  <strong
                     style={{
-                        color: "black",
-                        fontSize: "1.2vw",
-                        fontWeight: "bold",
-                        position: "absolute",
-                        marginTop: "-0.9vw",
-                        marginLeft: "1.4vw",
-                        backgroundColor: "white",
-                        borderRadius: "50%",
-                        width: "1.5vw",
-                        height: "1.5vw",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
+                      color: "black",
+                      fontSize: "1.2vw",
+                      fontWeight: "bold",
+                      position: "absolute",
+                      marginTop: "-0.9vw",
+                      marginLeft: "1.4vw",
+                      backgroundColor: "white",
+                      borderRadius: "50%",
+                      width: "1.5vw",
+                      height: "1.5vw",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
                     }}
-                  >{UserContext.userCart.length}</strong>
+                  >
+                    {UserContext.userCart.length}
+                  </strong>
                 </i>
               </Link>
               <Link to="/wish-list">
-                <i className="fa-regular fa-heart fa-2x"
-                    style={{ color: "#ff0000" }}
+                <i
+                  className="fa-regular fa-heart fa-2x"
+                  style={{ color: "#ff0000" }}
                 >
-                  <strong 
+                  <strong
                     style={{
-                        color: "red",
-                        fontSize: "1.2vw",
-                        fontWeight: "bold",
-                        position: "absolute",
-                        marginTop: "-0.9vw",
-                        marginLeft: "1.4vw",
-                        backgroundColor: "white",
-                        borderRadius: "50%",
-                        width: "1.5vw",
-                        height: "1.5vw",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
+                      color: "red",
+                      fontSize: "1.2vw",
+                      fontWeight: "bold",
+                      position: "absolute",
+                      marginTop: "-0.9vw",
+                      marginLeft: "1.4vw",
+                      backgroundColor: "white",
+                      borderRadius: "50%",
+                      width: "1.5vw",
+                      height: "1.5vw",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
                     }}
-                  >{UserContext.userWishlist.length}</strong>
+                  >
+                    {UserContext.userWishlist.length}
+                  </strong>
                 </i>
               </Link>
             </>

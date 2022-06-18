@@ -26,7 +26,6 @@
       'dob' => $customer->dob,
       'phone' => $customer->phone,
       'avatar' => $customer->avatar,
-      'cart' => $customer->cart,
       'wishlist' => $customer->wishlist,
       'isBanned' => $customer->isBanned,
       'gender' => $customer->gender,

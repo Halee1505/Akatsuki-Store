@@ -19,10 +19,12 @@
 
   // Set cart data
   $cart->user_id = $data->user_id;
-  $cart->product_id = $data->product_id;
-  $cart->clothes = $data->clothes;
-  $cart->quantity = $data->quantity;
-  $cart->price = $data->price;
+  $cart->cart_item = $data->cart_item;
+  $cart->color = $data->color;
+  $cart->size = $data->size;
+  $cart->count = $data->count;
+  $cart->status = $data->status;
+  $cart->index_color = $data->index_color;
 
   if ($cart->create()) {
     http_response_code(201);

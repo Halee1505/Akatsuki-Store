@@ -21,6 +21,13 @@
 
       return $stmt;
     }
+    public function read_all() {
+      $query = 'SELECT * FROM ' . $this->table;
+      $stmt = $this->conn->prepare($query);
+      $stmt->execute();
+
+      return $stmt;
+    }
 
     public function calculate_rating($clothes_id) {
       $query = 'SELECT AVG(star) AS rating FROM ' . $this->table . ' WHERE clothes_id = ?';

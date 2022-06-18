@@ -82,40 +82,52 @@ export default function ItemDetail() {
   console.log(count);
   console.log(countcolor);
   console.log(countsize);
-  console.log(UserContext.userCart)
+  console.log(UserContext.userCart);
   function addToCart() {
-    let cartItem = {
-      clothes: Clothes[0],
-      count: count,
-      countcolor: "color" + countcolor,
-      countsize: "classifycolor" + countcolor + "-" + countsize,
-      indexColor: countcolor,
-    };
     let isInCart = UserContext.userCart.findIndex(
       (item) =>
-        item.clothes.id === Clothes[0].id &&
-        item.countsize === cartItem.countsize &&
-        item.countcolor === cartItem.countcolor
+        JSON.parse(item.cart_item).id === Clothes[0].id &&
+        item.size === "classifycolor" + countcolor + "-" + countsize &&
+        item.color === "color" + countcolor
     );
-    let addCart = UserContext.userCart;
-    if (UserContext.userCart.length !== 0) {
-      if (isInCart !== -1) {
-        addCart[isInCart].count += cartItem.count;
-      } else {
-        addCart.push(cartItem);
-      }
+
+    if (isInCart !== -1) {
+      let cartItem = {
+        user_id: loged,
+        cart_item: JSON.stringify(Clothes[0]),
+        color: "color" + countcolor,
+        size: "classifycolor" + countcolor + "-" + countsize,
+        count: Number(count) + Number(UserContext.userCart[isInCart].count),
+        index_color: countcolor,
+        status: "cart",
+      };
+      axios
+        .put(
+          "http://localhost/api/cart/update.php?id=" +
+            UserContext.userCart[isInCart].id,
+          cartItem
+        )
+        .then((res) => {
+          alert("Cập nhật giỏ hàng thành công");
+          UserContext.setClickBtn(!UserContext.clickBtn);
+        });
     } else {
-      addCart.push(cartItem);
+      let cartItem = {
+        user_id: loged,
+        cart_item: JSON.stringify(Clothes[0]),
+        color: "color" + countcolor,
+        size: "classifycolor" + countcolor + "-" + countsize,
+        count: count,
+        index_color: countcolor,
+        status: "cart",
+      };
+      axios
+        .post("http://localhost/api/cart/create.php", cartItem)
+        .then((res) => {
+          alert("Thêm vào giỏ thành công");
+          UserContext.setClickBtn(!UserContext.clickBtn);
+        });
     }
-    const data = {
-      cart: JSON.stringify(addCart),
-    };
-    axios
-      .put("http://localhost/api/customer/update_cart.php?cid=" + loged, data)
-      .then((res) => {
-        alert("Thêm vào giỏ thành công");
-        UserContext.setClickBtn(!UserContext.clickBtn);
-      });
   }
 
   return (
@@ -345,13 +357,10 @@ export default function ItemDetail() {
                     )}
                     <button
                       type="button"
-                      className="btn btn-outline-dark mr-4"
+                      className="btn btn-dark mr-4"
                       onClick={addToCart}
                     >
                       Add to cart
-                    </button>
-                    <button type="button" className="btn btn-dark">
-                      Buy
                     </button>
                   </div>
                 </div>

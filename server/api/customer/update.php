@@ -22,12 +22,16 @@
 
   // Set customer data
   $customer->fullname  = $data->fullname;
+  $customer->avatar    = $data->avatar;
   $customer->dob       = $data->dob;
   $customer->gender    = $data->gender;
   $customer->phone     = $data->phone;
-  $customer->avatar    = $data->avatar;
   $customer->wishlist  = $data->wishlist;
   $customer->isBanned  = $data->isBanned;
+  $customer->street    = $data->street;
+  $customer->district  = $data->district;
+  $customer->city      = $data->city;
+
 
 
   if ($customer->update_information() ==1) {

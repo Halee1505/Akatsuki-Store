@@ -12,7 +12,7 @@
   // Instantiate cart object
   $cart = new Cart($db);
 
-  $result = $cart->read();
+  $result = $cart->read_cart_user();
 
   if ($result !== null) {
     $carts_arr = array();
@@ -22,8 +22,14 @@
       extract($row);
 
       $cart_item = array(
+        'user_id' => $cid,
+        'fullname' => $fullname,
+        'username' => $username,
+        'phone' => $phone,
+        'street' => $street,
+        'district' => $district,
+        'city' => $city,
         'id' => $id,
-        'user_id' => $user_id,
         'cart_item' => $cart_item,
         'color' => $color,
         'size' => $size,

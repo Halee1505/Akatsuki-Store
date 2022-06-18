@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function CartState({ children }) {
     const [CartOption, setCartOption] = useState("giohang");
-    const [billOption, setBillOption] = useState("tatca");
+    const [billOption, setBillOption] = useState("tất cả");
   return (
     <CartContext.Provider
         value={{

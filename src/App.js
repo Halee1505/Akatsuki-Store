@@ -9,6 +9,7 @@ import UserPage from './page/userpage';
 import WishlistPage from './page/wishlistpage';
 import ForgotPassword from './page/forgotpassword';
 import AdminUserPage from './adminpage/adminuserpage';
+import OrderDetail from './adminpage/orderdetail';
 import UpdateClothes from './admincomponents/updateclothes';
 // import InstagramAPI from './components/instagramapi';
 
@@ -46,7 +47,9 @@ function App() {
           <Route path="/wish-list" element={<WishlistPage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/admin/user" element={<AdminUserPage />} />
+          <Route path="/admin/order-detail" element={<OrderDetail />} />
           <Route path="/admin/update-clothes/*" element={<AddClothesState><UpdateClothes/></AddClothesState>} />
+          <Route path="/admin/manage-orders" element={<AdminOptionState><AdminPage /></AdminOptionState>} />
           <Route path="/admin/*" element={<AdminOptionState><AdminPage /></AdminOptionState>} />
         </Routes>
       </UserState>

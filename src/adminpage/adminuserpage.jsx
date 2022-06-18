@@ -14,6 +14,7 @@ export default function AdminUserPage() {
             })
     }, [checkBan])
 
+
     function uploadBan(user) {
         const newUser = {
             "fullname": user.fullname,
@@ -22,7 +23,11 @@ export default function AdminUserPage() {
             "phone": user.phone,
             "avatar": user.avatar,
             "wishlist": user.wishlist,
-            "isBanned": user.isBanned === "0" ? "1" : "0"
+            "isBanned": user.isBanned === "0" ? "1" : "0",
+            "street": user.street,
+            "district":user.district,
+            "city": user.city,
+
         }
         axios.put("http://localhost/api/customer/update.php?cid=" + user.cid, newUser)
             .then(res => {

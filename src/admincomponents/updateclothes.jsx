@@ -49,6 +49,15 @@ export default function UpdateClothes() {
                 window.location.href = "/admin/manage-clothes";
             });
     }
+
+    function onDeleteClotheshandler() {
+        axios
+            .get("http://localhost/api/clothes/delete.php?id=" + clothes_id)
+            .then((res) => {
+                alert("Delete successfully");
+                window.location.href = "/admin/manage-clothes";
+            });
+    }
     return (
         <div className="userpage container-fluid bg-white">
             <div className="container">
@@ -177,8 +186,10 @@ export default function UpdateClothes() {
                                         ></textarea>
                                     </div>
                                     <div className="form-group d-flex justify-content-center">
-                                        <button type="button" className="btn btn-light mr-3">
-                                            Clear
+                                        <button type="button" className="btn btn-danger mr-3"
+                                            onClick={onDeleteClotheshandler}
+                                        >
+                                            Delete
                                         </button>
                                         <button
                                             type="button"

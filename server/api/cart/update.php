@@ -18,9 +18,15 @@
   $data = json_decode(file_get_contents("php://input"));
 
   // Set cart data
-  $cart->id = $data->id;
-  $cart->clothes = $data->clothes;
-  $cart->quantity = $data->quantity;
+  $cart->id = isset($_GET['id']) ? $_GET['id'] : die();
+  
+  $cart->user_id = $data->user_id;
+  $cart->cart_item = $data->cart_item;
+  $cart->color = $data->color;
+  $cart->size = $data->size;
+  $cart->count = $data->count;
+  $cart->status = $data->status;
+  $cart->index_color = $data->index_color;
 
   if ($cart->update()) {
     http_response_code(200);

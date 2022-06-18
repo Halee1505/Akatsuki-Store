@@ -25,6 +25,7 @@ export default function User() {
     axios
       .get("http://localhost/api/customer/read_single.php?cid=" + loged)
       .then((res) => {
+        console.log(res.data);
         User.setUser(res.data);
       });
   }, [update]);
@@ -36,8 +37,8 @@ export default function User() {
   const [gender, setGender] = useState(User.user.gender);
   const [dob, setDob] = useState(User.user.dob);
   const [street, setStreet] = useState(User.user.street);
-  const [district, setDistrict] = useState(User.user.street);
-  const [city, setCity] = useState(User.user.street);
+  const [district, setDistrict] = useState(User.user.district);
+  const [city, setCity] = useState(User.user.city);
   const [Loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -54,15 +55,21 @@ export default function User() {
 
   const Upload = (UploadImg) => {
     setLoading(true);
-    const formData = new FormData();
-    formData.append("file", UploadImg);
-    formData.append("upload_preset", "vitamim");
-    axios
-      .post("https://api.cloudinary.com/v1_1/vitamim/image/upload", formData)
-      .then((res) => {
-        setLoading(false);
-        UpdateUser(res.data.url);
-      });
+    if (updateAvatar !== null) {
+      const formData = new FormData();
+      formData.append("file", UploadImg);
+      formData.append("upload_preset", "vitamim");
+      axios
+        .post("https://api.cloudinary.com/v1_1/vitamim/image/upload", formData)
+        .then((res) => {
+          setLoading(false);
+          UpdateUser(res.data.url);
+        });
+    }
+    else{
+      setLoading(false);
+      UpdateUser(avatar);
+    }
   };
   const onDrop = (files) => {
     if (files) {
@@ -71,17 +78,22 @@ export default function User() {
     }
   };
 
+
   function UpdateUser(newAvatar) {
     console.log(newAvatar);
     const newUser = {
       fullname: userName,
+      avatar: newAvatar,
       dob: dob,
       gender: gender,
       phone: phoneNumber,
-      avatar: newAvatar,
       wishlist: User.user.wishlist,
       isBanned: User.user.isBanned,
+      street: street,
+      district: district,
+      city: city,
     };
+    console.log(newUser);
     axios
       .put("http://localhost/api/customer/update.php?cid=" + loged, newUser)
       .then((res) => {

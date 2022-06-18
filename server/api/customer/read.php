@@ -27,6 +27,7 @@
         'fullname' => $fullname,
         'username' => $username,
         'password' => $password,
+        'avatar'  => $avatar,
         'dob' => $dob,
         'gender' => $gender,
         'phone' => $phone,
@@ -35,7 +36,7 @@
         'date_created' => $date_created,
         'street' => $street,
         'district' => $district,
-        'city' => $city,
+        'city' => $city
       );
 
       array_push($customers_arr, $customer_item);
