@@ -205,9 +205,9 @@
     }
 
     public function forgotPassword() {
-      $query = 'SELECT password FROM ' . $this->table . ' WHERE username = :username';
+      $query = 'SELECT * FROM ' . $this->table . ' WHERE username = ?';
       $stmt = $this->conn->prepare($query);
-      $stmt->bindParam(':username', $this->username);
+      $stmt->bindParam(1, $this->username);
 
       $stmt->execute();
 
@@ -215,7 +215,27 @@
       if ($row === false) {
         return false;
       } else {
+        $this->username = $row['username'];
         return true;
+      }
+    }
+
+    public function resetPassword() {
+      $password_hash = password_hash($this->password, PASSWORD_BCRYPT);
+      $query = 'UPDATE ' . $this->table . ' 
+            SET
+              password = :password
+            WHERE 
+              username = :username';
+      $stmt = $this->conn->prepare($query);
+
+      $stmt->bindParam(':password', $password_hash);
+      $stmt->bindParam(':username', $this->username);
+
+      if ($stmt->execute()) {
+        return true;
+      } else {
+        return false;
       }
     }
 
