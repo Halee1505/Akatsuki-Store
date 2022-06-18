@@ -17,6 +17,9 @@ body {
 label {
     margin: 0px !important;
 }
+p{
+    margin: 0px;
+}
 .row{
     margin: auto 0px;
 }
@@ -29,6 +32,10 @@ label {
     align-items: center;
     padding: 0 5%;
 
+}
+
+.white{
+    color: #fff !important;
 }
 
 .img-border {
@@ -165,6 +172,11 @@ label {
     cursor: pointer;
 }
 
+.cart-icon__item{
+    color: rgb(239, 117, 117) !important;
+    cursor: pointer;
+}
+
 .title{
     margin: 0 5%;
 }
@@ -278,7 +290,7 @@ label {
 .newProduct__container{
     border: 3px solid #000;
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 0;
     margin-bottom: 20px;
     background-color: rgb(249, 249, 249);
 }
@@ -307,6 +319,16 @@ label {
 
 }
 
+.newProduct__element{
+    max-width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
 .newProduct__content__item {
     width: 22%;
     height: max-content;
@@ -330,8 +352,7 @@ label {
     text-align: center;
     color: #111111;
     margin: 0px;
-    margin-top: 10px;
-    
+    margin-top: 10px; 
 }
 
 .newProduct__priceVsStar{
@@ -356,6 +377,14 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.newProduct__content__item__rate p{
+    margin:0;
+    font-size: 1.2vw;
+    font-weight: 600;
+    color: #d80000;
+    margin-right: 10px;
 }
 
 .fa-star {
@@ -533,6 +562,7 @@ label {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    height: 28vw;
 }
 
 .lds-dual-ring {
@@ -608,6 +638,7 @@ label {
 .itemHover:hover {
     opacity: 1;
 }
+
 .icon{
     color: rgb(255, 255, 255);
     margin-bottom: 3vw;
@@ -632,4 +663,127 @@ label {
 }
 .heart{
     transition: transform 0.7s ease-in-out;
+}
+
+.detail__wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 40px 0;
+}
+
+.detail__wrap .img-card{
+    flex:2;
+    margin-right: 40px;
+    min-height: 20vw;
+}
+
+.detail__wrap .detail-card{
+    flex: 3;
+    min-height: 20vw;
+}
+
+.detail-card h5{
+    font-size: 20px;
+}
+
+.card-price{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 24px;
+    background-color:rgb(235, 235, 235);
+    padding: 10px;
+    font-weight: bold;
+}
+
+.card-price p{
+    margin-right: 8px;
+    font-size:20px;
+}
+
+.card-title{
+    margin:10px;
+}
+
+.product__content__item__rate {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 5px 8px;
+}
+
+.product__content__item__rate p{
+    margin:0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #d80000;
+    margin-right: 10px;
+}
+
+.card-text{
+    margin: 5px 15px;
+}
+
+.form-group{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.form-group.size{
+    min-height: 80px;
+    margin: 10px 0;
+}
+
+.form-group.size button{
+    width: 4vw;
+}
+
+.button-mod{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-mod i{
+    margin-left: 5px;
+}
+
+.button-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 5px;
+}
+
+.button-group button{
+    margin: 5px 5px;
+}
+
+.star{
+    display: block;
+    margin: 10px 5px 0px;
+}
+
+.star__and__star{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.current__star{
+    font-weight: 600;
+    color:#ca1515;
+    font-size:2.5vw;
+    margin-right:5px;
+}
+
+.five__star{
+    font-weight: 400;
+    color:#cf2e2e;
+    font-size:1.5vw;
+    margin-right:5px;
 }

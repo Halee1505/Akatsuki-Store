@@ -154,7 +154,7 @@ export default function Title() {
         <div className="newProduct__content">
           {Clothes.map((item, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="newProduct__element">
                 {index !== 0 ? <hr className="mobile my-4" /> : ""}
                 <ClothesCard item={item} index={index} />
               </div>

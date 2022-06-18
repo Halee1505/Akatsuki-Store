@@ -60,13 +60,13 @@ export default function ClothesCard({ item,index }) {
                   ></i>
                   {UserContext.userWishlist.findIndex((u) => u.id === item.id) !== -1 ? (
                     <i
-                      className="icon heart fa-solid fa-heart"
+                      className="icon heart fa-solid fa-heart white"
                       title="Remove from wishlist"
                       onClick={() => addToWishList(item)}
                     ></i>
                   ) : (
                     <i
-                      className="icon heart fa-regular fa-heart"
+                      className="icon heart fa-regular fa-heart white"
                       title="Add to wishlist"
                       onClick={() => addToWishList(item)}
                     ></i>
@@ -86,7 +86,6 @@ export default function ClothesCard({ item,index }) {
         <p
           className="newProduct__content__item__title"
           style={{
-            fontSize: "18px",
             overflow: "hidden",
             whiteSpace: "nowrap",
             textOverflow: "ellipsis",
