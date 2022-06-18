@@ -198,6 +198,8 @@ p{
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+
 }
 
 .title__advertisement__item {
@@ -209,6 +211,7 @@ p{
     height: 98%;
     width: 98%;
 }
+
 
 .title__advertisement__right {
     float: right;
@@ -229,8 +232,14 @@ p{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    transition: transform .2s ease-in-out;
+}
+
+.title__advertisement__items:hover {
+    transform: scale(1.2);
 
 }
+
 
 .newProduct {
     margin-top: 50px;
@@ -789,3 +798,4 @@ p{
 .date{
     margin: 7px 15px;
 }
+
