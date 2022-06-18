@@ -78,17 +78,18 @@ export default function ItemDetail() {
   }
 
   // upload cart
-  console.log(Clothes);
-  console.log(count);
-  console.log(countcolor);
-  console.log(countsize);
+  // console.log(Clothes);
+  // console.log(count);
+  // console.log(countcolor);
+  // console.log(countsize);
   console.log(UserContext.userCart);
   function addToCart() {
     let isInCart = UserContext.userCart.findIndex(
       (item) =>
         JSON.parse(item.cart_item).id === Clothes[0].id &&
         item.size === "classifycolor" + countcolor + "-" + countsize &&
-        item.color === "color" + countcolor
+        item.color === "color" + countcolor && 
+        item.status === "cart"
     );
 
     if (isInCart !== -1) {
@@ -251,7 +252,7 @@ export default function ItemDetail() {
                       );
                     })}
                   </div>
-                  <div className="form-group row size">
+                  <div className="form-group row color">
                     <label
                       htmlFor="username"
                       className="col-sm-3 col-form-label"
@@ -305,7 +306,7 @@ export default function ItemDetail() {
                       </div>
                     )}
                   </div>
-                  <div className="form-group row">
+                  <div className="form-group row color">
                     <label
                       htmlFor="quantity"
                       className="col-sm-6 col-form-label"
@@ -320,11 +321,11 @@ export default function ItemDetail() {
                         : 0}
                     </div>
                   </div>
-                  <div className="form-group row">
+                  <div className="form-group row color">
                     <label htmlFor="count" className="col-4 col-form-label">
                       <p className="tag">Số lượng:{" "}</p>
                     </label>
-                    <div className="col-7 col-form-label row">
+                    <div className="col-8 col-form-label row">
                       <button
                         className="btn col-2"
                         onClick={() => {
