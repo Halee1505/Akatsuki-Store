@@ -91,7 +91,7 @@ export default function Title() {
               <div
                 className="title__advertisement__items"
                 style={{
-                  backgroundImage: `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDSPQLF-namZAMhSVWA1iOIyetdF7z5bfXLg&usqp=CAU')`,
+                  backgroundImage: "url(" + preview1 + ")",
                 }}
               ></div>
             </div>
@@ -99,7 +99,7 @@ export default function Title() {
               <div
                 className="title__advertisement__items"
                 style={{
-                  backgroundImage: `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-9UOUewPMTq0NYSXOQDKfoBm4Oh_4Xdn7qA&usqp=CAU')`,
+                  backgroundImage: "url(" + preview2 + ")",
                 }}
               ></div>
             </div>
@@ -107,7 +107,23 @@ export default function Title() {
               <div
                 className="title__advertisement__items"
                 style={{
-                  backgroundImage: `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqXiFLOvVpZneMgBluZzn1etUzdg9nhVogPQ&usqp=CAU')`,
+                  backgroundImage:  "url(" + preview3 + ")",
+                }}
+              ></div>
+            </div>
+            <div className="carousel-item">
+              <div
+                className="title__advertisement__items"
+                style={{
+                  backgroundImage:  "url(" + preview4 + ")",
+                }}
+              ></div>
+            </div>
+            <div className="carousel-item">
+              <div
+                className="title__advertisement__items"
+                style={{
+                  backgroundImage:  "url(" + preview5 + ")",
                 }}
               ></div>
             </div>

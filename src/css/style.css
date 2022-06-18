@@ -249,8 +249,8 @@ p{
 }
 
 .newProduct__title {
-    width: 80%;
-    margin-left: 10%;
+    width: 90%;
+    margin-left: 5%;
     height: 70px;
     margin-bottom: 30px;
     padding-top: 50px;
@@ -801,4 +801,12 @@ p{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+
+.items__search{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 20px;
+    margin-left: 20px;
 }

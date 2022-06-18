@@ -84,17 +84,6 @@ export default function Header() {
           </div>
         </div>
         <div className="header__user d-flex align-items-end">
-          <div className="header__user__search">
-            <input
-              type="text"
-              className="header__user__search__input"
-              id="search"
-              placeholder="Search"
-            />
-            <label htmlFor="search">
-              <i className="fa-solid fa-magnifying-glass fa-2x header__user__item hover__input"></i>
-            </label>
-          </div>
 
           {loged ? (
             <>

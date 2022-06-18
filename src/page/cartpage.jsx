@@ -14,10 +14,10 @@ export default function CartPage() {
             <Header />
             <div className="container title">
                 <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-md-2">
                         <CartOption />
                     </div>
-                    <div className="col-md-9">
+                    <div className="col-md-10">
                         {
                             CartState.CartOption === "donmua" ?
                                 <Bill />

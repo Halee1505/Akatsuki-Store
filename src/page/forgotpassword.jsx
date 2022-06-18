@@ -44,7 +44,7 @@ export default function ForgotPassword() {
         }
         if (step === 2) {
             if (Number(verifyCode) === Number(codeGen)) {
-                setStep(3)
+                setStep(4)
             } else {
                 alert("Wrong code")
             }  

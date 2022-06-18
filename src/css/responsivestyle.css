@@ -489,4 +489,36 @@
         width: 100%;
     }
 
+    .color{
+        justify-content: center;
+    }
+
+    .detail-card{
+        padding: 20px 0;
+    }
+
+    .items__search{
+        margin-right: 0px;
+        width: 45%;
+        margin-left: 10%;
+    }
+
+    .items__search .header__user__search__input{
+        width: 75%;
+        height: 38px;
+        font-size: 20px;
+        
+        margin-right: 0px;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+        color: #495057;
+        border: 1px solid #ced4da;
+        line-height: 1.5;
+        padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+    }
+
+    .input-group.select{
+        width: 36%;
+    }
+
 }
