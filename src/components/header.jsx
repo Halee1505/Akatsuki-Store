@@ -120,7 +120,7 @@ export default function Header() {
                       alignItems: "center",
                     }}
                   >
-                    {UserContext.userCart.length}
+                    {UserContext.userCart.filter(cart=>cart.status === "cart").length}
                   </strong>
                 </i>
               </Link>
@@ -154,17 +154,17 @@ export default function Header() {
           ) : (
             <ul className="nav d-flex align-items-end">
               <li className="nav-item">
-                <a href="login" className="nav-link p-0 text-muted btn-lg">
+                <a href="/login" className="nav-link p-0 text-muted btn-lg">
                   Login
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#b" className="nav-link p-0 text-muted btn-lg">
+                <div className="nav-link p-0 text-muted btn-lg">
                   /
-                </a>
+                </div>
               </li>
               <li className="nav-item">
-                <a href="signup" className="nav-link p-0 text-muted btn-lg">
+                <a href="/signup" className="nav-link p-0 text-muted btn-lg">
                   Signup
                 </a>
               </li>
@@ -223,16 +223,15 @@ export default function Header() {
                 </div>
               ) : (
                 <div className="navbar__icon">
-                  <a href="login" className="nav-link p-0 text-muted btn-lg">
+                  <a href="/login" className="nav-link p-0 text-muted btn-lg">
                     Login
                   </a>
-                  <a
-                    href="#b"
+                  <div
                     className="nav-link p-0 text-muted btn-lg ml-1 mr-1"
                   >
                     /
-                  </a>
-                  <a href="signup" className="nav-link p-0 text-muted btn-lg">
+                  </div>
+                  <a href="/signup" className="nav-link p-0 text-muted btn-lg">
                     Signup
                   </a>
                 </div>

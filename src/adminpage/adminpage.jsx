@@ -19,7 +19,7 @@ export default function AdminPage() {
         <div className="col-md-2">
           <AdminOption />
         </div>
-        <div className="col-md-10">
+        <div className="col-md-10 p-0">
           {history === "manage-clothes" ? (
             <GetClothesPage />
           ) : history === "add-clothes" ? (

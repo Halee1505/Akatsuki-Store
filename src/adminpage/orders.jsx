@@ -1,16 +1,20 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
+  const [result, setResult] = useState([]);
+  const [search, setSearch] = useState("");
   useEffect(() => {
     axios.get("http://localhost/api/cart/read_cart_user.php").then((res) => {
-      setOrders(res.data);
+      setResult(res.data.filter((order) => order.status !== "cart"));
     });
   }, []);
 
-  console.log(orders);
+  const handleSearch = () => {
+    setOrders(result.filter((order) => order.id.includes(search)));
+  };
 
   return (
     <div className="container-fluid">
@@ -23,8 +27,13 @@ export default function Orders() {
             placeholder="Tìm kiếm theo mã đơn hàng"
             aria-label="Search"
             style={{ width: "20vw" }}
+            onChange={(e) => setSearch(e.target.value)}
           />
-          <button className="btn btn-outline-dark my-2 my-sm-0" type="button">
+          <button
+            className="btn btn-outline-dark my-2 my-sm-0"
+            type="button"
+            onClick={handleSearch}
+          >
             Search
           </button>
         </form>
@@ -46,9 +55,7 @@ export default function Orders() {
                 </tr>
               </thead>
               <tbody>
-                {orders
-                  .filter((o) => o.status !== "cart")
-                  .map((order) => (
+                {orders.map((order) => (
                     <tr>
                       <th scope="row">{order.id}</th>
                       <td>{order.fullname}</td>
