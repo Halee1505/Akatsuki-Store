@@ -13,10 +13,27 @@ export default function ForgotPassword() {
     useEffect(() => {
         setCodeGen(Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000)
     }, [])
-    console.log(codeGen)
+
+
     function handleSubmit(e, step) {
         e.preventDefault();
         if (step === 1) {
+            const user = {
+                username: email,
+            }
+            axios.get("http://localhost/api/customer/forgot_password.php", JSON.stringify(user))
+            .then(res => {
+                if(res.status === 200){
+                    console.log(res.data)
+                    setStep(2)
+                }
+            })
+            .catch(err => {
+                alert(err.message)
+                // window.location.href = "/login"
+            })
+        }
+        if (step === 2) {
             setLoading(true)
             axios.post("https://api.emailjs.com/api/v1.0/email/send",
                 {
@@ -34,12 +51,12 @@ export default function ForgotPassword() {
                 setLoading(false)
                 console.log(res.status)
             })
-            setStep(2)
+            setStep(3)
 
 
-        } else if (step === 2) {
+        } else if (step === 3) {
             if (Number(verifyCode) === Number(codeGen)) {
-                setStep(3)
+                setStep(4)
             } else {
                 alert("Wrong code")
             }
