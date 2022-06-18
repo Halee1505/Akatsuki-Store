@@ -143,24 +143,28 @@ export default function Title() {
           <div className="newProduct__title__left">
             <div className="header__logoText">NEW PRODUCT</div>
           </div>
-
-          <div className="newProduct__title__right justify-content-end">
-            <Link to="items">
-              <button className="btn">View all</button>
-            </Link>
-          </div>
+          
         </div>
         <div className="newProduct__content">
           {Clothes.map((item, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="newProduct__element">
                 {index !== 0 ? <hr className="mobile my-4" /> : ""}
                 <ClothesCard item={item} index={index} />
               </div>
             );
           })}
         </div>
+
+        <div className="newProduct__title__right">
+            <Link to="items">
+              <button className="btn">View all</button>
+            </Link>
+          </div>
+
       </div>
+
+      
       <div className="carousel" id="news"></div>
       <div className="specialItem" id="special">
         {["HOT TREND", "BEST SELLER", "FEATURE"].map((items, items_ind) => {

@@ -33,7 +33,7 @@ export default function Classify({ id }) {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 row">
-                        <div className="input-group col-md-6 row mb-1 mt-1" style={{ height: "5vw" }}>
+                        <div className="input-group col-md-10 row mb-1 mt-1" style={{ height: "5vw" }}>
                             <div className="input-group-prepend col-md-12 row d-flex align-items-center">
                                 <label htmlFor={`color${id}`} className="col-md-4">Color {id + 1}: </label>
                                 <input type="color" name={`color${id}`} className="input-group-text col-md-2"
@@ -47,7 +47,7 @@ export default function Classify({ id }) {
                                     onChange={(e) => { setColorHandler(e) }} id={`url${id}`} style={{ height: "100%" }} />
                             </div>
                         </div>
-                        <div className="col-md-5 row">
+                        <div className="col-md-12 row">
                             {
                                 classify !== 0 ?
                                     new Array(classify).fill(0).map((it, index) => {

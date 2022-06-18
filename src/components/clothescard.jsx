@@ -60,7 +60,6 @@ export default function ClothesCard({ item, index }) {
         <p
           className="newProduct__content__item__title"
           style={{
-            fontSize: "18px",
             overflow: "hidden",
             whiteSpace: "nowrap",
             textOverflow: "ellipsis",
@@ -68,21 +67,25 @@ export default function ClothesCard({ item, index }) {
         >
           {item.name}
         </p>
-        <div className="newProduct__content__item__rate">
-          <Rating
-            fullSymbol={
-              <i className="fas fa-star" style={{ color: "#ffd724" }}></i>
-            }
-            emptySymbol={
-              <i className="fas fa-star" style={{ color: "#f1f1f1" }}></i>
-            }
-            fractions={10}
-            readonly
-            stop={5}
-            start={0}
-            step={1}
-            initialRating={item.ratings}
-          />
+
+        <div className="newProduct__priceVsStar">
+          <p className="newProduct__content__item__price">{item.price}.000<i class="fa-solid fa-dong-sign"></i></p>
+          <div className="newProduct__content__item__rate">
+            <Rating
+              fullSymbol={
+                <i className="fas fa-star" style={{ color: "#ffd724" }}></i>
+              }
+              emptySymbol={
+                <i className="fas fa-star" style={{ color: "#e1e1e1" }}></i>
+              }
+              fractions={10}
+              readonly
+              stop={5}
+              start={0}
+              step={1}
+              initialRating={item.ratings}
+            />
+          </div>
         </div>
         <p className="newProduct__content__item__price">{item.price}vnd</p>
         </Link>

@@ -44,6 +44,13 @@ export default function Header() {
             alt="logo"
           />
         </Link>
+        <Link to="/">
+          <div className="header__name__overlay">
+            <img className="header__name" src="src/store.png" alt="" />
+          </div>
+        </Link>
+
+        
         <div className="header__function">
           <div className="header__function__item hover_underline">
             <Link to="/" onClick={() => scrollTo("title__advertisement")}>
@@ -231,13 +238,20 @@ export default function Header() {
                 </div>
               )}
               <hr className="my-4" />
+              
+              <div className="header__mobile">
+                <img
+                  src="src/logo.png"
+                  className="header__logo"
+                  id="header__logo"
+                  alt="logo"
+                />
 
-              <img
-                src="src/logo.png"
-                className="header__logo"
-                id="header__logo"
-                alt="logo"
-              />
+                <img className="header__name__mobile" src="src/store.png" alt="" />
+
+              </div>
+              
+
 
               <ul>
                 <li

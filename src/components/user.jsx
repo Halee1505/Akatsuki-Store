@@ -219,6 +219,7 @@ export default function User() {
                     type="date"
                     onChange={(e) => setDob(e.target.value)}
                     defaultValue={dob}
+                    className="col-form-label date"
                   />
                 </div>
                 <div className="form-group row">
@@ -228,11 +229,11 @@ export default function User() {
                   >
                     Address:{" "}
                   </label>
-                  <div className="col-sm-8 col-form-label d-flex align-items-center">
+                  <div className="col-sm-8 col-form-label">
                     <label htmlFor="street">Street: </label>
                     <input
                       type="text"
-                      className="form-control-plaintext"
+                      className="form-control-plaintext border border-info mb-3 rounded"
                       id="street"
                       onChange={(e) => setStreet(e.target.value)}
                       defaultValue={street}
@@ -240,7 +241,7 @@ export default function User() {
                     <label htmlFor="district">District: </label>
                     <input
                       type="text"
-                      className="form-control-plaintext"
+                      className="form-control-plaintext border border-info mb-3 rounded"
                       id="district"
                       onChange={(e) => setDistrict(e.target.value)}
                       defaultValue={district}
@@ -248,14 +249,14 @@ export default function User() {
                     <label htmlFor="city">City: </label>
                     <input
                       type="text"
-                      className="form-control-plaintext"
+                      className="form-control-plaintext border border-info mb-3 rounded"
                       id="city"
                       onChange={(e) => setCity(e.target.value)}
                       defaultValue={city}
                     />
                   </div>
                 </div>
-                <div className="form-group row justify-content-end col-md-11">
+                <div className="form-group row justify-content-end col-md-12">
                   <button
                     type="button"
                     className="btn btn-dark"

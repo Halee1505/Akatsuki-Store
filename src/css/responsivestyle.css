@@ -18,7 +18,16 @@
         margin-top: 0px;
         margin-left: 0px;
         margin-right: 0px;
-        float: right;
+    }
+
+    .header__mobile{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header__name__mobile{
+        width: 50%;
     }
     .header__name__overlay{
         width: 65vw;
@@ -94,10 +103,6 @@
         height: max-content;
     }
 
-    .fa-regular {
-        color: #000000 !important;
-    }
-
     .btn:hover .fa-solid {
         color: #ffffff !important;
     }
@@ -113,7 +118,7 @@
     }
 
     ul {
-        margin-top: 60px;
+        margin-top: 10px;
         list-style-type: none;
         padding-left: 20px;
     }
@@ -179,7 +184,7 @@
     
     .newProduct__title {
         width: 80%;
-        margin-left: 10%;
+        margin-left: 0;
         height: 70px;
     }
     
@@ -195,20 +200,13 @@
         cursor: pointer;
         font-family: 'Roboto', sans-serif;
         font-weight: 600;
-        font-size: 35px;
+        font-size: 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
     
-    .newProduct__title__right {
-        float: right;
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
     
     .newProduct__item {
         font-size: 1.2rem;
@@ -220,12 +218,11 @@
     }
     
     .newProduct__content {
-        width: 70%;
-        margin-left: 15%;
+        width: 82%;
+        margin: auto;
         height: max-content;
         background-color: #fff;
-
-    
+        
     }
     
     .newProduct__content__item {
@@ -235,7 +232,7 @@
     
     .newProduct__content__item__img {
         width: 100%;
-        height: calc(300px);
+        height: 75vw;
         background-color: aquamarine;
     }
     
@@ -250,7 +247,7 @@
     }
     
     .newProduct__content__item__price {
-        margin: 0px;
+        font-size: 24px; 
         margin-bottom: 20px;
         width: 100%;
         /* font-size: 22px; */
@@ -265,6 +262,33 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .newProduct__content__item__title {
+        font-size: 24px; 
+        margin: 0 15px;
+    }
+
+    .itemHover {
+        align-items: center;
+        font-size: 8vw;
+    }
+
+    .itemHover i {
+        margin: 0 10px;
+    }
+
+
+    .newProduct__item {
+        width: 100%;
+    }
+
+    .newProduct__element {
+        width: 100%;
+    }
+
+    .newProduct__container{
+        width: 100%;
     }
     
     .fa-star {
@@ -322,6 +346,8 @@
     }
     .Guarantee__item{
         font-size: 8px;
+        width:auto;
+        margin-bottom: 20px;
     }
     .Guarantee__title h3{
         font-size: 1.2rem;
@@ -382,6 +408,81 @@
     .fa-arrow-up{
         color: #ccc;
     
+    }
+
+    .detail__wrap{
+        display: block;
+    }
+
+    .carousel-inner .preview-img{
+        height: 75vw;
+    }
+
+    .detail__wrap .img-card{
+        margin-top: 55px;
+        margin-right: 0px;
+        padding-bottom: 38px;
+    }
+
+    .form-group.size button{
+        width: 8vw;
+    }
+    .nav.flex-column{
+        margin-top : 20px !important;
+    }
+
+    .about__us{
+        margin-top: 30px;
+    }
+
+    .btn-lg{
+        font-size: 20px;
+    }
+
+    .comment__mobile{
+        justify-content:flex-start !important;
+    }
+
+    .current__star{
+        font-size:20px;
+    }
+    
+    .five__star{
+        font-size:15px;
+    }
+
+    .footer__name{
+        width: 80%;
+        height:fit-content;
+    }
+    .footer__logo{
+        width: 20%;
+        height:fit-content;
+    }
+    .footer__logoVsName{
+        padding: 20px 0;
+    }
+
+    .header__name{
+        display:none;
+    }
+
+    .fa-2x {
+        font-size: 4vw;
+    }
+
+    .header__logoText{
+        display:none;
+    }
+
+    .newProduct__title__right.mobile{
+        display:flex !important;
+        width: 100%;
+        margin:auto;
+    }
+
+    .custom-select{
+        left: 12%;
     }
 
 }

@@ -131,80 +131,102 @@ export default function ItemDetail() {
   }
 
   return (
-    <div className="container-fluid title">
+    <div className="container-fluid">
       <div className="container">
         {Clothes.map((item, index) => {
           return (
             <div className="row d-flex justify-content-between mb-2 mt-2 align-items-center">
-              <div
-                className="card card-body col-md-4"
-                style={{ width: "8rem" }}
-              >
+              <div className="detail__wrap">
                 <div
-                  id="carouselExampleIndicators"
-                  className="carousel slide"
-                  style={{ width: "100%", marginLeft: "0px", marginTop: "0px" }}
-                  data-ride="carousel"
+                  className="card card-body img-card"
+                  
                 >
-                  <ol className="carousel-indicators">
-                    {item.color.map((color, index) => {
-                      return (
-                        <button
-                          key={index}
-                          type="button"
-                          data-target="#carouselExampleIndicators"
-                          data-slide-to={index}
-                          style={{
-                            height: "1.4vw",
-                            width: "1.4vw",
-                            backgroundColor: color["color" + index],
-                          }}
-                          className={
-                            index === 0 ? "active btn btn-dark" : "btn btn-dark"
-                          }
-                        ></button>
-                      );
-                    })}
-                  </ol>
-                  <div className="carousel-inner">
-                    {item.color.map((color, index) => {
-                      return (
-                        <div
-                          key={index}
-                          className={
-                            index === 0
-                              ? "carousel-item active"
-                              : "carousel-item"
-                          }
-                        >
-                          <div
-                            className="bg-secondary mt-2 preview-img"
+                  <div
+                    id="carouselExampleIndicators"
+                    className="carousel slide"
+                    style={{ width: "100%", marginLeft: "0px", marginTop: "0px" }}
+                    data-ride="carousel"
+                  >
+                    <ol className="carousel-indicators">
+                      {item.color.map((color, index) => {
+                        return (
+                          <button
+                            key={index}
+                            type="button"
+                            data-target="#carouselExampleIndicators"
+                            data-slide-to={index}
                             style={{
-                              height: "22vw",
-                              backgroundImage:
-                                "url(" + color["url" + index] + ")",
+                              height: "1.4vw",
+                              width: "1.4vw",
+                              backgroundColor: color["color" + index],
                             }}
-                          ></div>
-                        </div>
-                      );
-                    })}
+                            className={
+                              index === 0 ? "active btn btn-dark" : "btn btn-dark"
+                            }
+                          ></button>
+                        );
+                      })}
+                    </ol>
+                    <div className="carousel-inner">
+                      {item.color.map((color, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className={
+                              index === 0
+                                ? "carousel-item active"
+                                : "carousel-item"
+                            }
+                          >
+                            <div
+                              className="bg-secondary mt-2 preview-img"
+                              style={{
+                                backgroundImage:
+                                  "url(" + color["url" + index] + ")",
+                              }}
+                            ></div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className=" card card-body col-md-7 mt-4 mb-4">
-                <h5 className="card-title">Tên sản phẩm: {item.name}</h5>
-                <p className="card-title">
-                  <strong>Giá: {item.price}vnd</strong>
-                </p>
+                <div className=" card card-body detail-card">
+                <h5 className="card-title">{item.name.toUpperCase()}</h5>
+
+                <div className="product__content__item__rate">
+                  <p>{rating.avg_ratings}</p>
+                  <Rating
+                    fullSymbol={
+                      <i className="fas fa-star" style={{ color: "#ffd724" }}></i>
+                    }
+                    emptySymbol={
+                      <i className="fas fa-star" style={{ color: "#e1e1e1" }}></i>
+                    }
+                    fractions={10}
+                    readonly
+                    stop={5}
+                    start={0}
+                    step={1}
+                    initialRating={rating.avg_ratings}
+                  />
+                </div>
+
+                <div className="card-price">
+                  <p>Giá: </p>
+                  <p>{item.price}.000<i class="fa-solid fa-dong-sign"></i></p>
+                </div>
+
                 <p className="card-text">Type: {item.type}</p>
                 <p className="card-text">Gender: {item.gender}</p>
                 <div>
-                  <div className="form-group row">
+                  <div className="form-group row mt-2 mb-2">
+                    
                     <label
                       htmlFor="username"
-                      className="col-sm-2 col-form-label"
+                      className="col-sm-4 col-form-label"
                     >
-                      Color:{" "}
+                      <p className="tag">Color:{" "}</p>
                     </label>
                     {item.color.map((color, index) => {
                       return (
@@ -229,15 +251,15 @@ export default function ItemDetail() {
                       );
                     })}
                   </div>
-                  <div className="form-group row">
+                  <div className="form-group row size">
                     <label
                       htmlFor="username"
-                      className="col-sm-2 col-form-label"
+                      className="col-sm-3 col-form-label"
                     >
-                      Size:{" "}
+                      <p className="tag">Size:{" "}</p>
                     </label>
                     {item.color.length !== 0 ? (
-                      <div className="row col-sm-8 d-flex justify-content-between">
+                      <div className="row col-sm-8 d-flex justify-content-evenly">
                         {Object.keys(item.color[countcolor]).length - 2 >= 2 &&
                         (Object.keys(item.color[countcolor]).length - 2) % 2 ===
                           0
@@ -255,7 +277,7 @@ export default function ItemDetail() {
                                         ? "btn btn-dark"
                                         : "btn"
                                     }
-                                    style={{ width: "4vw" }}
+                                    
                                     onClick={() => {
                                       setCountSize(index);
                                     }}
@@ -286,11 +308,11 @@ export default function ItemDetail() {
                   <div className="form-group row">
                     <label
                       htmlFor="quantity"
-                      className="col-sm-4 col-form-label"
+                      className="col-sm-6 col-form-label"
                     >
-                      Có sẵn
+                      <p className="tag">Có sẵn:{" "}</p>
                     </label>
-                    <div className="col-sm-8">
+                    <div className="col-sm-">
                       {item.color.length !== 0
                         ? item.color[countcolor][
                             "countcolor" + countcolor + "-" + countsize
@@ -300,11 +322,11 @@ export default function ItemDetail() {
                   </div>
                   <div className="form-group row">
                     <label htmlFor="count" className="col-4 col-form-label">
-                      Số lượng
+                      <p className="tag">Số lượng:{" "}</p>
                     </label>
-                    <div className="col-8 col-form-label row">
+                    <div className="col-7 col-form-label row">
                       <button
-                        className="btn col-3"
+                        className="btn col-2"
                         onClick={() => {
                           setCount((count) => (count > 1 ? count - 1 : count));
                         }}
@@ -318,7 +340,7 @@ export default function ItemDetail() {
                         {count}
                       </button>
                       <button
-                        className="btn col-3"
+                        className="btn col-2"
                         onClick={() => {
                           setCount((count) =>
                             count <
@@ -337,11 +359,11 @@ export default function ItemDetail() {
                     </div>
                   </div>
 
-                  <div className="form-group row justify-content-end col-md-11">
+                  <div className="form-group row justify-content-end col-md-12 button-group">
                     {isInWishList !== -1 ? (
                       <button
                         type="button"
-                        className="btn btn-outline-dark mr-4"
+                        className="btn btn-outline-dark"
                         onClick={addToWishList}
                       >
                         Remove from wishlist
@@ -349,10 +371,14 @@ export default function ItemDetail() {
                     ) : (
                       <button
                         type="button"
-                        className="btn btn-outline-dark mr-4"
+                        className="btn btn-outline-dark ml-3"
                         onClick={addToWishList}
                       >
-                        Add to wishlist
+                        <div className="button-mod">
+                          <p>Add to wishlist</p>  
+                          <i className="fa-regular fa-heart cart-icon__item"></i>
+                        </div>
+                        
                       </button>
                     )}
                     <button
@@ -360,11 +386,17 @@ export default function ItemDetail() {
                       className="btn btn-dark mr-4"
                       onClick={addToCart}
                     >
-                      Add to cart
+                      <div className="button-mod">
+                          <p>Add to cart</p>  
+                          <i className="fa-solid fa-cart-shopping cart-icon__item"></i>
+                        </div>
                     </button>
                   </div>
                 </div>
               </div>
+              </div>
+              
+              
               <table className="table container-fluid">
                 <thead>
                   <tr>
@@ -396,18 +428,18 @@ export default function ItemDetail() {
                   <tr>
                     {fn === "mota" ? (
                       <td colSpan={2}>
-                        <div className=" card card-body col-md-12 mt-4 mb-4">
+                        <div className="card card-body col-md-12 mt-4 mb-4">
                           <h5 className="card-title">
                             Tên sản phẩm: {item.name}
                           </h5>
-                          {item.description}
+                          <p>{item.description}</p>
                         </div>
                       </td>
                     ) : (
                       <td colSpan={2}>
                         <div className=" card card-body col-md-12 mt-4 mb-4 row">
                           <h5 className="card-title">
-                            Tên sản phẩm: {item.name}
+                            ĐÁNH GIÁ SẢN PHẨM
                           </h5>
                           <div>
                             <div className="container">
@@ -415,45 +447,54 @@ export default function ItemDetail() {
                                 <div
                                   className="col-md-12 row"
                                   style={{
-                                    height: "6vw",
-                                    border: "2px solid #000000",
+                                    backgroundColor:"rgb(248, 234, 234)",
+                                    margin:"0px 0 10px 0px",
+                                    padding:"10px",
+                                    borderRadius:"5px",
                                   }}
                                 >
-                                  <strong className="col-md-12">
-                                    {rating.avg_ratings} trên 5 sao
-                                  </strong>
+                                  <p className="col-md-12">
+                                      <div className="star__and__star">
+                                        <p className="current__star">{rating.avg_ratings}</p>
+                                        <p className="five__star">trên 5 sao</p>
+                                        <Rating
+                                          fullSymbol={
+                                            <i
+                                              className="fas fa-star"
+                                              style={{ color: "#ffd724" }}
+                                            ></i>
+                                          }
+                                          emptySymbol={
+                                            <i
+                                              className="fas fa-star"
+                                              style={{ color: "#f1f1f1" }}
+                                            ></i>
+                                          }
+                                          fractions={1}
+                                          readonly
+                                          stop={5}
+                                          start={0}
+                                          step={1}
+                                          initialRating={rating.avg_ratings}
+                                        />
+                                      </div>
+                                  </p>
                                   <br />
-                                  <Rating
-                                    fullSymbol={
-                                      <i
-                                        className="fas fa-star"
-                                        style={{ color: "#ffd724" }}
-                                      ></i>
-                                    }
-                                    emptySymbol={
-                                      <i
-                                        className="fas fa-star"
-                                        style={{ color: "#f1f1f1" }}
-                                      ></i>
-                                    }
-                                    fractions={1}
-                                    readonly
-                                    stop={5}
-                                    start={0}
-                                    step={1}
-                                    initialRating={rating.avg_ratings}
-                                  />
+                                  
                                 </div>
                                 {!rating.message ? (
                                   rating.data.map((e, index) => {
                                     return (
                                       <div
-                                        className="col-md-12 row mt-2"
+                                        className="col-md-11 row mt-2"
                                         style={{
-                                          border: "2px solid #bbbbbb",
+                                          backgroundColor:"rgb(248, 234, 234)",
+                                          margin:"10px 0 10px 50px",
+                                          padding:"10px",
+                                          borderRadius:"5px",
                                         }}
                                       >
-                                        <div className="col-md-2 d-flex justify-content-center align-items-center">
+                                        <div className="col-md-2 d-flex justify-content-center align-items-center comment__mobile">
                                           <div
                                             style={{
                                               width: "5.5vw",
@@ -489,7 +530,7 @@ export default function ItemDetail() {
                                             step={1}
                                             initialRating={e.star}
                                           />
-                                          <p>{e.comment}</p>
+                                          <p>Đánh giá: {e.comment}</p>
                                         </div>
                                       </div>
                                     );
