@@ -63,7 +63,7 @@ export default function UpdateClothes() {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 text-center">
-                        <h1>Add Clothes</h1>
+                        <h1>Update Clothes Information</h1>
                         <hr className="my-3" />
                     </div>
                     <div className="col-md-8">
