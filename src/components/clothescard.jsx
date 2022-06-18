@@ -50,7 +50,7 @@ export default function ClothesCard({ item, index }) {
           return (
             <div
               style={{
-                backgroundImage: "url(" + clothe["url" + index] + ")",
+                backgroundImage: "url(" + clothe.updateImg + ")",
               }}
               className="newProduct__content__item__img preview-img"
               key={index}

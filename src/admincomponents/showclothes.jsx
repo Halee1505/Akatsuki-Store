@@ -1,4 +1,5 @@
 export default function ShowClothes({ clothes }) {
+    console.log(clothes.color.filter((e,i)=>i===0));
     return (
         <div className="card d-flex flex-column align-items-center" style={{ width: "18vw" }}>
             {
@@ -7,7 +8,7 @@ export default function ShowClothes({ clothes }) {
                         {
                             clothes.color.filter((e,i)=>i===0).map((item, index) => {
                                 return <div key={index} className={index === 0 ? "carousel-item active d-flex justify-content-center" : "carousel-item d-flex justify-content-center"}>
-                                    <div className="bg-secondary mt-2 preview-img" style={{ height: "20vw", width: "17vw", backgroundImage: "url(" + item["url" + index] + ")" }}></div>
+                                    <div className="bg-secondary mt-2 preview-img" style={{ height: "20vw", width: "17vw", backgroundImage: "url(" + item.updateImg + ")" }}></div>
                                 </div>
                             })
                         }

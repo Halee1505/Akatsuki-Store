@@ -3,7 +3,6 @@ import React from "react";
 import AddClothesContext from "../context/addclothescontext"
 export default function PreviewUpdateClothes() {
     const AddClothes = useContext(AddClothesContext);
-    console.log(AddClothes)
     const [countcolor, setCountColor] = useState(0)
     const [countsize, setCountSize] = useState(0)
 

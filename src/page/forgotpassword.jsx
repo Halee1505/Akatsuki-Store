@@ -10,33 +10,18 @@ export default function ForgotPassword() {
     const [repeatPassword, setRepeatPassword] = useState("")
     const [codeGen, setCodeGen] = useState(0)
     const [loading, setLoading] = useState(false)
+
     useEffect(() => {
         setCodeGen(Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000)
     }, [])
 
-
     function handleSubmit(e, step) {
         e.preventDefault();
         if (step === 1) {
-            const user = {
-                username: email,
-            }
-            axios.get("http://localhost/api/customer/forgot_password.php", JSON.stringify(user))
+            axios.get("http://localhost/api/customer/forgot_password.php?username=" + email)
             .then(res => {
-                if(res.status === 200){
-                    console.log(res.data)
-                    setStep(2)
-                }
-            })
-            .catch(err => {
-                alert(err.message)
-                // window.location.href = "/login"
-            })
-        }
-        if (step === 2) {
-            setLoading(true)
-            axios.post("https://api.emailjs.com/api/v1.0/email/send",
-                {
+                setLoading(true)
+                axios.post("https://api.emailjs.com/api/v1.0/email/send", {
                     service_id: "service_ipal5uv",
                     template_id: "template_mncz61j",
                     user_id: "nrvFQXX36KomD3QCe",
@@ -45,23 +30,38 @@ export default function ForgotPassword() {
                         from_name: "Akatsuki Store",
                         to_name: email,
                         message: codeGen
-                    }
-                }
-            ).then(res => {
-                setLoading(false)
-                console.log(res.status)
+                    }})
+                .then(res => {
+                    setLoading(false)
+                    console.log(res.status)
+                    setStep(2)
+
+                })
+            }).catch(err => {
+                window.location.href = "/forgot-password"
+                alert(`User with email ${email} does not exist`);
             })
-            setStep(3)
-
-
-        } else if (step === 3) {
+        }
+        if (step === 2) {
             if (Number(verifyCode) === Number(codeGen)) {
                 setStep(4)
             } else {
                 alert("Wrong code")
-            }
+            }  
         } else if (step === 3) {
-            console.log(email, verifyCode, password, repeatPassword)
+            if (password === repeatPassword) {
+                axios.put("http://localhost/api/customer/reset_password.php", {
+                    username: email,
+                    password: password
+                }).then(res => {
+                    alert("Password changed")
+                    window.location.href = "/login"
+                }).catch(err => {
+                    alert(err.message)
+                })
+            } else {
+                alert("Password not match")
+            }
         }
     }
     return (

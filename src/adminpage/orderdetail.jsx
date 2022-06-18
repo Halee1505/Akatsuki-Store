@@ -44,11 +44,9 @@ export default function OrderDetail() {
       });
   }
   function removeItem(cart) {
-    axios
-      .get("http://localhost/api/cart/delete.php?id=" + cart)
-      .then((res) => {
-        window.location.href = "/admin/manage-orders"
-      });
+    axios.get("http://localhost/api/cart/delete.php?id=" + cart).then((res) => {
+      window.location.href = "/admin/manage-orders";
+    });
   }
   console.log(order);
   console.log(customer);
@@ -69,9 +67,7 @@ export default function OrderDetail() {
                   height: "100%",
                   backgroundImage:
                     "url(" +
-                    cartItem.color[order[0].index_color][
-                      "url" + order[0].index_color
-                    ] +
+                    cartItem.color[order[0].index_color].updateImg +
                     ")",
                 }}
               ></label>
@@ -134,7 +130,8 @@ export default function OrderDetail() {
                   </div>
                   <div className="row d-flex justify-content-end align-items-center  mt-3">
                     <button
-                      className="btn btn-danger" type="button"
+                      className="btn btn-danger"
+                      type="button"
                       onClick={() => {
                         removeItem(order[0].id);
                       }}
