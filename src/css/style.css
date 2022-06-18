@@ -350,7 +350,7 @@ p{
 
 .newProduct__content__item__img:hover {
     cursor: pointer;
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 .newProduct__content__item__title {
@@ -794,6 +794,7 @@ p{
 .border.round{
     position: relative;
     margin: 20px 8px;
+    background-color: rgb(254, 239, 239);
 }
 
 .color{
