@@ -42,10 +42,11 @@ export default function Bill() {
   const [rateArray, setRateArray] = useState([]);
   useEffect(() => {
     axios.get("http://localhost/api/ratings/read_all.php").then((res) => {
+      // setRateArray(res.data.data? rateArray.data.data :  []);
       setRateArray(res.data.data);
     });
   }, []);
-  console.log(rateArray);
+  // console.log(rateArray);
 
   return (
     <div className="container-fluid">
@@ -169,9 +170,7 @@ export default function Bill() {
                         <img
                           style={{ height: "5vw" }}
                           src={
-                            JSON.parse(cart.cart_item).color[cart.index_color][
-                              "url" + cart.index_color
-                            ]
+                            JSON.parse(cart.cart_item).color[cart.index_color].updateImg
                           }
                           alt="aa"
                         />
@@ -198,9 +197,7 @@ export default function Bill() {
                           style={{
                             height: "1.6vw",
                             width: "1.6vw",
-                            backgroundColor: JSON.parse(cart.cart_item).color[
-                              cart.index_color
-                            ][cart.color],
+                            backgroundColor: cart.color
                           }}
                         ></div>
                         <div
@@ -210,9 +207,7 @@ export default function Bill() {
                         >
                           Size:
                           {
-                            JSON.parse(cart.cart_item).color[cart.index_color][
-                              cart.size
-                            ]
+                            cart.size
                           }
                         </div>
                       </td>

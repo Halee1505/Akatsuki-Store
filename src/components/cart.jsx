@@ -9,6 +9,13 @@ export default function Cart({ onChangeTotal }) {
   const UserContext = useContext(userContext);
   const CartState = useContext(CartContext);
   // console.log(JSON.parse(UserContext.userCart[0].cart_item));
+  useEffect(() => {
+    axios.get("http://localhost/api/customer/read_single.php?cid=" + loged)
+      .then((res) => {
+        UserContext.setUser(res.data);
+      });
+    }, []);
+    console.log(UserContext.user);
 
   function removeItem(cart) {
     axios
@@ -19,15 +26,21 @@ export default function Cart({ onChangeTotal }) {
       });
   }
   function CheckOut(cart) {
-    let cartItem = cart;
+    if(UserContext.user.phone === "" || UserContext.user.city === "" || UserContext.user.district === "" || UserContext.user.street === ""){
+      alert("Vui lòng nhập đầy đủ thông tin");
+      window.location.href = "/user";
+    }
+    else{
+      let cartItem = cart;
     cartItem["status"] = "chờ xác nhận";
     axios
       .put("http://localhost/api/cart/update.php?id=" + cart.id, cartItem)
       .then((res) => {
-        alert("Cập nhật giỏ hàng thành công");
+        alert("đặt hàng thành công");
         CartState.setCartOption("donmua");
         UserContext.setClickBtn(!UserContext.clickBtn);
       });
+    }
   }
 
   const totalPrice = UserContext.userCart
@@ -72,7 +85,7 @@ export default function Cart({ onChangeTotal }) {
                             src={
                               JSON.parse(cart.cart_item).color[
                                 cart.index_color
-                              ]["url" + cart.index_color]
+                              ].updateImg
                             }
                             alt="aa"
                           />
@@ -98,9 +111,7 @@ export default function Cart({ onChangeTotal }) {
                             style={{
                               height: "1.6vw",
                               width: "1.6vw",
-                              backgroundColor: JSON.parse(cart.cart_item).color[
-                                cart.index_color
-                              ][cart.color],
+                              backgroundColor: cart.color
                             }}
                           ></div>
                           <div
@@ -110,9 +121,7 @@ export default function Cart({ onChangeTotal }) {
                           >
                             Size:
                             {
-                              JSON.parse(cart.cart_item).color[
-                                cart.index_color
-                              ][cart.size]
+                              cart.size
                             }
                           </div>
                         </td>

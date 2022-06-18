@@ -6,7 +6,10 @@ import { useState } from "react";
     const [type, setType] = useState("")
     const [gender, setGender] = useState("")
     const [size,setSize]  = useState([])
+    const [preview, setPreview] = useState([])
     const [description, setDescription] = useState("")
+
+
     const [ updateName, setUpdateName] = useState("")
     const [ updatePrice, setUpdatePrice] = useState(0)
     const [ updateType, setUpdateType] = useState("")
@@ -39,7 +42,9 @@ import { useState } from "react";
             updateSize,
             setUpdateSize,
             updateDescription,
-            setUpdateDescription
+            setUpdateDescription,
+            preview,
+            setPreview,
 
         }}>
             {children}

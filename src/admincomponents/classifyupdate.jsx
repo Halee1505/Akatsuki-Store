@@ -1,121 +1,130 @@
 import { useState, useContext, useEffect } from "react";
 import AddClothesContext from "../context/addclothescontext";
+import axios from "axios";
+import AddUpdateSize from "./addupdatesize";
+import Dropzone from "react-dropzone";
+import AddSize from "./addsize";
+const styleInput = {
+  width: "0.1px",
+  height: "0.1px",
+  opacity: "0",
+  overflow: "hidden",
+  position: "absolute",
+  zIndex: "-1",
+};
+export default function ClassifyUpdate({
+  handleSetReview,
+  handlePreview,
+  handleSetSize,
+  handleSize,
+  handleIndex,
+}) {
+  console.log(handleSize);
+  console.log(handleIndex);
+  // console.log(handleSetSize);
+  const [addSize, setAddSize] = useState(handleSize[handleIndex].size.length);
 
-export default function ClassifyUpdate({ id }) {
-  const AddClothes = useContext(AddClothesContext);
-  const [classify, setClassify] = useState(0);
-    useEffect(() => {
-        setClassify(AddClothes.updateSize.length);
-    }, [AddClothes.updateSize]);
-  function deleteAddColorHandler() {
-    AddClothes.setUpdateSize(
-      AddClothes.updateSize.filter((item, index) => index !== id)
-    );
-  }
-  function setColorHandler(e) {
-    let NewColor = [...AddClothes.updateSize];
-    NewColor[id][e.target.name] = e.target.value;
-    AddClothes.setUpdateSize(NewColor);
-  }
-  function AddSizeHandler() {
-    setClassify((classify) => classify + 1);
-  }
-  function AddClassifyhandler(index, e) {
-    let NewSize = [...AddClothes.updateSize];
-    NewSize[id]["classifycolor" + id + "-" + index] = e.target.value;
-    AddClothes.setUpdateSize(NewSize);
-  }
-  function AddCounthandler(index, e) {
-    let NewSize = [...AddClothes.updateSize];
-    NewSize[id]["countcolor" + id + "-" + index] = e.target.value;
-    AddClothes.setUpdateSize(NewSize);
-  }
+  const [updateImg, setUpdateImg] = useState(null);
+  const [preview, setPreview] = useState(handleSize[handleIndex].updateImg);
+  const [color, setColor] = useState(handleSize[handleIndex].color);
+  const [size, setSize] = useState(handleSize[handleIndex].size);
+  
+
+  const onDrop = (files) => {
+    if (files) {
+      setPreview((pr) => URL.createObjectURL(files));
+      setUpdateImg((pr) => files);
+    }
+  };
+
+  useEffect(() => {
+    function handleClassifyChange() {
+      let newSize = [...handleSize];
+      newSize[handleIndex] = { color, size, updateImg };
+      handleSetSize(newSize);
+      let newPreview = [...handlePreview];
+      newPreview[handleIndex] = preview;
+      handleSetReview(newPreview);
+    }
+    handleClassifyChange();
+  }, [updateImg, color, size]);
+
   return (
     <div className="container-fluid">
       <div className="container">
         <div className="row">
           <div className="col-md-12 row">
             <div
-              className="input-group col-md-6 row mb-1 mt-1"
-              style={{ height: "5vw" }}
+              className="input-group col-md-12 row mb-1 mt-1"
+              style={{ height: "max-content" }}
             >
               <div className="input-group-prepend col-md-12 row d-flex align-items-center">
-                <label htmlFor={`color${id}`} className="col-md-4">
-                  Color {id + 1}:{" "}
+                <label htmlFor={`color${handleIndex}`} className="col-md-4">
+                  Color {handleIndex + 1}:{" "}
                 </label>
-                <input
-                  type="color"
-                  name={`color${id}`}
-                  className="input-group-text col-md-2"
-                    defaultValue={AddClothes.updateSize[id][`color${id}`]}
-                  onChange={(e) => {
-                    setColorHandler(e);
-                  }}
-                  id={`color${id}`}
-                  style={{ height: "100%" }}
-                />
-                <button
-                  className="btn btn-outline-dark col-md-4 rounded"
-                  onClick={AddSizeHandler}
-                >
-                  Add size
-                </button>
+                <Dropzone onDrop={(acceptedFiles) => onDrop(acceptedFiles[0])}>
+                  {({ getRootProps, getInputProps }) => (
+                    <section>
+                      <div
+                        style={{
+                          backgroundImage: "url(" + preview + ")",
+                          height: "6vw",
+                          width: "6vw",
+                          backgroundColor: "#ffffff",
+                          border: "1px #000000 dashed",
+                          backgroundSize: "contain",
+                          backgroundRepeat: "no-repeat",
+                          backgroundPosition: "center",
+                        }}
+                        {...getRootProps()}
+                      >
+                        <input
+                          style={styleInput}
+                          type="file"
+                          className="input-group-text col-md-6"
+                          {...getInputProps()}
+                        />
+                        <i className="fa-solid fa-upload upload"></i>
+                      </div>
+                    </section>
+                  )}
+                </Dropzone>
+                <div className="row">
+                  <input
+                    type="color"
+                    className="input-group-text col-md-12"
+                    onChange={(e) => {
+                      setColor(e.target.value);
+                    }}
+                    value = {color}
+                    style={{ height: "100%" }}
+                  />
+                  <button
+                    className="btn btn-outline-dark col-md-12 rounded"
+                    onClick={() => {
+                      setAddSize(addSize + 1);
+                    }}
+                  >
+                    Add size
+                  </button>
+                </div>
                 <i
                   className="fa-regular fa-circle-xmark col-md-2"
                   style={{ fontSize: "1.7vw" }}
-                  onClick={deleteAddColorHandler}
+                  //   onClick={deleteAddColorHandler}
                 ></i>
               </div>
-              <div className="input-group-prepend col-md-12 row d-flex align-items-center">
-                <label htmlFor={`url${id}`} className="col-md-4">
-                  Url {id + 1}:{" "}
-                </label>
-                <input
-                  type="text"
-                  name={`url${id}`}
-                  className="input-group-text col-md-6"
-                  defaultValue={AddClothes.updateSize[id][`url${id}`]}
-                  onChange={(e) => {
-                    setColorHandler(e);
-                  }}
-                  id={`url${id}`}
-                  style={{ height: "100%" }}
-                />
-              </div>
             </div>
-            <div className="col-md-5 row">
-              {classify !== 0
-                ? new Array(classify).fill(0).map((it, index) => {
+            <div className="col-md-12 row">
+              {addSize !== 0
+                ? new Array(addSize).fill(0).map((it, index) => {
                     return (
-                      <div
+                      <AddUpdateSize
                         key={index}
-                        className="input-group col-md-13 row d-flex align-items-center"
-                      >
-                        <input
-                          type="text"
-                          className="form-control col-md-5"
-                          name={`classifycolor${id}-${index}`}
-                          placeholder="phân loại"
-                          defaultValue={AddClothes.updateSize[id][`classifycolor${id}-${index}`]}
-                          onChange={(e) => {
-                            AddClassifyhandler(index, e);
-                          }}
-                        />
-                        <input
-                          type="number"
-                          className="form-control col-md-5"
-                          name={`countcolor${id}-${index}`}
-                          placeholder="Số lượng"
-                            defaultValue={AddClothes.updateSize[id][`countcolor${id}-${index}`]}
-                          onChange={(e) => {
-                            AddCounthandler(index, e);
-                          }}
-                        />
-                        <i
-                          className="fa-regular fa-circle-xmark ml-2 col-md-2"
-                          style={{ fontSize: "1.7vw" }}
-                        ></i>
-                      </div>
+                        setSizeHandler={setSize}
+                        sizeHandler={size}
+                        indexHander={index}
+                      />
                     );
                   })
                 : ""}

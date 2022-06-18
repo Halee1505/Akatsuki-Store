@@ -9,6 +9,7 @@ export default function GetClothesPage() {
                 setGetClothes(res.data)
             })
     }, [])
+    // console.log(getClothes)
     return (
         <GetClothes props={getClothes}/>
     )

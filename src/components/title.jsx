@@ -50,7 +50,19 @@ export default function Title() {
     UserContext.setWishlistCount(UserContext.userWishlist.length);
   }, [UserContext.userWishlist]);
 
-  
+  const [hotTrend, setHotTrend] = useState([]);
+  useEffect(() => {
+    setHotTrend(Clothes.sort((a, b) => {
+      if (a.date_created > b.date_created) {
+        return -1;
+      } else if (a.date_created < b.date_created) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }))
+  }, [Clothes]);
+  console.log(hotTrend);
 
   return (
     <div className="title">
@@ -91,7 +103,7 @@ export default function Title() {
               <div
                 className="title__advertisement__items"
                 style={{
-                  backgroundImage: `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDSPQLF-namZAMhSVWA1iOIyetdF7z5bfXLg&usqp=CAU')`,
+                  backgroundImage:  "url(" + preview1 + ")" ,
                 }}
               ></div>
             </div>
@@ -99,7 +111,7 @@ export default function Title() {
               <div
                 className="title__advertisement__items"
                 style={{
-                  backgroundImage: `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-9UOUewPMTq0NYSXOQDKfoBm4Oh_4Xdn7qA&usqp=CAU')`,
+                  backgroundImage:  "url(" + preview2 + ")" ,
                 }}
               ></div>
             </div>
@@ -107,7 +119,23 @@ export default function Title() {
               <div
                 className="title__advertisement__items"
                 style={{
-                  backgroundImage: `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqXiFLOvVpZneMgBluZzn1etUzdg9nhVogPQ&usqp=CAU')`,
+                  backgroundImage:  "url(" + preview3 + ")" ,
+                }}
+              ></div>
+            </div>
+            <div className="carousel-item">
+              <div
+                className="title__advertisement__items"
+                style={{
+                  backgroundImage:  "url(" + preview4 + ")" ,
+                }}
+              ></div>
+            </div>
+            <div className="carousel-item">
+              <div
+                className="title__advertisement__items"
+                style={{
+                  backgroundImage:  "url(" + preview5 + ")" ,
                 }}
               ></div>
             </div>
@@ -143,7 +171,6 @@ export default function Title() {
           <div className="newProduct__title__left">
             <div className="header__logoText">NEW PRODUCT</div>
           </div>
-          
         </div>
         <div className="newProduct__content">
           {Clothes.map((item, index) => {
@@ -157,22 +184,19 @@ export default function Title() {
         </div>
 
         <div className="newProduct__title__right">
-            <Link to="items">
-              <button className="btn">View all</button>
-            </Link>
-          </div>
-
+          <Link to="items">
+            <button className="btn">View all</button>
+          </Link>
+        </div>
       </div>
 
-      
       <div className="carousel" id="news"></div>
       <div className="specialItem" id="special">
         {["HOT TREND", "BEST SELLER", "FEATURE"].map((items, items_ind) => {
           return (
             <div className="special" key={items_ind}>
               <h3>{items}</h3>
-              {Array(3)
-                .fill(0)
+              {hotTrend
                 .map((item, item_ind) => {
                   return (
                     <Link
@@ -180,9 +204,13 @@ export default function Title() {
                       className="specialItem__items text-decoration-none"
                       key={item_ind}
                     >
-                      <div className="specialItem__item__img"></div>
+                      <div className="specialItem__item__img" 
+                      style={{
+                        backgroundImage: `url('${item.color[0].updateImg}')`,
+                      }}
+                      ></div>
                       <div className="specialItem__Item">
-                        <p className="specialItem__item__title">Áo xxx </p>
+                        <p className="specialItem__item__title">{item.name} </p>
                         <div className="specialItem__item__rate">
                           <Rating
                             fullSymbol={
@@ -202,11 +230,11 @@ export default function Title() {
                             stop={5}
                             start={0}
                             step={1}
-                            initialRating={0}
+                            initialRating={item.ratings}
                           />
                         </div>
                         <strong className="specialItem__item__price">
-                          $xxx
+                          {item.price}
                         </strong>
                       </div>
                     </Link>
