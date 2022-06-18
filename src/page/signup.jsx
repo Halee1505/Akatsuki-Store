@@ -22,8 +22,14 @@ export default function Signup() {
     const [password, setPassword] = useState("")
     const [repeatPassword, setRepeatPassword] = useState("")
     function handleSubmit() {
+        if (username === "" || email === "" || password === "" || repeatPassword === ""){
+            alert("Please fill all field")
+            return
+        }
+            
         if(password !== repeatPassword){
             alert("Password not match")
+            return
         }
         else{
             CreateUser(email,password,username,(res)=>{
@@ -47,41 +53,41 @@ export default function Signup() {
                     <div className="card border-0 shadow rounded-3 my-5">
                         <div className="card-body p-4 p-sm-5">
                             <h5 className="card-title text-center mb-3 fw-light fs-8">Sign Up</h5>
-                            <div>
+                            <form>
 
                                 <div className="form-floating mb-3">
                                     <label for="username">User name</label>
-                                    <input type="text" className="form-control" id="username" placeholder="Enter your username"
+                                    <input required type="text" className="form-control" id="username" placeholder="Enter your username"
                                         onChange={(e) => { setUsername(e.target.value) }} />
                                     
                                 </div>
                                 <div className="form-floating mb-3">
                                     <label for="email">Email address</label>
-                                    <input type="email" className="form-control" id="email" placeholder="name@example.com"
+                                    <input required type="email" className="form-control" id="email" placeholder="name@example.com"
                                         onChange={(e) => { setEmail(e.target.value) }} />
                                     
                                 </div>
                                 <div className="form-floating mb-3">
                                     <label for="password">Password</label>
-                                    <input type="password" className="form-control" id="password" placeholder="Password" 
+                                    <input required type="password" className="form-control" id="password" placeholder="Password" 
                                         onChange={(e)=>{setPassword(e.target.value)}}/>
                                     
                                 </div>
                                 <div className="form-floating mb-3">
                                     <label for="repeatpassword">Repeat Password</label>
-                                    <input type="password" className="form-control" id="repeatpassword" placeholder="Repeat Password" 
+                                    <input required type="password" className="form-control" id="repeatpassword" placeholder="Repeat Password" 
                                         onChange={(e)=>{setRepeatPassword(e.target.value)}}/>
                                     
                                 </div>
 
                                 <div className="d-flex justify-content-between">
-                                    <button className="btn btn-secondary btn-login text-uppercase fw-bold" type="button" onClick={handleSubmit}>Sign
-                                        Up</button>
+                                    <button className="btn btn-secondary btn-login text-uppercase fw-bold" type="submit" onClick={
+                                       handleSubmit}>SignUp</button>
                                     <Link to="/login"><button className="btn btn-light btn-login text-uppercase fw-bold" type="button">Sign
                                         In</button></Link>
                                 </div>
 
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

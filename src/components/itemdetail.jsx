@@ -78,10 +78,10 @@ export default function ItemDetail() {
   }
 
   // upload cart
-  console.log(Clothes);
-  console.log(count);
-  console.log(countcolor);
-  console.log(countsize);
+  // console.log(Clothes);
+  // console.log(count);
+  // console.log(countcolor);
+  // console.log(countsize);
   console.log(UserContext.userCart);
   function addToCart() {
     let isInCart = UserContext.userCart.findIndex(

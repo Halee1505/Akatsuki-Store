@@ -192,7 +192,7 @@ export default function Bill() {
                           </p>
                         </Link>
                       </td>
-                      <td scope="row" className="d-flex justify-content-around">
+                      <td scope="row" className="d-flex justify-content-center">
                         <div
                           style={{
                             height: "1.6vw",
@@ -211,7 +211,7 @@ export default function Bill() {
                           }
                         </div>
                       </td>
-                      <td scope="row">{JSON.parse(cart.cart_item).price}</td>
+                      <td scope="row">{JSON.parse(cart.cart_item).price}.000<i class="fa-solid fa-dong-sign"></i></td>
                       <td scope="row">{cart.count}</td>
                       <td scope="row">
                         {Number(JSON.parse(cart.cart_item).price) *
