@@ -220,7 +220,7 @@ export default function ItemDetail() {
                 <p className="card-text">Type: {item.type}</p>
                 <p className="card-text">Gender: {item.gender}</p>
                 <div>
-                  <div className="form-group row mt-2 mb-2">
+                  <div className="form-group row mt-2 mb-2 color">
                     
                     <label
                       htmlFor="username"
@@ -467,7 +467,7 @@ export default function ItemDetail() {
                                           emptySymbol={
                                             <i
                                               className="fas fa-star"
-                                              style={{ color: "#f1f1f1" }}
+                                              style={{ color: "#e1e1e1" }}
                                             ></i>
                                           }
                                           fractions={1}
@@ -520,7 +520,7 @@ export default function ItemDetail() {
                                             emptySymbol={
                                               <i
                                                 className="fas fa-star"
-                                                style={{ color: "#f1f1f1" }}
+                                                style={{ color: "#e1e1e1" }}
                                               ></i>
                                             }
                                             fractions={1}

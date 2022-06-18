@@ -318,8 +318,8 @@ p{
     border-top: 1px solid #000;
     padding-top: 30px;
     padding-bottom: 10px;
-    width: 70%;
-    margin-left: 15%;
+    width: 84%;
+    margin: auto;
     height: max-content;
     background-color: #fff;
     display: flex;
@@ -344,14 +344,13 @@ p{
 }
 
 .newProduct__content__item__img {
-    width: 12vw;
     height: 12vw;
     background-color: aquamarine;
-    transition: transform .2s ease-in-out;
 }
 
 .newProduct__content__item__img:hover {
-    transform: scale(1.2);
+    cursor: pointer;
+    opacity: 0.6;
 }
 
 .newProduct__content__item__title {
@@ -562,15 +561,13 @@ p{
     width: max-content;
 }
 
-
-
 /* admin */
 
 .preview-img {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 12vw;
+    height: 15vw;
 }
 
 .lds-dual-ring {
@@ -651,10 +648,9 @@ p{
 
 .icon {
     position: absolute;
-    margin-top: -2.5vw;
-    margin-left: 12.5vw;
-    font-size: 1.8vw;
-
+    font-size: 30px;
+    right : 5%;
+    bottom: 3%;
 }
 
 .wish {
@@ -791,3 +787,17 @@ p{
     margin: 7px 15px;
 }
 
+.newProduct__content__item__img .preview-img{
+    overflow: hidden;
+}
+
+.border.round{
+    position: relative;
+    margin: 20px 8px;
+}
+
+.color{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}

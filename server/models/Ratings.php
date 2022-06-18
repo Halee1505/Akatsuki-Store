@@ -30,7 +30,7 @@
     }
 
     public function calculate_rating($clothes_id) {
-      $query = 'SELECT AVG(star) AS rating FROM ' . $this->table . ' WHERE clothes_id = ?';
+      $query = 'SELECT ROUND( AVG(star), 1) AS rating FROM ' . $this->table . ' WHERE clothes_id = ?';
       $stmt = $this->conn->prepare($query);
       $stmt->bindParam(1, $clothes_id);
       $stmt->execute();

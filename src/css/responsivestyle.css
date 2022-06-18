@@ -485,4 +485,8 @@
         left: 12%;
     }
 
+    .border.round{
+        width: 100%;
+    }
+
 }

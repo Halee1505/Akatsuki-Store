@@ -87,7 +87,6 @@ export default function ClothesCard({ item, index }) {
             />
           </div>
         </div>
-        <p className="newProduct__content__item__price">{item.price}vnd</p>
         </Link>
         {UserContext.userWishlist.findIndex((u) => u.id === item.id) !== -1 ? (
           <i
