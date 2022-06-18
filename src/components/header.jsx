@@ -228,13 +228,20 @@ export default function Header() {
                 </div>
               )}
               <hr className="my-4" />
+              
+              <div className="header__mobile">
+                <img
+                  src="src/logo.png"
+                  className="header__logo"
+                  id="header__logo"
+                  alt="logo"
+                />
 
-              <img
-                src="src/logo.png"
-                className="header__logo"
-                id="header__logo"
-                alt="logo"
-              />
+                <img className="header__name__mobile" src="src/store.png" alt="" />
+
+              </div>
+              
+
 
               <ul>
                 <li

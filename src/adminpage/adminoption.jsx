@@ -6,11 +6,6 @@ export default function AdminOption() {
             <div className="row">
                 <div className="col-md-12">
                     <table className="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Options</th>
-                            </tr>
-                        </thead>
                         <tbody>
                             <tr>
                                 <Link to="/admin/manage-clothes" style={{ color: "unset", width: "100%" }}>

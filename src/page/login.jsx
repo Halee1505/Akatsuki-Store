@@ -41,17 +41,18 @@ export default function Login() {
                 <div className="col-sm-9 col-md-7 col-lg-5 mx-auto  mt-5">
                     <div className="card border-0 shadow rounded-3 my-5">
                         <div className="card-body p-4 p-sm-5">
-                            <h5 className="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
+                            <h5 className="card-title text-center mb-3 fw-light fs-5">Sign In</h5>
                             <div>
                                 <div className="form-floating mb-3">
+                                    <label htmlFor="email">Email address</label>
                                     <input type="email" name="username" className="form-control" id="email" placeholder="name@example.com"
                                         onChange={(e) => { setEmail(email => e.target.value) }} />
-                                    <label htmlFor="email">Email address</label>
                                 </div>
                                 <div className="form-floating mb-3">
+                                <label htmlFor="password">Password</label>
                                     <input type="password" name="password" className="form-control" id="password" placeholder="Password"
                                         onChange={(e) => { setPassword(pass => e.target.value) }} />
-                                    <label htmlFor="password">Password</label>
+                                    
                                 </div>
 
                                 <div className="form-check mb-3">

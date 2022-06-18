@@ -15,7 +15,7 @@ export default function ListItem() {
     <div className="bg-white title">
       <div className="newProduct__title">
         <div className="newProduct__title__left">
-          <div className="header__logoText">NEW PRODUCT</div>
+          <div className="header__logoText">PRODUCT</div>
         </div>
         <div className="newProduct__title__right desktop">
           <div
@@ -51,7 +51,7 @@ export default function ListItem() {
             Accessories <div className="underline"></div>
           </div>
         </div>
-        <div className="newProduct__title__right mobile ">
+        <div className="newProduct__title__right mobile">
           <div
             className="input-group mt-3"
             onChange={(e) => setType(e.target.value)}

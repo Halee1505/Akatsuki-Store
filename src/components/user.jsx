@@ -207,6 +207,7 @@ export default function User() {
                     type="date"
                     onChange={(e) => setDob(e.target.value)}
                     defaultValue={dob}
+                    className="col-form-label date"
                   />
                 </div>
                 <div className="form-group row">

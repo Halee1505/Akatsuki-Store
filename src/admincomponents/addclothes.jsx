@@ -83,7 +83,7 @@ export default function AddClothes() {
                                                 })
                                                 : null
                                         }
-                                        <button type="button" id="classify" className="btn btn-outline-dark" onClick={()=>{addcolorhandler(AddClothes.size.length)}}>Add Color</button>
+                                        <button type="button" id="classify" className="btn btn-outline-dark" onClick={()=>{addcolorhandler(AddClothes.size.length)}}>More</button>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputdescription">Description: </label>

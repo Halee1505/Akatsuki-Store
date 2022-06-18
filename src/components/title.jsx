@@ -143,12 +143,6 @@ export default function Title() {
           <div className="newProduct__title__left">
             <div className="header__logoText">NEW PRODUCT</div>
           </div>
-
-          <div className="newProduct__title__right">
-            <Link to="items">
-              <button className="btn">View all</button>
-            </Link>
-          </div>
           
         </div>
         <div className="newProduct__content">
@@ -161,7 +155,16 @@ export default function Title() {
             );
           })}
         </div>
+
+        <div className="newProduct__title__right">
+            <Link to="items">
+              <button className="btn">View all</button>
+            </Link>
+          </div>
+
       </div>
+
+      
       <div className="carousel" id="news"></div>
       <div className="specialItem" id="special">
         {["HOT TREND", "BEST SELLER", "FEATURE"].map((items, items_ind) => {

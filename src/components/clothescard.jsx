@@ -95,7 +95,7 @@ export default function ClothesCard({ item,index }) {
         </p>
 
         <div className="newProduct__priceVsStar">
-        <p className="newProduct__content__item__price">{item.price}.000<i class="fa-solid fa-dong-sign"></i></p>
+          <p className="newProduct__content__item__price">{item.price}.000<i class="fa-solid fa-dong-sign"></i></p>
           <div className="newProduct__content__item__rate">
             <Rating
               fullSymbol={

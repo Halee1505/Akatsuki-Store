@@ -247,7 +247,7 @@ export default function ItemDetail() {
                       <p className="tag">Size:{" "}</p>
                     </label>
                     {item.color.length !== 0 ? (
-                      <div className="row col-sm-8 d-flex justify-content-between">
+                      <div className="row col-sm-8 d-flex justify-content-evenly">
                         {Object.keys(item.color[countcolor]).length - 2 >= 2 &&
                         (Object.keys(item.color[countcolor]).length - 2) % 2 ===
                           0
@@ -443,7 +443,8 @@ export default function ItemDetail() {
                                   style={{
                                     backgroundColor:"rgb(248, 234, 234)",
                                     margin:"0px 0 10px 0px",
-                                    padding:"10px"
+                                    padding:"10px",
+                                    borderRadius:"5px",
                                   }}
                                 >
                                   <p className="col-md-12">
@@ -483,7 +484,8 @@ export default function ItemDetail() {
                                         style={{
                                           backgroundColor:"rgb(248, 234, 234)",
                                           margin:"10px 0 10px 50px",
-                                          padding:"10px"
+                                          padding:"10px",
+                                          borderRadius:"5px",
                                         }}
                                       >
                                         <div className="col-md-2 d-flex justify-content-center align-items-center comment__mobile">

@@ -269,12 +269,11 @@ p{
 }
 
 .newProduct__title__right {
-    padding-left: 30px;
     height: 100%;
-    width: 30vw;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    padding-bottom: 30px;
 }
 
 .newProduct__title__right .btn{
@@ -296,7 +295,7 @@ p{
 }
 
 .newProduct__item {
-    font-size: 1.2vw;
+    font-size: 16px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -308,7 +307,7 @@ p{
 .newProduct__content {
     border-top: 1px solid #000;
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
     width: 70%;
     margin-left: 15%;
     height: max-content;
@@ -351,12 +350,11 @@ p{
     font-family: 'monserrat', sans-serif;
     text-align: center;
     color: #111111;
-    margin: 0px;
-    margin-top: 10px; 
+    margin: 10px 15px 0px 15px;
 }
 
 .newProduct__priceVsStar{
-    display: flex;
+    display: block;
     align-items: center;
     justify-content:space-between;
     margin: 15px 0;
@@ -562,7 +560,7 @@ p{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 28vw;
+    height: 12vw;
 }
 
 .lds-dual-ring {
@@ -717,7 +715,7 @@ p{
 
 .product__content__item__rate p{
     margin:0;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     color: #d80000;
     margin-right: 10px;
@@ -725,21 +723,6 @@ p{
 
 .card-text{
     margin: 5px 15px;
-}
-
-.form-group{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.form-group.size{
-    min-height: 80px;
-    margin: 10px 0;
-}
-
-.form-group.size button{
-    width: 4vw;
 }
 
 .button-mod{
@@ -777,13 +760,32 @@ p{
 .current__star{
     font-weight: 600;
     color:#ca1515;
-    font-size:2.5vw;
+    font-size:30px;
     margin-right:5px;
 }
 
 .five__star{
     font-weight: 400;
     color:#cf2e2e;
-    font-size:1.5vw;
+    font-size:25px;
     margin-right:5px;
+}
+
+.carousel-inner .preview-img{
+    height: 30vw;
+}
+
+.newProduct__item.hover_underline{
+    margin-right:20px;
+}
+
+.newProduct__title__right.desktop{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+    padding-bottom:0px;
+}
+
+.date{
+    margin: 7px 15px;
 }

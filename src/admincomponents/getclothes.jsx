@@ -9,7 +9,7 @@ export default function GetClothes({ props }) {
                 <div className="col-md-12 bg-white title">
                     <div className="newProduct__title">
                         <div className="newProduct__title__left">
-                            <div className="header__logoText">ALL PRODUCT</div>
+                            <div className="header__logoText">PRODUCT</div>
                         </div>
                         <div className="newProduct__title__right desktop">
                             <div className="newProduct__item hover_underline" onClick={() => { setType("") }}>All <div className="underline"></div>
