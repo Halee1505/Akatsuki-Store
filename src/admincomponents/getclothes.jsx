@@ -4,9 +4,9 @@ import { useState } from 'react';
 export default function GetClothes({ props }) {
     const [type, setType] = useState('');
     return (
-        <div className="container-fluid">
+        <div className="container-fluid px-0">
             <div className="row">
-                <div className="col-md-12 bg-white title">
+                <div className="col-md-12 bg-white title px-0 mx-0">
                     <div className="newProduct__title">
                         <div className="newProduct__title__left">
                             <div className="header__logoText">PRODUCT</div>

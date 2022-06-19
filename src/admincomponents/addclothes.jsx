@@ -57,13 +57,13 @@ export default function AddClothes() {
       {loading ? <i className="fa-solid fa-spinner fa-spin uploading"></i> : ""}
       <div className="container">
         <div className="row">
-          <div className="col-md-12 text-center">
+          <div className="col-md-12 text-center px-0">
             <h1>Add Clothes</h1>
             <hr className="my-3" />
           </div>
-          <div className="col-md-8">
+          <div className="col-md-8 px-0">
             <div className="row">
-              <div className="col-md-12">
+              <div className="col-md-12 px-0">
                 <div>
                   <div className="form-group">
                     <label htmlFor="inputname">Name: </label>
@@ -200,7 +200,7 @@ export default function AddClothes() {
               </div>
             </div>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 px-0">
             <PreviewClothes />
           </div>
         </div>

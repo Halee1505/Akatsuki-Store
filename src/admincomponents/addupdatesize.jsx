@@ -40,7 +40,7 @@ export default function AddUpdateSize({setSizeHandler, sizeHandler, indexHander}
       />
       <input
         type="number"
-        className="form-control col-md-5"
+        className="form-control col-md-5 px-0"
         placeholder="Số lượng"
         value={sizeCount}
         onChange={(e) => {
@@ -48,7 +48,7 @@ export default function AddUpdateSize({setSizeHandler, sizeHandler, indexHander}
         }}
       />
       <i
-        className="fa-regular fa-circle-xmark ml-2 col-md-2"
+        className="fa-regular fa-circle-xmark ml-2 col-md-2 px-0"
         style={{ fontSize: "1.7vw" }}
         onClick={onDeleteSizeHandler}
       ></i>

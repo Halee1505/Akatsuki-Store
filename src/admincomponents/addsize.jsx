@@ -35,7 +35,7 @@ export default function AddSize({setSizeHandler, sizeHandler, indexHander,setAdd
         }}
       />
       <i
-        className="fa-regular fa-circle-xmark ml-2 col-md-2"
+        className="fa-regular fa-circle-xmark ml-2 col-md-2 px-0"
         style={{ fontSize: "1.7vw" }}
         onClick={onDeleteSizeHandler}
       ></i>
