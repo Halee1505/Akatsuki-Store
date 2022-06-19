@@ -881,3 +881,14 @@ p{
     width: 100%;
     height: 300px;
 }
+
+.card-body{
+    width: 17vw;
+}
+
+.card.card-preview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 17vw;
+}

@@ -527,4 +527,11 @@
         margin-right: 0;
     }
 
+    .card-body{
+        width: 80vw;
+    }
+
+    .card.card-preview{
+        width: 84vw;
+    }
 }
