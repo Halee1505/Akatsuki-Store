@@ -211,6 +211,7 @@ p{
 .title__advertisement__item {
     background-color: rgb(255, 255, 255);
     border: 1px #000000 solid;
+    border-radius: 15px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -231,6 +232,7 @@ p{
 }
 
 .title__advertisement__items {
+    border-radius: 10px;
     height: 48%;
     width: 48%;
     background-color: rgb(255, 255, 255);
