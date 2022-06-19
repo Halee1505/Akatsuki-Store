@@ -53,7 +53,6 @@ export default function ForgotPassword() {
         alert("Wrong code");
       }
     } else if (step === 3) {
-      console.log("xx");
       if (password === repeatPassword) {
         axios
           .put("http://localhost/api/customer/reset_password.php", {

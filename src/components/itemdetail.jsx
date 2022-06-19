@@ -8,6 +8,7 @@ let loged = Cookies.get("email");
 
 export default function ItemDetail() {
   const UserContext = useContext(userContext);
+  console.log(loged)
   // get User
   useEffect(() => {
     axios
@@ -53,28 +54,35 @@ export default function ItemDetail() {
     (item) => item.id === clothes_id
   );
   function addToWishList() {
-    let wishlist = UserContext.userWishlist;
-    if (UserContext.userWishlist.length !== 0) {
-      if (isInWishList !== -1) {
-        wishlist.splice(isInWishList, 1);
+    if(loged){
+
+      let wishlist = UserContext.userWishlist;
+      if (UserContext.userWishlist.length !== 0) {
+        if (isInWishList !== -1) {
+          wishlist.splice(isInWishList, 1);
+        } else {
+          wishlist.push(Clothes[0]);
+        }
       } else {
         wishlist.push(Clothes[0]);
       }
-    } else {
-      wishlist.push(Clothes[0]);
+      const data = {
+        wishlist: JSON.stringify(wishlist),
+      };
+      axios
+        .put(
+          "http://localhost/api/customer/update_wishlist.php?cid=" + loged,
+          data
+        )
+        .then((res) => {
+          console.log(res.data);
+          UserContext.setClickBtn(!UserContext.clickBtn);
+        });
     }
-    const data = {
-      wishlist: JSON.stringify(wishlist),
-    };
-    axios
-      .put(
-        "http://localhost/api/customer/update_wishlist.php?cid=" + loged,
-        data
-      )
-      .then((res) => {
-        console.log(res.data);
-        UserContext.setClickBtn(!UserContext.clickBtn);
-      });
+    else{
+      alert("Vui lòng đăng nhập để thêm vào danh sách yêu thích")
+      window.location.href = "/login"
+    }
   }
 
   // upload cart
@@ -84,50 +92,56 @@ export default function ItemDetail() {
   // console.log(countsize);
   console.log(UserContext.userCart);
   function addToCart() {
-    let isInCart = UserContext.userCart.findIndex(
-      (item) =>
-        JSON.parse(item.cart_item).id === Clothes[0].id &&
-        item.size === Clothes[0].color[countcolor].size[countsize].sizeName &&
-        item.color === Clothes[0].color[countcolor].color &&
-        item.status === "cart"
-    );
-
-    if (isInCart !== -1) {
-      let cartItem = {
-        user_id: loged,
-        cart_item: JSON.stringify(Clothes[0]),
-        color:  Clothes[0].color[countcolor].color,
-        size: Clothes[0].color[countcolor].size[countsize].sizeName,
-        count: Number(count) + Number(UserContext.userCart[isInCart].count),
-        index_color: countcolor,
-        status: "cart",
-      };
-      axios
-        .put(
-          "http://localhost/api/cart/update.php?id=" +
-            UserContext.userCart[isInCart].id,
-          cartItem
-        )
-        .then((res) => {
-          alert("Cập nhật giỏ hàng thành công");
-          UserContext.setClickBtn(!UserContext.clickBtn);
-        });
-    } else {
-      let cartItem = {
-        user_id: loged,
-        cart_item: JSON.stringify(Clothes[0]),
-        color: Clothes[0].color[countcolor].color,
-        size: Clothes[0].color[countcolor].size[countsize].sizeName,
-        count: count,
-        index_color: countcolor,
-        status: "cart",
-      };
-      axios
-        .post("http://localhost/api/cart/create.php", cartItem)
-        .then((res) => {
-          alert("Thêm vào giỏ thành công");
-          UserContext.setClickBtn(!UserContext.clickBtn);
-        });
+    if(loged){
+      let isInCart = UserContext.userCart.findIndex(
+        (item) =>
+          JSON.parse(item.cart_item).id === Clothes[0].id &&
+          item.size === Clothes[0].color[countcolor].size[countsize].sizeName &&
+          item.color === Clothes[0].color[countcolor].color &&
+          item.status === "cart"
+      );
+  
+      if (isInCart !== -1) {
+        let cartItem = {
+          user_id: loged,
+          cart_item: JSON.stringify(Clothes[0]),
+          color:  Clothes[0].color[countcolor].color,
+          size: Clothes[0].color[countcolor].size[countsize].sizeName,
+          count: Number(count) + Number(UserContext.userCart[isInCart].count),
+          index_color: countcolor,
+          status: "cart",
+        };
+        axios
+          .put(
+            "http://localhost/api/cart/update.php?id=" +
+              UserContext.userCart[isInCart].id,
+            cartItem
+          )
+          .then((res) => {
+            alert("Cập nhật giỏ hàng thành công");
+            UserContext.setClickBtn(!UserContext.clickBtn);
+          });
+      } else {
+        let cartItem = {
+          user_id: loged,
+          cart_item: JSON.stringify(Clothes[0]),
+          color: Clothes[0].color[countcolor].color,
+          size: Clothes[0].color[countcolor].size[countsize].sizeName,
+          count: count,
+          index_color: countcolor,
+          status: "cart",
+        };
+        axios
+          .post("http://localhost/api/cart/create.php", cartItem)
+          .then((res) => {
+            alert("Thêm vào giỏ thành công");
+            UserContext.setClickBtn(!UserContext.clickBtn);
+          });
+      }
+    }
+    else{
+      alert("Vui lòng đăng nhập để thêm vào giỏ hàng")
+      window.location.href = "/login"
     }
   }
 
