@@ -16,7 +16,7 @@ export default function AdminPage() {
         </div>
       </div>
       <div className="row">
-        <div className="col-md-2">
+        <div className="col-md-2 px-0">
           <AdminOption />
         </div>
         <div className="col-md-10 p-0">

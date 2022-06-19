@@ -2,9 +2,9 @@ import { Link, useLocation } from "react-router-dom";
 export default function AdminOption() {
   const history = useLocation().pathname.split("/")[2];
   return (
-    <div className="container-fluid">
+    <div className="container-fluid px-0">
       <div className="row">
-        <div className="col-md-12">
+        <div className="col-md-12 px-0">
           <table className="table">
             <thead className="table-light">
               <tr>
@@ -24,6 +24,7 @@ export default function AdminOption() {
                         ? "bg-secondary text-white"
                         : ""
                     }
+                    style={{ display: "block"}}
                   >
                     Show All Items
                   </th>
@@ -36,6 +37,7 @@ export default function AdminOption() {
                     className={
                       history === "add-clothes" ? "bg-secondary text-white" : ""
                     }
+                    style={{ display: "block"}}
                   >
                     Add Items
                   </th>
@@ -50,6 +52,7 @@ export default function AdminOption() {
                         ? "bg-secondary text-white"
                         : ""
                     }
+                    style={{ display: "block"}}
                   >
                     Show List Users
                   </th>
@@ -67,6 +70,7 @@ export default function AdminOption() {
                         ? "bg-secondary text-white"
                         : ""
                     }
+                    style={{ display: "block"}}
                   >
                     Advertisement
                   </th>
@@ -91,6 +95,7 @@ export default function AdminOption() {
                         ? "bg-secondary text-white"
                         : ""
                     }
+                    style={{ display: "block"}}
                   >
                     Danh sách đơn hàng
                   </th>
