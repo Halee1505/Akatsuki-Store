@@ -290,12 +290,12 @@ export default function Title() {
         </div>
       </div>
       <div className="instagram">
-        <div className="instagram__img"></div>
-        <div className="instagram__img"></div>
-        <div className="instagram__img"></div>
-        <div className="instagram__img"></div>
-        <div className="instagram__img"></div>
-        <div className="instagram__img"></div>
+        <div className="instagram__img img__1"></div>
+        <div className="instagram__img img__2"></div>
+        <div className="instagram__img img__3"></div>
+        <div className="instagram__img img__4"></div>
+        <div className="instagram__img img__5"></div>
+        <div className="instagram__img img__6"></div>
       </div>
     </div>
   );
