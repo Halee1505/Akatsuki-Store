@@ -10,8 +10,8 @@ export default function AddClothes() {
   const [classify, setClassify] = useState(0);
   const [loading, setLoading] = useState(false);
 
-    console.log(AddClothes.size);
-    console.log(AddClothes.preview);
+    // console.log(AddClothes.size);
+    // console.log(AddClothes.preview);
 
   const Upload = (UploadImg) => {
     return new Promise((resolve, reject) => {

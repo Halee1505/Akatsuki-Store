@@ -10,7 +10,7 @@ export default function UpdateClothes() {
   const clothes_id = useLocation().pathname.split("/")[3];
   const AddClothes = useContext(AddClothesContext);
   const [classify, setClassify] = useState(0);
-    const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     axios
@@ -19,7 +19,7 @@ export default function UpdateClothes() {
         setClothes(res.data);
       });
   }, [clothes_id]);
-  console.log(clothes);
+
   useEffect(() => {
     if (clothes.length > 0) {
       AddClothes.setUpdateName((name) => clothes[0].name);
@@ -28,10 +28,10 @@ export default function UpdateClothes() {
       AddClothes.setUpdateGender((gender) => clothes[0].gender);
       AddClothes.setUpdateSize((size) => clothes[0].color);
       AddClothes.setUpdateDescription((description) => clothes[0].description);
-      setClassify((size) => clothes[0].color.length)
+      setClassify((size) => clothes[0].color.length);
     }
   }, [clothes]);
-  console.log(AddClothes)
+
   const Upload = (UploadImg) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
@@ -47,30 +47,32 @@ export default function UpdateClothes() {
     });
   };
   function onUpdateClotheshandler() {
-    let newUrl = [...AddClothes.size.map((item) => item.updateImg)];
+    let newUrl = [...AddClothes.updateSize.map((item) => item.updateImg)];
     console.log(newUrl);
-    // Promise.all(newUrl.map((item) => Upload(item))).then((res) => {
-    //     AddClothes.setSize(
-    //         AddClothes.size.map((item, index) => {
-    //             item.updateImg = res[index];
-    //             return item;
-    //         })
-    //     );
-    // });
-    // const clothes = {
-    //   name: AddClothes.updateName,
-    //   price: AddClothes.updatePrice,
-    //   type: AddClothes.updateType,
-    //   gender: AddClothes.updateGender,
-    //   color: JSON.stringify(AddClothes.updateSize),
-    //   description: AddClothes.updateDescription,
-    // };
-    // axios
-    //   .put("http://localhost/api/clothes/update.php?id=" + clothes_id, clothes)
-    //   .then((res) => {
-    //     alert("Update successfully");
-    //     window.location.href = "/admin/manage-clothes";
-    //   });
+    let fileAdd = [...AddClothes.updateSize.filter(e=>typeof(e.updateImg) !=="string")];
+    let crAdd = [...AddClothes.updateSize.filter(e=>typeof(e.updateImg) ==="string")];
+    Promise.all(newUrl.filter(e=>typeof(e) !=="string").map((item) => Upload(item))).then((res) => {
+        let newAddSize = fileAdd.map((item, i) => {
+            item.updateImg = res[i];
+            return item;
+        });
+        let updateAdd = crAdd.concat(newAddSize);
+        const clothes = {
+          name: AddClothes.updateName,
+          price: AddClothes.updatePrice,
+          type: AddClothes.updateType,
+          gender: AddClothes.updateGender,
+          color: JSON.stringify(updateAdd),
+          description: AddClothes.updateDescription,
+        };
+        axios
+          .put("http://localhost/api/clothes/update.php?id=" + clothes_id, clothes)
+          .then((res) => {
+            alert("Update successfully");
+            window.location.href = "/admin/manage-clothes";
+          });
+
+    });
   }
 
   function onDeleteClotheshandler() {
@@ -184,6 +186,7 @@ export default function UpdateClothes() {
                                 handleSetSize={AddClothes.setUpdateSize}
                                 handleSize={AddClothes.updateSize}
                                 handleIndex={index}
+                                handleClassify={setClassify}
                               />
                               <hr className="my-3" />
                             </React.Fragment>

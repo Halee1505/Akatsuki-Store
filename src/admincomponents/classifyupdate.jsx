@@ -18,17 +18,42 @@ export default function ClassifyUpdate({
   handleSetSize,
   handleSize,
   handleIndex,
+  handleClassify,
 }) {
-  // console.log(handleSize);
-  // console.log(handleIndex);
-  // console.log(handleSetSize);
-  const [addSize, setAddSize] = useState(handleSize[handleIndex].size.length);
+  const [addSize, setAddSize] = useState(0);
 
-  const [updateImg, setUpdateImg] = useState(null);
-  const [preview, setPreview] = useState(handleSize[handleIndex].updateImg);
-  const [color, setColor] = useState(handleSize[handleIndex].color);
-  const [size, setSize] = useState(handleSize[handleIndex].size);
-  
+  const [updateImg, setUpdateImg] = useState("");
+  const [preview, setPreview] = useState("");
+  const [color, setColor] = useState("#000000");
+  const [size, setSize] = useState([]);
+
+
+
+  useEffect(() => {
+    function newSetSize() {
+      let newSize = [...handleSize];
+      newSize.push({ color, size, updateImg });
+      handleSetSize(newSize);
+    }
+    newSetSize();
+  }, []);
+
+  useEffect(() => {
+    if (handleSize[handleIndex]) {
+      if (
+        handleSize[handleIndex].size &&
+        handleSize[handleIndex].color &&
+        handleSize[handleIndex].updateImg
+      ) {
+        setColor(handleSize[handleIndex].color);
+        setSize(handleSize[handleIndex].size);
+        setUpdateImg(handleSize[handleIndex].updateImg);
+        setPreview(handleSize[handleIndex].updateImg);
+        setAddSize(handleSize[handleIndex].size.length);
+      }
+    }
+  }, []);
+
 
   const onDrop = (files) => {
     if (files) {
@@ -47,7 +72,18 @@ export default function ClassifyUpdate({
       handleSetReview(newPreview);
     }
     handleClassifyChange();
-  }, [updateImg, color, size]);
+  }, [color, size, updateImg]);
+
+  function deleteAddColorHandler() {
+    let newSize = [...handleSize];
+    newSize.splice(handleIndex, 1);
+    handleSetSize(newSize);
+    let newPreview = [...handlePreview];
+    newPreview.splice(handleIndex, 1);
+    handleSetReview(newPreview);
+    handleClassify((classify) => classify - 1);
+
+  }
 
   return (
     <div className="container-fluid">
@@ -96,7 +132,7 @@ export default function ClassifyUpdate({
                     onChange={(e) => {
                       setColor(e.target.value);
                     }}
-                    value = {color}
+                    value={color}
                     style={{ height: "100%" }}
                   />
                   <button
@@ -111,7 +147,7 @@ export default function ClassifyUpdate({
                 <i
                   className="fa-regular fa-circle-xmark col-md-2"
                   style={{ fontSize: "1.7vw" }}
-                  //   onClick={deleteAddColorHandler}
+                    onClick={deleteAddColorHandler}
                 ></i>
               </div>
             </div>
@@ -124,6 +160,7 @@ export default function ClassifyUpdate({
                         setSizeHandler={setSize}
                         sizeHandler={size}
                         indexHander={index}
+                        setAddSizeHandler={setAddSize}
                       />
                     );
                   })
