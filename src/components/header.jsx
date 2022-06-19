@@ -38,7 +38,7 @@ export default function Header() {
       <div className="header desktop">
         <Link to="/">
           <img
-            src="src/logo.png"
+            src="https://res.cloudinary.com/vitamim/image/upload/v1655607692/vitamim/qsjtbqsbdfqfyyfrden6.png"
             className="header__logo"
             id="header__logo"
             alt="logo"
@@ -164,7 +164,7 @@ export default function Header() {
       <div className="mobile fixed-top">
         <nav className="navbar navbar-light bg-white">
           <Link to="/">
-            <img src="src/logo.png" className="header__logo" alt="logo" />
+            <img src="https://res.cloudinary.com/vitamim/image/upload/v1655607692/vitamim/qsjtbqsbdfqfyyfrden6.png" className="header__logo" alt="logo" />
           </Link>
           <div className="header__name__overlay">
             <img className="header__name" src="src/store.png" alt="" />
