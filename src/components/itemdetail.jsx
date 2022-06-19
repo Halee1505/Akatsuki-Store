@@ -263,7 +263,7 @@ export default function ItemDetail() {
                         );
                       })}
                     </div>
-                    <div className="form-group row size">
+                    <div className="form-group row color">
                       <label
                         htmlFor="username"
                         className="col-sm-3 col-form-label"
@@ -292,7 +292,7 @@ export default function ItemDetail() {
                         <div className="row d-flex justify-content-between"></div>
                       )}
                     </div>
-                    <div className="form-group row">
+                    <div className="form-group row color">
                       <label
                         htmlFor="quantity"
                         className="col-sm-6 col-form-label"
