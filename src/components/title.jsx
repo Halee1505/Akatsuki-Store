@@ -215,35 +215,38 @@ export default function Title() {
                         backgroundSize: "contain",
                         backgroundRepeat: "no-repeat",
                       }}
-                    ></div>
-                    <div className="specialItem__Item">
-                      <p className="specialItem__item__title">{item.name} </p>
-                      <div className="specialItem__item__rate">
-                        <Rating
-                          fullSymbol={
-                            <i
-                              className="fas fa-star"
-                              style={{ color: "#ffd724" }}
-                            ></i>
-                          }
-                          emptySymbol={
-                            <i
-                              className="fas fa-star"
-                              style={{ color: "#f1f1f1" }}
-                            ></i>
-                          }
-                          fractions={10}
-                          readonly
-                          stop={5}
-                          start={0}
-                          step={1}
-                          initialRating={item.ratings}
-                        />
+                      ></div>
+                      <div className="specialItem__Item">
+                        <p className="specialItem__item__title">{item.name} </p>
+                        <div className="specialItem__item__rate">
+                          <Rating
+                            fullSymbol={
+                              <i
+                                className="fas fa-star"
+                                style={{ color: "#ffd724" }}
+                              ></i>
+                            }
+                            emptySymbol={
+                              <i
+                                className="fas fa-star"
+                                style={{ color: "#f1f1f1" }}
+                              ></i>
+                            }
+                            fractions={10}
+                            readonly
+                            stop={5}
+                            start={0}
+                            step={1}
+                            initialRating={item.ratings}
+                          />
+                        </div>
+                        <strong className="specialItem__item__price">
+                          {item.price}.000<i class="fa-solid fa-dong-sign"></i>
+                        </strong>
                       </div>
                       <strong className="specialItem__item__price">
                         {item.price}
                       </strong>
-                    </div>
                   </Link>
                 );
               })}
