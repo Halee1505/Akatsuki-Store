@@ -164,6 +164,7 @@
         align-items: center;
         flex-wrap: wrap;
         background-color: #fff;
+        
     }
     
     .title__advertisement__items {
@@ -328,7 +329,6 @@
     .specialItem__item__img {
         width: 100px;
         height: 100px;
-        background-color: aquamarine;
     }
     
     .specialItem__Item {
@@ -527,4 +527,11 @@
         margin-right: 0;
     }
 
+    .card-body.pre{
+        width: 80vw;
+    }
+
+    .card.card-preview{
+        width: 84vw;
+    }
 }

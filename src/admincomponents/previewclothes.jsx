@@ -7,8 +7,8 @@ export default function PreviewClothes() {
   const [countsize, setCountSize] = useState(0);
   return (
     <div
-      className="card d-flex flex-column align-items-center"
-      style={{ width: "18vw" }}
+      className="card flex-column card-preview"
+      
     >
       {AddClothes.preview.length !== 0 ? (
         <div
@@ -66,10 +66,10 @@ export default function PreviewClothes() {
         ""
       )}
 
-      <div className="card-body" style={{ width: "17vw" }}>
+      <div className="card-body pre">
         <h5 className="card-title">Name: {AddClothes.name}</h5>
         <p className="card-text">
-          Price: {AddClothes.price === "" ? 0 : AddClothes.price}vnd
+          Price: {AddClothes.price === "" ? 0 : AddClothes.price}.000<i className="fa-solid fa-dong-sign"></i>
         </p>
         <p className="card-text">Type: {AddClothes.type}</p>
         <p className="card-text">Gender: {AddClothes.gender}</p>

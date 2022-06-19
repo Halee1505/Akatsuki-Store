@@ -7,7 +7,7 @@ export default function PreviewUpdateClothes() {
     const [countsize, setCountSize] = useState(0)
 
     return (
-        <div className="card d-flex flex-column align-items-center" style={{ width: "18vw" }}>
+        <div className="card d-flex flex-column align-items-center">
             {
                 AddClothes.updateSize.length !== 0 ?
                     <div id="carouselExampleIndicators" className="carousel slide" style={{ width: "100%", marginLeft: "0px", marginTop: "0px" }} data-ride="carousel">
@@ -33,9 +33,9 @@ export default function PreviewUpdateClothes() {
                     : ""
             }
 
-            <div className="card-body" style={{ width: "17vw" }}>
+            <div className="card-body">
                 <h5 className="card-title">Name: {AddClothes.updateName}</h5>
-                <p className="card-text">Price: {AddClothes.updatePrice === "" ? 0 : AddClothes.updatePrice}vnd</p>
+                <p className="card-text">Price: {AddClothes.updatePrice === "" ? 0 : AddClothes.updatePrice}.000<i className="fa-solid fa-dong-sign"></i></p>
                 <p className="card-text">Type: {AddClothes.updateType}</p>
                 <p className="card-text">Gender: {AddClothes.updateSex}</p>
                 <p className="card-text">Size:</p>
