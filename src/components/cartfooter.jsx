@@ -1,7 +1,7 @@
 export default function CartFooter({ totalPrice }) {
   return (
-    <div className="container d-flex justify-content-between fixed-bottom pt-4 pb-4 bg-white rounded-top border border-dark">
-      <h3>Total: {totalPrice}</h3>
+    <div className="container cart__footer">
+      <h3>Tổng đơn: {totalPrice}.000<i class="fa-solid fa-dong-sign"></i></h3>
     </div>
   );
 }

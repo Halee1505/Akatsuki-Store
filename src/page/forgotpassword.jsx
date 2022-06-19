@@ -35,30 +35,6 @@ export default function ForgotPassword() {
                 message: codeGen,
               },
             })
-<<<<<<< HEAD
-        }
-        if (step === 2) {
-            if (Number(verifyCode) === Number(codeGen)) {
-                setStep(3)
-            } else {
-                alert("Wrong code")
-            }  
-        } else if (step === 3) {
-            if (password === repeatPassword) {
-                axios.put("http://localhost/api/customer/reset_password.php", {
-                    username: email,
-                    password: password
-                }).then(res => {
-                    alert("Password changed")
-                    window.location.href = "/login"
-                }).catch(err => {
-                    alert(err.message)
-                })
-            } else {
-                alert("Password not match")
-            }
-        }
-=======
             .then((res) => {
               setLoading(false);
               console.log(res.status);
@@ -69,7 +45,6 @@ export default function ForgotPassword() {
           window.location.href = "/forgot-password";
           alert(`User with email ${email} does not exist`);
         });
->>>>>>> 5dca1c54c51c0df0c52b9a5b42b6b46832d30621
     }
     if (step === 2) {
       if (Number(verifyCode) === Number(codeGen)) {

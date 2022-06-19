@@ -810,3 +810,28 @@ p{
     margin-right: 20px;
     margin-left: 20px;
 }
+
+.specialItem__item__img{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.cart__footer{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    border: 1px solid #000000;
+    bottom: 5%;
+    background-color: #fff;
+    width: 100%;
+    height: 20%;
+}
+
+.retative__ele{
+    position: relative;
+    width: 100%;
+    height: 300px;
+}

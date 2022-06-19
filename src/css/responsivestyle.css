@@ -521,4 +521,11 @@
         width: 36%;
     }
 
+    .title,.container,.col-md-12{
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
 }

@@ -234,7 +234,7 @@ export default function Title() {
                           />
                         </div>
                         <strong className="specialItem__item__price">
-                          {item.price}
+                          {item.price}.000<i class="fa-solid fa-dong-sign"></i>
                         </strong>
                       </div>
                     </Link>
