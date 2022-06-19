@@ -200,7 +200,7 @@ export default function Title() {
           return (
             <div className="special" key={items_ind}>
               <h3>{items}</h3>
-              {hotTrend.map((item, item_ind) => {
+              {hotTrend.slice(0, 5).map((item, item_ind) => {
                 return (
                   <Link
                     to={`/itemdetail/${item.id}`}
