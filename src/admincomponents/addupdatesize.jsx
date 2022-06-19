@@ -2,10 +2,10 @@ import { useState,useEffect } from "react";
 export default function AddUpdateSize({setSizeHandler, sizeHandler, indexHander}) {
   const [sizeName, setSizeName] = useState("");
   const [sizeCount, setSizeCount] = useState(0);
-  console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-  console.log(sizeHandler[indexHander]);
-  console.log(indexHander);
-  console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+  // console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+  // console.log(sizeHandler[indexHander]);
+  // console.log(indexHander);
+  // console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
   useEffect(() => {
     if(sizeHandler.length > 0) {

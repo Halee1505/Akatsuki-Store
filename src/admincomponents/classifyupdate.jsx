@@ -19,8 +19,8 @@ export default function ClassifyUpdate({
   handleSize,
   handleIndex,
 }) {
-  console.log(handleSize);
-  console.log(handleIndex);
+  // console.log(handleSize);
+  // console.log(handleIndex);
   // console.log(handleSetSize);
   const [addSize, setAddSize] = useState(handleSize[handleIndex].size.length);
 

@@ -31,6 +31,7 @@ export default function UpdateClothes() {
       setClassify((size) => clothes[0].color.length)
     }
   }, [clothes]);
+  console.log(AddClothes)
   const Upload = (UploadImg) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
