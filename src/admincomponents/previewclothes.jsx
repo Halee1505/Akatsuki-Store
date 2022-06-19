@@ -66,7 +66,7 @@ export default function PreviewClothes() {
         ""
       )}
 
-      <div className="card-body">
+      <div className="card-body pre">
         <h5 className="card-title">Name: {AddClothes.name}</h5>
         <p className="card-text">
           Price: {AddClothes.price === "" ? 0 : AddClothes.price}.000<i className="fa-solid fa-dong-sign"></i>

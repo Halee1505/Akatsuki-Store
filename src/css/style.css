@@ -881,7 +881,7 @@ p{
     height: 300px;
 }
 
-.card-body{
+.card-body.pre{
     width: 17vw;
 }
 

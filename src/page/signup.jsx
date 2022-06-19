@@ -163,7 +163,7 @@ export default function Signup() {
                           <div className="row col-md-12 d-flex  flex-column">
                             <label htmlFor="code">Nhập mã xác nhận:</label>
                             <p className="text-muted fw-light">
-                              mã xác nhận sẽ được gửi tới tài khoản email:{" "}
+                              Mã xác nhận sẽ được gửi tới tài khoản email:{" "}
                               {email}
                             </p>
                             <input

@@ -526,7 +526,7 @@
         margin-right: 0;
     }
 
-    .card-body{
+    .card-body.pre{
         width: 80vw;
     }
 
