@@ -1,18 +1,32 @@
 import { useState,useEffect } from "react";
-export default function AddUpdateSize({setSizeHandler, sizeHandler, indexHander}) {
+export default function AddUpdateSize({setSizeHandler, sizeHandler, indexHander,setAddSizeHandler}) {
   const [sizeName, setSizeName] = useState("");
   const [sizeCount, setSizeCount] = useState(0);
-  console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-  console.log(sizeHandler[indexHander]);
-  console.log(indexHander);
-  console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+  // console.log(sizeHandler)
+
 
   useEffect(() => {
-    if(sizeHandler.length > 0) {
-        setSizeName(sizeHandler[indexHander].sizeName? sizeHandler[indexHander].sizeName : "");
-        setSizeCount(sizeHandler[indexHander].sizeCount? sizeHandler[indexHander].sizeCount : 0);
+    function newSetSize() {
+      let newSize = [...sizeHandler];
+      newSize.push({ sizeName, sizeCount });
+      setSizeHandler(newSize);
     }
-    }, []);
+    newSetSize();
+  }, []);
+
+  useEffect(() => {
+    if (sizeHandler[indexHander]) {
+      if (
+        sizeHandler[indexHander].sizeName &&
+        sizeHandler[indexHander].sizeCount 
+      ) {
+        setSizeName(sizeHandler[indexHander].sizeName);
+        setSizeCount(sizeHandler[indexHander].sizeCount);
+
+      }
+    }
+  }, []);
+
 
   useEffect(() => {
     function handleChange() {
@@ -22,10 +36,12 @@ export default function AddUpdateSize({setSizeHandler, sizeHandler, indexHander}
     }
     handleChange();
     }, [sizeName,sizeCount]);
+
     function onDeleteSizeHandler() {
         let NewSize = [...sizeHandler];
         NewSize.splice(indexHander, 1);
         setSizeHandler(NewSize);
+        setAddSizeHandler(s=>s-1)
     }
   return (
     <div className="input-group col-md-13 row d-flex align-items-center">
