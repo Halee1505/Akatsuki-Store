@@ -229,7 +229,7 @@ export default function Header() {
               
               <div className="header__mobile">
                 <img
-                  src="src/logo.png"
+                  src="https://res.cloudinary.com/vitamim/image/upload/v1655607692/vitamim/qsjtbqsbdfqfyyfrden6.png"
                   className="header__logo"
                   id="header__logo"
                   alt="logo"
