@@ -53,15 +53,7 @@ export default function Title() {
   const [hotTrend, setHotTrend] = useState([]);
   useEffect(() => {
     setHotTrend(
-      Clothes.sort((a, b) => {
-        if (a.date_created > b.date_created) {
-          return -1;
-        } else if (a.date_created < b.date_created) {
-          return 1;
-        } else {
-          return 0;
-        }
-      })
+      Clothes.filter((item,index)=>index <Clothes.length)
     );
   }, [Clothes]);
   console.log(hotTrend);
@@ -200,53 +192,154 @@ export default function Title() {
           return (
             <div className="special" key={items_ind}>
               <h3>{items}</h3>
-              {hotTrend.slice(0, 5).map((item, item_ind) => {
-                return (
-                  <Link
-                    to={`/itemdetail/${item.id}`}
-                    className="specialItem__items text-decoration-none"
-                    key={item_ind}
-                  >
-                    <div
-                      className="specialItem__item__img"
-                      style={{
-                        backgroundImage: `url('${item.color[0].updateImg}')`,
-                        backgroundPosition: "center",
-                        backgroundSize: "contain",
-                        backgroundRepeat: "no-repeat",
-                      }}
-                      ></div>
-                      <div className="specialItem__Item">
-                        <p className="specialItem__item__title">{item.name} </p>
-                        <div className="specialItem__item__rate">
-                          <Rating
-                            fullSymbol={
-                              <i
-                                className="fas fa-star"
-                                style={{ color: "#ffd724" }}
-                              ></i>
-                            }
-                            emptySymbol={
-                              <i
-                                className="fas fa-star"
-                                style={{ color: "#f1f1f1" }}
-                              ></i>
-                            }
-                            fractions={10}
-                            readonly
-                            stop={5}
-                            start={0}
-                            step={1}
-                            initialRating={item.ratings}
-                          />
+              {
+                items === "HOT TREND" ?
+                (hotTrend.slice(0, 3).map((item, item_ind) => {
+                  return (
+                    <Link
+                      to={`/itemdetail/${item.id}`}
+                      className="specialItem__items text-decoration-none"
+                      key={item_ind}
+                    >
+                      <div
+                        className="specialItem__item__img"
+                        style={{
+                          backgroundImage: `url('${item.color[0].updateImg}')`,
+                          backgroundPosition: "center",
+                          backgroundSize: "contain",
+                          backgroundRepeat: "no-repeat",
+                        }}
+                        ></div>
+                        <div className="specialItem__Item">
+                          <p className="specialItem__item__title">{item.name} </p>
+                          <div className="specialItem__item__rate">
+                            <Rating
+                              fullSymbol={
+                                <i
+                                  className="fas fa-star"
+                                  style={{ color: "#ffd724" }}
+                                ></i>
+                              }
+                              emptySymbol={
+                                <i
+                                  className="fas fa-star"
+                                  style={{ color: "#f1f1f1" }}
+                                ></i>
+                              }
+                              fractions={10}
+                              readonly
+                              stop={5}
+                              start={0}
+                              step={1}
+                              initialRating={item.ratings}
+                            />
+                          </div>
+                          <strong className="specialItem__item__price">
+                            {item.price}.000<i class="fa-solid fa-dong-sign"></i>
+                          </strong>
                         </div>
-                        <strong className="specialItem__item__price">
-                          {item.price}.000<i class="fa-solid fa-dong-sign"></i>
-                        </strong>
-                      </div>
-                  </Link>
-                );
-              })}
+                    </Link>
+                  );
+                }))
+                :
+                items === "BEST SELLER" ?
+                (hotTrend.slice(3, 6).map((item, item_ind) => {
+                  return (
+                    <Link
+                      to={`/itemdetail/${item.id}`}
+                      className="specialItem__items text-decoration-none"
+                      key={item_ind}
+                    >
+                      <div
+                        className="specialItem__item__img"
+                        style={{
+                          backgroundImage: `url('${item.color[0].updateImg}')`,
+                          backgroundPosition: "center",
+                          backgroundSize: "contain",
+                          backgroundRepeat: "no-repeat",
+                        }}
+                        ></div>
+                        <div className="specialItem__Item">
+                          <p className="specialItem__item__title">{item.name} </p>
+                          <div className="specialItem__item__rate">
+                            <Rating
+                              fullSymbol={
+                                <i
+                                  className="fas fa-star"
+                                  style={{ color: "#ffd724" }}
+                                ></i>
+                              }
+                              emptySymbol={
+                                <i
+                                  className="fas fa-star"
+                                  style={{ color: "#f1f1f1" }}
+                                ></i>
+                              }
+                              fractions={10}
+                              readonly
+                              stop={5}
+                              start={0}
+                              step={1}
+                              initialRating={item.ratings}
+                            />
+                          </div>
+                          <strong className="specialItem__item__price">
+                            {item.price}.000<i class="fa-solid fa-dong-sign"></i>
+                          </strong>
+                        </div>
+                    </Link>
+                  );
+                }))
+                :(hotTrend.slice(7, 10).map((item, item_ind) => {
+                  return (
+                    <Link
+                      to={`/itemdetail/${item.id}`}
+                      className="specialItem__items text-decoration-none"
+                      key={item_ind}
+                    >
+                      <div
+                        className="specialItem__item__img"
+                        style={{
+                          backgroundImage: `url('${item.color[0].updateImg}')`,
+                          backgroundPosition: "center",
+                          backgroundSize: "contain",
+                          backgroundRepeat: "no-repeat",
+                        }}
+                        ></div>
+                        <div className="specialItem__Item">
+                          <p className="specialItem__item__title">{item.name} </p>
+                          <div className="specialItem__item__rate">
+                            <Rating
+                              fullSymbol={
+                                <i
+                                  className="fas fa-star"
+                                  style={{ color: "#ffd724" }}
+                                ></i>
+                              }
+                              emptySymbol={
+                                <i
+                                  className="fas fa-star"
+                                  style={{ color: "#f1f1f1" }}
+                                ></i>
+                              }
+                              fractions={10}
+                              readonly
+                              stop={5}
+                              start={0}
+                              step={1}
+                              initialRating={item.ratings}
+                            />
+                          </div>
+                          <strong className="specialItem__item__price">
+                            {item.price}.000<i class="fa-solid fa-dong-sign"></i>
+                          </strong>
+                        </div>
+                    </Link>
+                  );
+                }))
+
+
+              }
             </div>
           );
         })}
