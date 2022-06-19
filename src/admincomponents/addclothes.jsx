@@ -54,6 +54,7 @@ export default function AddClothes() {
 
   return (
     <div className="userpage container-fluid bg-white">
+      {loading ? <i className="fa-solid fa-spinner fa-spin uploading"></i> : ""}
       <div className="container">
         <div className="row">
           <div className="col-md-12 text-center">

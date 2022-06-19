@@ -9,8 +9,9 @@ export default function Orders() {
   useEffect(() => {
     axios.get("http://localhost/api/cart/read_cart_user.php").then((res) => {
       setResult(res.data.filter((order) => order.status !== "cart"));
+      setOrders(result.filter((order) => order.id.includes(search)));
     });
-  }, []);
+  }, [result]);
 
   const handleSearch = () => {
     setOrders(result.filter((order) => order.id.includes(search)));

@@ -52,15 +52,17 @@ export default function Title() {
 
   const [hotTrend, setHotTrend] = useState([]);
   useEffect(() => {
-    setHotTrend(Clothes.sort((a, b) => {
-      if (a.date_created > b.date_created) {
-        return -1;
-      } else if (a.date_created < b.date_created) {
-        return 1;
-      } else {
-        return 0;
-      }
-    }))
+    setHotTrend(
+      Clothes.sort((a, b) => {
+        if (a.date_created > b.date_created) {
+          return -1;
+        } else if (a.date_created < b.date_created) {
+          return 1;
+        } else {
+          return 0;
+        }
+      })
+    );
   }, [Clothes]);
   console.log(hotTrend);
 
@@ -103,7 +105,7 @@ export default function Title() {
               <div
                 className="title__advertisement__items"
                 style={{
-                  backgroundImage:  "url(" + preview1 + ")" ,
+                  backgroundImage: "url(" + preview1 + ")",
                 }}
               ></div>
             </div>
@@ -111,7 +113,7 @@ export default function Title() {
               <div
                 className="title__advertisement__items"
                 style={{
-                  backgroundImage:  "url(" + preview2 + ")" ,
+                  backgroundImage: "url(" + preview2 + ")",
                 }}
               ></div>
             </div>
@@ -119,7 +121,7 @@ export default function Title() {
               <div
                 className="title__advertisement__items"
                 style={{
-                  backgroundImage:  "url(" + preview3 + ")" ,
+                  backgroundImage: "url(" + preview3 + ")",
                 }}
               ></div>
             </div>
@@ -127,7 +129,7 @@ export default function Title() {
               <div
                 className="title__advertisement__items"
                 style={{
-                  backgroundImage:  "url(" + preview4 + ")" ,
+                  backgroundImage: "url(" + preview4 + ")",
                 }}
               ></div>
             </div>
@@ -135,7 +137,7 @@ export default function Title() {
               <div
                 className="title__advertisement__items"
                 style={{
-                  backgroundImage:  "url(" + preview5 + ")" ,
+                  backgroundImage: "url(" + preview5 + ")",
                 }}
               ></div>
             </div>
@@ -174,17 +176,19 @@ export default function Title() {
         </div>
         <div className="newProduct__content">
           {Clothes.map((item, index) => {
-            return (
+            return index < 4 ? (
               <div key={index} className="newProduct__element">
                 {index !== 0 ? <hr className="mobile my-4" /> : ""}
                 <ClothesCard item={item} index={index} />
               </div>
+            ) : (
+              ""
             );
           })}
         </div>
 
         <div className="newProduct__title__right">
-          <Link to="items">
+          <Link to="/items">
             <button className="btn">View all</button>
           </Link>
         </div>
@@ -196,50 +200,53 @@ export default function Title() {
           return (
             <div className="special" key={items_ind}>
               <h3>{items}</h3>
-              {hotTrend
-                .map((item, item_ind) => {
-                  return (
-                    <Link
-                      to={`/itemdetail/${item_ind}`}
-                      className="specialItem__items text-decoration-none"
-                      key={item_ind}
-                    >
-                      <div className="specialItem__item__img" 
+              {hotTrend.map((item, item_ind) => {
+                return (
+                  <Link
+                    to={`/itemdetail/${item.id}`}
+                    className="specialItem__items text-decoration-none"
+                    key={item_ind}
+                  >
+                    <div
+                      className="specialItem__item__img"
                       style={{
                         backgroundImage: `url('${item.color[0].updateImg}')`,
+                        backgroundPosition: "center",
+                        backgroundSize: "contain",
+                        backgroundRepeat: "no-repeat",
                       }}
-                      ></div>
-                      <div className="specialItem__Item">
-                        <p className="specialItem__item__title">{item.name} </p>
-                        <div className="specialItem__item__rate">
-                          <Rating
-                            fullSymbol={
-                              <i
-                                className="fas fa-star"
-                                style={{ color: "#ffd724" }}
-                              ></i>
-                            }
-                            emptySymbol={
-                              <i
-                                className="fas fa-star"
-                                style={{ color: "#f1f1f1" }}
-                              ></i>
-                            }
-                            fractions={10}
-                            readonly
-                            stop={5}
-                            start={0}
-                            step={1}
-                            initialRating={item.ratings}
-                          />
-                        </div>
-                        <strong className="specialItem__item__price">
-                          {item.price}
-                        </strong>
+                    ></div>
+                    <div className="specialItem__Item">
+                      <p className="specialItem__item__title">{item.name} </p>
+                      <div className="specialItem__item__rate">
+                        <Rating
+                          fullSymbol={
+                            <i
+                              className="fas fa-star"
+                              style={{ color: "#ffd724" }}
+                            ></i>
+                          }
+                          emptySymbol={
+                            <i
+                              className="fas fa-star"
+                              style={{ color: "#f1f1f1" }}
+                            ></i>
+                          }
+                          fractions={10}
+                          readonly
+                          stop={5}
+                          start={0}
+                          step={1}
+                          initialRating={item.ratings}
+                        />
                       </div>
-                    </Link>
-                  );
-                })}
+                      <strong className="specialItem__item__price">
+                        {item.price}
+                      </strong>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           );
         })}
