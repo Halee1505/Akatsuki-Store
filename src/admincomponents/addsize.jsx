@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-export default function AddSize({setSizeHandler, sizeHandler, indexHander}) {
+export default function AddSize({setSizeHandler, sizeHandler, indexHander,setAddSizeHandler}) {
   const [sizeName, setSizeName] = useState("");
   const [sizeCount, setSizeCount] = useState(0);
   useEffect(() => {
@@ -14,6 +14,7 @@ export default function AddSize({setSizeHandler, sizeHandler, indexHander}) {
         let NewSize = [...sizeHandler];
         NewSize.splice(indexHander, 1);
         setSizeHandler(NewSize);
+        setAddSizeHandler(s=>s-1)
     }
   return (
     <div className="input-group col-md-13 row d-flex align-items-center">

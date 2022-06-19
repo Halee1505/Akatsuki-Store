@@ -11,10 +11,17 @@ const styleInput = {
   position: "absolute",
   zIndex: "-1",
 };
-export default function Classify({ handleSetReview,handlePreview,handleSetSize, handleSize, handleIndex }) {
-    // console.log(handleSize);
-    // console.log(handleIndex);
-    // console.log(handleSetSize);
+export default function Classify({
+  handleSetReview,
+  handlePreview,
+  handleSetSize,
+  handleSize,
+  handleIndex,
+  handleClassify,
+}) {
+  // console.log(handleSize);
+  // console.log(handleIndex);
+  // console.log(handleSetSize);
   const AddClothes = useContext(AddClothesContext);
   const [addSize, setAddSize] = useState(0);
 
@@ -36,11 +43,21 @@ export default function Classify({ handleSetReview,handlePreview,handleSetSize, 
       newSize[handleIndex] = { color, size, updateImg };
       handleSetSize(newSize);
       let newPreview = [...handlePreview];
-        newPreview[handleIndex] = preview;
-        handleSetReview(newPreview);
+      newPreview[handleIndex] = preview;
+      handleSetReview(newPreview);
     }
     handleClassifyChange();
   }, [updateImg, color, size]);
+
+  function deleteAddColorHandler() {
+    handleClassify((classify) => classify - 1);
+    let newSize = [...handleSize];
+    newSize.splice(handleIndex, 1);
+    handleSetSize(newSize);
+    let newPreview = [...handlePreview];
+    newPreview.splice(handleIndex, 1);
+    handleSetReview(newPreview);
+  }
 
   return (
     <div className="container-fluid">
@@ -96,7 +113,7 @@ export default function Classify({ handleSetReview,handlePreview,handleSetSize, 
                   <button
                     className="btn btn-outline-dark col-md-12 rounded"
                     onClick={() => {
-                        setAddSize(addSize + 1);
+                      setAddSize(addSize + 1);
                     }}
                   >
                     Add size
@@ -105,7 +122,7 @@ export default function Classify({ handleSetReview,handlePreview,handleSetSize, 
                 <i
                   className="fa-regular fa-circle-xmark col-md-2"
                   style={{ fontSize: "1.7vw" }}
-                  //   onClick={deleteAddColorHandler}
+                  onClick={deleteAddColorHandler}
                 ></i>
               </div>
             </div>
@@ -114,10 +131,11 @@ export default function Classify({ handleSetReview,handlePreview,handleSetSize, 
                 ? new Array(addSize).fill(0).map((it, index) => {
                     return (
                       <AddSize
-                      key={index}
+                        key={index}
                         setSizeHandler={setSize}
                         sizeHandler={size}
                         indexHander={index}
+                        setAddSizeHandler={setAddSize}
                       />
                     );
                   })

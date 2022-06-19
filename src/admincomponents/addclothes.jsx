@@ -10,8 +10,8 @@ export default function AddClothes() {
   const [classify, setClassify] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  //   console.log(AddClothes.size);
-  //   console.log(AddClothes.preview);
+    console.log(AddClothes.size);
+    console.log(AddClothes.preview);
 
   const Upload = (UploadImg) => {
     return new Promise((resolve, reject) => {
@@ -153,6 +153,7 @@ export default function AddClothes() {
                                 handleSetSize={AddClothes.setSize}
                                 handleSize={AddClothes.size}
                                 handleIndex={index}
+                                handleClassify={setClassify}
                               />
                               <hr className="my-3" />
                             </React.Fragment>
