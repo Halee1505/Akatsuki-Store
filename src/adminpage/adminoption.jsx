@@ -76,6 +76,19 @@ export default function AdminOption() {
                   </th>
                 </Link>
               </tr>
+              <tr>
+              <Link
+                  to="#"
+                  style={{ color: "unset" }}
+                >
+                  <th
+                    scope="row"
+                    style={{ display: "block"}}
+                  >
+                    <p></p>
+                  </th>
+                </Link>
+              </tr>
             </tbody>
             <thead className="table-light">
               <tr>
